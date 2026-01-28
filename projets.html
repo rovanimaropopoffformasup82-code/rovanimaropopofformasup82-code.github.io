@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Découvrez mes projets de design, sites web et créations graphiques.">
+    <title>Projets | Mercia RANDRIANOME - Product Designer</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/projets.css">
+</head>
+<body>
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+         NAVIGATION
+    ══════════════════════════════════════════════════════════════════════ -->
+    <nav class="nav">
+        <a href="index.html" class="nav-logo">
+            MERCIA<span>.</span>
+        </a>
+        
+        <ul class="nav-liens">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="apropos.html">À propos</a></li>
+            <li><a href="projets.html" class="actif">Projets</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        
+        <a href="contact.html" class="nav-cta">Me contacter</a>
+        
+        <div class="nav-burger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+         EN-TÊTE DE LA PAGE
+    ══════════════════════════════════════════════════════════════════════ -->
+    <header class="projets-header">
+        <div class="conteneur">
+            <h1>Mes <span class="or">projets</span></h1>
+            <p>
+                Découvrez mes réalisations en design graphique, création web et photographie.
+            </p>
+        </div>
+    </header>
+
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+         FILTRES PAR CATÉGORIES
+    ══════════════════════════════════════════════════════════════════════ -->
+    <section class="projets-section section">
+        <div class="conteneur">
+            
+            <!-- FILTRES PRINCIPAUX -->
+            <div class="filtres-wrapper">
+                
+                <button class="filtre-btn actif" data-filtre="tous">Tous</button>
+                
+                <!-- SUITE ADOBE -->
+                <div class="filtre-groupe">
+                    <button class="filtre-btn filtre-parent" data-filtre="adobe">
+                        Suite Adobe
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="filtre-sous-menu">
+                        <button class="filtre-sous-btn" data-filtre="illustrator">Illustrator</button>
+                        <button class="filtre-sous-btn" data-filtre="photoshop">Photoshop</button>
+                        <button class="filtre-sous-btn" data-filtre="indesign">InDesign</button>
+                        <button class="filtre-sous-btn" data-filtre="premiere">Premiere Pro</button>
+                    </div>
+                </div>
+                
+                <!-- SITES RÉELS -->
+                <div class="filtre-groupe">
+                    <button class="filtre-btn filtre-parent" data-filtre="sites-reels">
+                        Sites Réels
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="filtre-sous-menu">
+                        <button class="filtre-sous-btn" data-filtre="wp-reel">WordPress</button>
+                        <button class="filtre-sous-btn" data-filtre="presta-reel">PrestaShop</button>
+                    </div>
+                </div>
+                
+                <!-- SITES FICTIFS -->
+                <div class="filtre-groupe">
+                    <button class="filtre-btn filtre-parent" data-filtre="sites-fictifs">
+                        Sites Fictifs
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="filtre-sous-menu">
+                        <button class="filtre-sous-btn" data-filtre="html-css">HTML / CSS</button>
+                        <button class="filtre-sous-btn" data-filtre="wp-fictif">WordPress</button>
+                        <button class="filtre-sous-btn" data-filtre="presta-fictif">PrestaShop</button>
+                    </div>
+                </div>
+                
+                <button class="filtre-btn" data-filtre="canva">Canva</button>
+                <button class="filtre-btn" data-filtre="photo">Photographie</button>
+                
+            </div>
+            
+            
+            <!-- ══════════════════════════════════════════════════════════
+                 GRILLE DES PROJETS
+            ══════════════════════════════════════════════════════════ -->
+            <div class="projets-grille">
+                
+                <!-- ==================== ILLUSTRATOR ==================== -->
+                
+                <!-- Logo Faites Le Mur -->
+                <article class="projet-carte" data-categorie="adobe illustrator">
+                    <div class="projet-image">
+                        <img src="assets/images/projets/faites-le-mur.webp" alt="Logo Faites Le Mur">
+                        <div class="projet-overlay">
+                            <button class="projet-btn" onclick="ouvrirModal('modal-illustrator-1')">Voir le projet</button>
+                        </div>
+                    </div>
+                    <div class="projet-info">
+                        <span class="projet-tag">Illustrator</span>
+                        <h3>Faites Le Mur</h3>
+                        <p>Logo pour une entreprise de tapisserie (formation) </p>
+                    </div>
+                </article>
+                
+                <!-- Logo La Perruche -->
+                <article class="projet-carte" data-categorie="adobe illustrator">
+                    <div class="projet-image">
+                        <img src="assets/images/projets/la-perruche.png" alt="La Perruche">
+                        <div class="projet-overlay">
+                            <button class="projet-btn" onclick="ouvrirModal('modal-illustrator-2')">Voir le projet</button>
+                        </div>
+                    </div>
+                    <div class="projet-info">
+                        <span class="projet-tag">Illustrator</span>
+                        <h3>La Perruche</h3>
+                        <p>Logo pour un salon de coiffure (formation)</p>
+                    </div>
+                </article>
+
+                <!-- Logo Flora -->
+                <article class="projet-carte" data-categorie="adobe illustrator">
+                    <div class="projet-image">
+                        <img src="assets/images/projets/logo-flora.webp" alt="Flora">
+                        <div class="projet-overlay">
+                            <button class="projet-btn" onclick="ouvrirModal('modal-illustrator-3')">Voir le projet</button>
+                        </div>
+                    </div>
+                    <div class="projet-info">
+                        <span class="projet-tag">Illustrator</span>
+                        <h3>Flora</h3>
+                        <p>Logo pour une fleuriste (formation)</p>
+                    </div>
+                </article>
+
+                <!-- Logo Tiazaza -->
+                <article class="projet-carte" data-categorie="adobe illustrator">
+                    <div class="projet-image">
+                        <img src="assets/images/projets/tiazaza.jpg" alt="Tiazaza">
+                        <div class="projet-overlay">
+                            <button class="projet-btn" onclick="ouvrirModal('modal-illustrator-4')">Voir le projet</button>
+                        </div>
+                    </div>
+                    <div class="projet-info">
+                        <span class="projet-tag">Illustrator</span>
+                        <h3>Tiazaza</h3>
+                        <p>Proopositions de 3 logos pour une MAM (Maison d'Assistantes Maternelles)</p>
+                    </div>
+                </article>
+
+                <!-- Déclinaisons Tiazaza -->
+                <article class="projet-carte" data-categorie="adobe illustrator">
+                    <div class="projet-image">
+                        <img src="assets/images/projets/declinaison1.jpg" alt="Déclinaisons Tiazaza">
+                        <div class="projet-overlay">
+                            <button class="projet-btn" onclick="ouvrirModal('modal-illustrator-5')">Voir le projet</button>
+                        </div>
+                    </div>
+                    <div class="projet-info">
+                        <span class="projet-tag">Illustrator</span>
+                        <h3>Déclinaisons Tiazaza</h3>
+                        <p>Déclinaisons du logo Tiazaza sur différents supports</p>
+                    </div>
+                </article>
+                
+                
+                <!-- ==================== PHOTOSHOP ==================== -->
+                <article class="projet-carte" data-categorie="adobe photoshop">
+                    <div class="projet-image">
+                        <img src="assets/images/projets/photoshop-1.jpg" alt="Projet Photoshop">
+                        <div class="projet-overlay">
+                            <button class="projet-btn" onclick="ouvrirModal('modal-photoshop-1')">Voir le projet</button>
+                        </div>
+                    </div>
+                    <div class="projet-info">
+                        <span class="projet-tag">Photoshop</span>
+                        <h3>Retouche Photo</h3>
+                        <p>Retouche et montage photo professionnel.</p>
+                    </div>
+                </article>
+                
+                <!-- ==================== INDESIGN (PDF avec slides) ==================== -->
+                <article class="projet-carte" data-categorie="adobe indesign">
+                    <div class="projet-image">
+                        <img src="assets/images/projets/indesign-cover.jpg" alt="Projet InDesign">
+                        <div class="projet-overlay">
+                            <button class="projet-btn" onclick="ouvrirModal('modal-indesign-1')">Voir le projet</button>
+                        </div>
+                    </div>
+                    <div class="projet-info">
+                        <span class="projet-tag">InDesign</span>
+                        <h3>Brochure Entreprise</h3>
+                        <p>Mise en page d'une brochure commerciale.</p>
+                    </div>
+                </article>
+                
+                <!-- ==================== PREMIERE PRO (Vidéo) ==================== -->
+                <article class="projet-carte" data-categorie="adobe premiere">
+                    <div class="projet-image projet-video">
+                        <video src="assets/images/projets/chamonix.mp4" muted loop></video>
+                        <div class="projet-overlay">
+                            <button class="projet-btn" onclick="ouvrirModal('modal-video-1')">Voir la vidéo</button>
+                        </div>
+                        <div class="video-play-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                                <polygon points="5 3 19 12 5 21 5 3"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="projet-info">
+                        <span class="projet-tag">Premiere Pro</span>
+                        <h3>Chamonix</h3>
+                        <p>Montage vidéo promotionnel (formation)</p>
+                    </div>
+                </article>
+                
+                <!-- ==================== SITES RÉELS - WORDPRESS ==================== -->
+                <article class="projet-carte" data-categorie="sites-reels wp-reel">
+                    <a href="https://www.mamtiazaza.fr" target="_blank" class="projet-lien-site">
+                        <div class="projet-image">
+                            <img src="assets/images/projets/mam-tiazaza.png" alt="mam-tiazaza">
+                            <div class="projet-overlay">
+                                <span class="projet-btn">
+                                    Visiter le site
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                        <polyline points="15 3 21 3 21 9"/>
+                                        <line x1="10" y1="14" x2="21" y2="3"/>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="projet-info">
+                            <span class="projet-tag">WordPress - Réel</span>
+                            <h3>Mam Tiazaza</h3>
+                            <p>Site vitrine pour une MAM.</p>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="projet-carte" data-categorie="sites-reels wp-reel">
+                    <a href="https://www.jaozafysaveur.fr" target="_blank" class="projet-lien-site">
+                        <div class="projet-image">
+                            <img src="assets/images/projets/jaozafy-saveur.png" alt="jaozafy-saveur">
+                            <div class="projet-overlay">
+                                <span class="projet-btn">
+                                    Visiter le site
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                        <polyline points="15 3 21 3 21 9"/>
+                                        <line x1="10" y1="14" x2="21" y2="3"/>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="projet-info">
+                            <span class="projet-tag">WordPress - Réel</span>
+                            <h3>Jaozafy Saveur</h3>
+                            <p>Site vitrine pour un restaurant.</p>
+                        </div>
+                    </a>
+                </article>
+                
+                <!-- ==================== SITES RÉELS - PRESTASHOP ==================== -->
+                <article class="projet-carte" data-categorie="sites-reels presta-reel">
+                    <a href="https://URL-DU-SITE.com" target="_blank" class="projet-lien-site">
+                        <div class="projet-image">
+                            <img src="assets/images/projets/site-presta-reel.jpg" alt="Site PrestaShop">
+                            <div class="projet-overlay">
+                                <span class="projet-btn">
+                                    Visiter le site
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                        <polyline points="15 3 21 3 21 9"/>
+                                        <line x1="10" y1="14" x2="21" y2="3"/>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="projet-info">
+                            <span class="projet-tag">PrestaShop - Réel</span>
+                            <h3>Boutique E-commerce</h3>
+                            <p>Site e-commerce fonctionnel.</p>
+                        </div>
+                    </a>
+                </article>
+                
+                <!-- ==================== SITES FICTIFS - HTML/CSS ==================== -->
+                <article class="projet-carte" data-categorie="sites-fictifs html-css">
+                    <a href="https://URL-DU-SITE.com" target="_blank" class="projet-lien-site">
+                        <div class="projet-image">
+                            <img src="assets/images/projets/site-html.jpg" alt="Site HTML/CSS">
+                            <div class="projet-overlay">
+                                <span class="projet-btn">
+                                    Visiter le site
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                        <polyline points="15 3 21 3 21 9"/>
+                                        <line x1="10" y1="14" x2="21" y2="3"/>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="projet-info">
+                            <span class="projet-tag">HTML / CSS</span>
+                            <h3>Portfolio Personnel</h3>
+                            <p>Site fictif en HTML/CSS pur.</p>
+                        </div>
+                    </a>
+                </article>
+                
+                <!-- ==================== SITES FICTIFS - WORDPRESS ==================== -->
+                <article class="projet-carte" data-categorie="sites-fictifs wp-fictif">
+                    <a href="https://URL-DU-SITE.com" target="_blank" class="projet-lien-site">
+                        <div class="projet-image">
+                            <img src="assets/images/projets/mam-tiazaza.jpg" alt="Mam Tiazaza">
+                            <div class="projet-overlay">
+                                <span class="projet-btn">
+                                    Visiter le site
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                        <polyline points="15 3 21 3 21 9"/>
+                                        <line x1="10" y1="14" x2="21" y2="3"/>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="projet-info">
+                            <span class="projet-tag">WordPress - Fictif</span>
+                            <h3>Mam Tiazaza</h3>
+                            <p>Site pour une crèche (projet de formation).</p>
+                        </div>
+                    </a>
+                </article>
+                
+                <!-- ==================== SITES FICTIFS - PRESTASHOP ==================== -->
+                <article class="projet-carte" data-categorie="sites-fictifs presta-fictif">
+                    <a href="https://URL-DU-SITE.com" target="_blank" class="projet-lien-site">
+                        <div class="projet-image">
+                            <img src="assets/images/projets/site-presta-fictif.jpg" alt="Site PrestaShop Fictif">
+                            <div class="projet-overlay">
+                                <span class="projet-btn">
+                                    Visiter le site
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                        <polyline points="15 3 21 3 21 9"/>
+                                        <line x1="10" y1="14" x2="21" y2="3"/>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="projet-info">
+                            <span class="projet-tag">PrestaShop - Fictif</span>
+                            <h3>Boutique Mode</h3>
+                            <p>Site e-commerce fictif.</p>
+                        </div>
+                    </a>
+                </article>
+                
+                <!-- ==================== CANVA (Slides) ==================== -->
+                <article class="projet-carte" data-categorie="canva">
+                    <div class="projet-image">
+                        <img src="assets/images/projets/canva-1.jpg" alt="Projet Canva">
+                        <div class="projet-overlay">
+                            <button class="projet-btn" onclick="ouvrirModal('modal-canva-1')">Voir les slides</button>
+                        </div>
+                    </div>
+                    <div class="projet-info">
+                        <span class="projet-tag">Canva</span>
+                        <h3>Posts Réseaux Sociaux</h3>
+                        <p>Série de visuels pour Instagram.</p>
+                    </div>
+                </article>
+                
+                <article class="projet-carte" data-categorie="canva">
+                    <div class="projet-image">
+                        <img src="assets/images/projets/canva-2.jpg" alt="Projet Canva">
+                        <div class="projet-overlay">
+                            <button class="projet-btn" onclick="ouvrirModal('modal-canva-2')">Voir les slides</button>
+                        </div>
+                    </div>
+                    <div class="projet-info">
+                        <span class="projet-tag">Canva</span>
+                        <h3>Présentation Client</h3>
+                        <p>Deck de présentation commerciale.</p>
+                    </div>
+                </article>
+                
+                <!-- ==================== PHOTOGRAPHIE ==================== -->
+                <article class="projet-carte" data-categorie="photo">
+                    <div class="projet-image">
+                        <img src="assets/images/projets/photo-1.jpg" alt="Photographie">
+                        <div class="projet-overlay">
+                            <button class="projet-btn" onclick="ouvrirModal('modal-photo-1')">Voir la photo</button>
+                        </div>
+                    </div>
+                    <div class="projet-info">
+                        <span class="projet-tag">Photographie</span>
+                        <h3>Portrait</h3>
+                        <p>Séance photo portrait.</p>
+                    </div>
+                </article>
+                
+                <article class="projet-carte" data-categorie="photo">
+                    <div class="projet-image">
+                        <img src="assets/images/projets/photo-2.jpg" alt="Photographie">
+                        <div class="projet-overlay">
+                            <button class="projet-btn" onclick="ouvrirModal('modal-photo-2')">Voir la photo</button>
+                        </div>
+                    </div>
+                    <div class="projet-info">
+                        <span class="projet-tag">Photographie</span>
+                        <h3>Paysage</h3>
+                        <p>Photographie de paysage.</p>
+                    </div>
+                </article>
+                
+            </div>
+            
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+         MODALS (Pop-ups pour voir les projets)
+    ══════════════════════════════════════════════════════════════════════ -->
+    
+    <!-- ==================== MODALS ILLUSTRATOR ==================== -->
+    
+    <!-- Modal Illustrator 1 - Faites Le Mur -->
+    <div id="modal-illustrator-1" class="modal">
+        <div class="modal-contenu">
+            <button class="modal-fermer" onclick="fermerModal('modal-illustrator-1')">&times;</button>
+            <div class="modal-image">
+                <img src="assets/images/projets/faites-le-mur.webp" alt="Logo Faites Le Mur">
+            </div>
+            <div class="modal-info">
+                <h2>Logo Faites Le Mur</h2>
+                <p class="modal-categorie">Illustrator</p>
+                <p>Création d'une identité visuelle audacieuse pour une entreprise de tapisserie et décoration murale. 
+                    Le logo joue sur la typographie avec "LE MUR" intégré dans "FAITES", créant un visuel percutant qui évoque le métier de tapissier-décorateur. 
+                    Les trois déclinaisons de couleurs (beige, crème et noir) permettent une adaptation flexible sur tous les supports de communication.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Illustrator 2 - La Perruche -->
+    <div id="modal-illustrator-2" class="modal">
+        <div class="modal-contenu">
+            <button class="modal-fermer" onclick="fermerModal('modal-illustrator-2')">&times;</button>
+            <div class="modal-image">
+                <img src="assets/images/projets/la-perruche.png" alt="La Perruche">
+            </div>
+            <div class="modal-info">
+                <h2>Logo La Perruche</h2>
+                <p class="modal-categorie">Illustrator</p>
+                <p>Exercice de simplification d'image pour le salon de coiffure "La Perruche".
+                     À partir d'un dessin réaliste de perruche, le logo a été créé en simplifiant progressivement les formes pour obtenir une illustration épurée et stylisée. 
+                     Cette démarche graphique permet de conserver l'identité visuelle de l'oiseau tout en créant un logo moderne et facilement mémorisable, accompagné du slogan "On coiffe et on caquette".</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Illustrator 3 - Flora -->
+    <div id="modal-illustrator-3" class="modal">
+        <div class="modal-contenu">
+            <button class="modal-fermer" onclick="fermerModal('modal-illustrator-3')">&times;</button>
+            <div class="modal-image">
+                <img src="assets/images/projets/logo-flora.webp" alt="Flora">
+            </div>
+            <div class="modal-info">
+                <h2>Logo Flora Fleurist</h2>
+                <p class="modal-categorie">Illustrator</p>
+                <p>Logo minimaliste et frais pour une boutique de fleurs. 
+                    Le design intègre une fleur stylisée dans le "L" de Flora, créant un symbole harmonieux et immédiatement reconnaissable. 
+                    Les couleurs vert et rouge évoquent la nature et la passion florale, parfaites pour une enseigne de fleuriste moderne.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Illustrator 4 - Tiazaza -->
+    <div id="modal-illustrator-4" class="modal">
+        <div class="modal-contenu">
+            <button class="modal-fermer" onclick="fermerModal('modal-illustrator-4')">&times;</button>
+            <div class="modal-image">
+                <img src="assets/images/projets/tiazaza.jpg" alt="Tiazaza">
+            </div>
+            <div class="modal-info">
+                <h2>Logo Tiazaza</h2>
+                <p class="modal-categorie">Illustrator</p>
+                <p>Logo joyeux et rassurant pour une MAM (Maison d'Assistantes Maternelles) axée sur l'éveil naturel. 
+                    Le personnage de bébé souriant accompagné de papillons évoque la douceur, la joie et le développement harmonieux des tout-petits. 
+                    L'ensemble crée une atmosphère bienveillante et accueillante, parfaite pour rassurer les parents.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Illustrator 5 - Déclinaisons Tiazaza (avec slider) -->
+    <div id="modal-illustrator-5" class="modal">
+        <div class="modal-contenu modal-large">
+            <button class="modal-fermer" onclick="fermerModal('modal-illustrator-5')">&times;</button>
+            <div class="modal-info">
+                <h2>Déclinaisons du logo Tiazaza</h2>
+                <p class="modal-categorie">Illustrator</p>
+                <p>Exploration complète des variations chromatiques du logo Tiazaza. 
+                    Cinq déclinaisons (noir, vert vif, beige rosé, bordeaux et blanc cassé) permettent une adaptation sur tous types de supports et fonds.
+                     Chaque version conserve l'esprit ludique et naturel du logo original tout en offrant une flexibilité maximale pour l'identité visuelle de la MAM.</p>
+            </div>
+            <div class="modal-slider">
+                <button class="slider-btn slider-prev" onclick="changerSlide('slider-illustrator-5', -1)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 18l-6-6 6-6"/>
+                    </svg>
+                </button>
+                <div class="slider-container" id="slider-illustrator-5">
+                    <img src="assets/images/projets/declinaison1.jpg" alt="Déclinaison 1" class="slide active">
+                    <img src="assets/images/projets/dec1.jpg" alt="Déclinaison 2" class="slide">
+                    <img src="assets/images/projets/dec2.jpg" alt="Déclinaison 3" class="slide">
+                    <img src="assets/images/projets/dec4.jpg" alt="Déclinaison 4" class="slide">
+                    <img src="assets/images/projets/dec5.jpg" alt="Déclinaison 5" class="slide">
+                </div>
+                <button class="slider-btn slider-next" onclick="changerSlide('slider-illustrator-5', 1)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="slider-dots" id="dots-illustrator-5"></div>
+        </div>
+    </div>
+    
+    <!-- ==================== MODAL PHOTOSHOP ==================== -->
+    
+    <!-- Modal Photoshop 1 -->
+    <div id="modal-photoshop-1" class="modal">
+        <div class="modal-contenu">
+            <button class="modal-fermer" onclick="fermerModal('modal-photoshop-1')">&times;</button>
+            <div class="modal-image">
+                <img src="assets/images/projets/photoshop-1.jpg" alt="Retouche Photo">
+            </div>
+            <div class="modal-info">
+                <h2>Retouche Photo</h2>
+                <p class="modal-categorie">Photoshop</p>
+                <p>Retouche et montage photo professionnel avec correction des couleurs et optimisation de la qualité d'image.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ==================== MODAL INDESIGN ==================== -->
+    
+    <!-- Modal InDesign (PDF avec slides) -->
+    <div id="modal-indesign-1" class="modal">
+        <div class="modal-contenu modal-large">
+            <button class="modal-fermer" onclick="fermerModal('modal-indesign-1')">&times;</button>
+            <div class="modal-info">
+                <h2>Brochure Entreprise</h2>
+                <p class="modal-categorie">InDesign</p>
+                <p>Mise en page professionnelle d'une brochure commerciale avec une attention particulière portée à la hiérarchie de l'information et à l'harmonie visuelle.</p>
+            </div>
+            <div class="modal-slider">
+                <button class="slider-btn slider-prev" onclick="changerSlide('slider-indesign-1', -1)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 18l-6-6 6-6"/>
+                    </svg>
+                </button>
+                <div class="slider-container" id="slider-indesign-1">
+                    <img src="assets/images/projets/indesign/page-1.jpg" alt="Page 1" class="slide active">
+                    <img src="assets/images/projets/indesign/page-2.jpg" alt="Page 2" class="slide">
+                    <img src="assets/images/projets/indesign/page-3.jpg" alt="Page 3" class="slide">
+                    <img src="assets/images/projets/indesign/page-4.jpg" alt="Page 4" class="slide">
+                </div>
+                <button class="slider-btn slider-next" onclick="changerSlide('slider-indesign-1', 1)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="slider-dots" id="dots-indesign-1"></div>
+            <a href="assets/pdf/brochure.pdf" target="_blank" class="btn btn-secondaire modal-download">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                Télécharger le PDF
+            </a>
+        </div>
+    </div>
+    
+    <!-- ==================== MODAL VIDÉO ==================== -->
+    
+    <!-- Modal Vidéo -->
+    <div id="modal-video-1" class="modal">
+        <div class="modal-contenu modal-large">
+            <button class="modal-fermer" onclick="fermerModal('modal-video-1')">&times;</button>
+            <div class="modal-video">
+                <video id="video-chamonix" src="assets/images/projets/chamonix.mp4" controls></video>
+            </div>
+            <div class="modal-info">
+                <h2>Chamonix</h2>
+                <p class="modal-categorie">Premiere Pro</p>
+                <p>Montage vidéo promotionnel dynamique pour la destination touristique de Chamonix. 
+                    Le rythme du montage et les transitions fluides capturent l'essence de cette station de montagne emblématique.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ==================== MODALS CANVA ==================== -->
+    
+    <!-- Modal Canva 1 (Slides) -->
+    <div id="modal-canva-1" class="modal">
+        <div class="modal-contenu modal-large">
+            <button class="modal-fermer" onclick="fermerModal('modal-canva-1')">&times;</button>
+            <div class="modal-info">
+                <h2>Posts Réseaux Sociaux</h2>
+                <p class="modal-categorie">Canva</p>
+                <p>Série de visuels cohérents pour Instagram, créés pour maintenir une identité visuelle forte sur les réseaux sociaux.</p>
+            </div>
+            <div class="modal-slider">
+                <button class="slider-btn slider-prev" onclick="changerSlide('slider-canva-1', -1)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 18l-6-6 6-6"/>
+                    </svg>
+                </button>
+                <div class="slider-container" id="slider-canva-1">
+                    <img src="assets/images/projets/canva/slide-1.jpg" alt="Slide 1" class="slide active">
+                    <img src="assets/images/projets/canva/slide-2.jpg" alt="Slide 2" class="slide">
+                    <img src="assets/images/projets/canva/slide-3.jpg" alt="Slide 3" class="slide">
+                    <img src="assets/images/projets/canva/slide-4.jpg" alt="Slide 4" class="slide">
+                </div>
+                <button class="slider-btn slider-next" onclick="changerSlide('slider-canva-1', 1)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="slider-dots" id="dots-canva-1"></div>
+        </div>
+    </div>
+    
+    <!-- Modal Canva 2 (Slides) -->
+    <div id="modal-canva-2" class="modal">
+        <div class="modal-contenu modal-large">
+            <button class="modal-fermer" onclick="fermerModal('modal-canva-2')">&times;</button>
+            <div class="modal-info">
+                <h2>Présentation Client</h2>
+                <p class="modal-categorie">Canva</p>
+                <p>Deck de présentation commerciale professionnel et impactant, conçu pour convaincre et séduire les clients potentiels.</p>
+            </div>
+            <div class="modal-slider">
+                <button class="slider-btn slider-prev" onclick="changerSlide('slider-canva-2', -1)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 18l-6-6 6-6"/>
+                    </svg>
+                </button>
+                <div class="slider-container" id="slider-canva-2">
+                    <img src="assets/images/projets/canva2/slide-1.jpg" alt="Slide 1" class="slide active">
+                    <img src="assets/images/projets/canva2/slide-2.jpg" alt="Slide 2" class="slide">
+                    <img src="assets/images/projets/canva2/slide-3.jpg" alt="Slide 3" class="slide">
+                </div>
+                <button class="slider-btn slider-next" onclick="changerSlide('slider-canva-2', 1)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="slider-dots" id="dots-canva-2"></div>
+        </div>
+    </div>
+    
+    <!-- ==================== MODALS PHOTO ==================== -->
+    
+    <!-- Modal Photo 1 -->
+    <div id="modal-photo-1" class="modal">
+        <div class="modal-contenu">
+            <button class="modal-fermer" onclick="fermerModal('modal-photo-1')">&times;</button>
+            <div class="modal-image">
+                <img src="assets/images/projets/photo-1.jpg" alt="Portrait">
+            </div>
+            <div class="modal-info">
+                <h2>Portrait</h2>
+                <p class="modal-categorie">Photographie</p>
+                <p>Séance photo portrait en lumière naturelle, capturant l'authenticité et la personnalité du sujet.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Photo 2 -->
+    <div id="modal-photo-2" class="modal">
+        <div class="modal-contenu">
+            <button class="modal-fermer" onclick="fermerModal('modal-photo-2')">&times;</button>
+            <div class="modal-image">
+                <img src="assets/images/projets/photo-2.jpg" alt="Paysage">
+            </div>
+            <div class="modal-info">
+                <h2>Paysage</h2>
+                <p class="modal-categorie">Photographie</p>
+                <p>Photographie de paysage en montagne, sublimant la beauté naturelle et la grandeur des sommets.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+         FOOTER
+    ══════════════════════════════════════════════════════════════════════ -->
+    <footer class="footer">
+        <div class="footer-contenu">
+            <a href="index.html" class="footer-logo">
+                MERCIA<span>.</span>
+            </a>
+            
+            <ul class="footer-liens">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="apropos.html">À propos</a></li>
+                <li><a href="projets.html">Projets</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            
+            <div class="footer-reseaux">
+                <a href="https://www.linkedin.com/in/merciarandrianome" target="_blank" aria-label="LinkedIn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                </a>
+            </div>
+            
+            <p class="footer-copyright">
+                © 2025 Mercia RANDRIANOME. Tous droits réservés.
+            </p>
+        </div>
+    </footer>
+
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+         JAVASCRIPT
+    ══════════════════════════════════════════════════════════════════════ -->
+    <script>
+        // ═══════════════════════════════════════════════════════════════════
+        // SYSTÈME DE FILTRAGE
+        // ═══════════════════════════════════════════════════════════════════
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            const filtresBtns = document.querySelectorAll('.filtre-btn');
+            const filtresSousBtns = document.querySelectorAll('.filtre-sous-btn');
+            const filtresGroupes = document.querySelectorAll('.filtre-groupe');
+            const projets = document.querySelectorAll('.projet-carte');
+            
+            // Gestion des sous-menus
+            filtresGroupes.forEach(groupe => {
+                const parent = groupe.querySelector('.filtre-parent');
+                
+                parent.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    
+                    filtresGroupes.forEach(g => {
+                        if (g !== groupe) g.classList.remove('ouvert');
+                    });
+                    
+                    groupe.classList.toggle('ouvert');
+                    
+                    const filtre = parent.getAttribute('data-filtre');
+                    filtrerProjets(filtre);
+                    majBoutonsActifs(parent);
+                });
+            });
+            
+            document.addEventListener('click', function() {
+                filtresGroupes.forEach(g => g.classList.remove('ouvert'));
+            });
+            
+            // Filtres principaux
+            filtresBtns.forEach(btn => {
+                if (!btn.classList.contains('filtre-parent')) {
+                    btn.addEventListener('click', function() {
+                        const filtre = this.getAttribute('data-filtre');
+                        filtrerProjets(filtre);
+                        majBoutonsActifs(this);
+                        filtresGroupes.forEach(g => g.classList.remove('ouvert'));
+                    });
+                }
+            });
+            
+            // Sous-filtres
+            filtresSousBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const filtre = this.getAttribute('data-filtre');
+                    filtrerProjets(filtre);
+                    majSousBoutonsActifs(this);
+                });
+            });
+            
+            function filtrerProjets(filtre) {
+                projets.forEach(projet => {
+                    const categories = projet.getAttribute('data-categorie');
+                    
+                    if (filtre === 'tous' || categories.includes(filtre)) {
+                        projet.classList.remove('cache');
+                        projet.style.animation = 'fadeIn 0.4s ease forwards';
+                    } else {
+                        projet.classList.add('cache');
+                    }
+                });
+            }
+            
+            function majBoutonsActifs(boutonActif) {
+                filtresBtns.forEach(btn => btn.classList.remove('actif'));
+                filtresSousBtns.forEach(btn => btn.classList.remove('actif'));
+                boutonActif.classList.add('actif');
+            }
+            
+            function majSousBoutonsActifs(boutonActif) {
+                filtresBtns.forEach(btn => btn.classList.remove('actif'));
+                filtresSousBtns.forEach(btn => btn.classList.remove('actif'));
+                boutonActif.classList.add('actif');
+                
+                const groupe = boutonActif.closest('.filtre-groupe');
+                const parent = groupe.querySelector('.filtre-parent');
+                parent.classList.add('actif');
+            }
+            
+            // Hover sur vidéo
+            document.querySelectorAll('.projet-video').forEach(videoContainer => {
+                const video = videoContainer.querySelector('video');
+                if (video) {
+                    videoContainer.addEventListener('mouseenter', () => video.play());
+                    videoContainer.addEventListener('mouseleave', () => {
+                        video.pause();
+                        video.currentTime = 0;
+                    });
+                }
+            });
+            
+            // Initialiser les dots des sliders
+            initSliderDots();
+        });
+        
+        
+        // ═══════════════════════════════════════════════════════════════════
+        // MODALS
+        // ═══════════════════════════════════════════════════════════════════
+        
+        function ouvrirModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Si c'est une vidéo, on la met en pause au départ
+            const video = modal.querySelector('video');
+            if (video) video.currentTime = 0;
+        }
+        
+        function fermerModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            
+            // Pause la vidéo si présente
+            const video = modal.querySelector('video');
+            if (video) video.pause();
+        }
+        
+        // Fermer en cliquant en dehors
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                    
+                    const video = this.querySelector('video');
+                    if (video) video.pause();
+                }
+            });
+        });
+        
+        // Fermer avec Echap
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal.active').forEach(modal => {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                    
+                    const video = modal.querySelector('video');
+                    if (video) video.pause();
+                });
+            }
+        });
+        
+        
+        // ═══════════════════════════════════════════════════════════════════
+        // SLIDER POUR CANVA ET INDESIGN
+        // ═══════════════════════════════════════════════════════════════════
+        
+        function initSliderDots() {
+            document.querySelectorAll('.slider-container').forEach(slider => {
+                const slides = slider.querySelectorAll('.slide');
+                const dotsContainer = document.getElementById('dots-' + slider.id.replace('slider-', ''));
+                
+                if (dotsContainer) {
+                    dotsContainer.innerHTML = '';
+                    slides.forEach((_, index) => {
+                        const dot = document.createElement('button');
+                        dot.classList.add('dot');
+                        if (index === 0) dot.classList.add('active');
+                        dot.onclick = () => allerAuSlide(slider.id, index);
+                        dotsContainer.appendChild(dot);
+                    });
+                }
+            });
+        }
+        
+        function changerSlide(sliderId, direction) {
+            const slider = document.getElementById(sliderId);
+            const slides = slider.querySelectorAll('.slide');
+            const currentIndex = Array.from(slides).findIndex(s => s.classList.contains('active'));
+            
+            let newIndex = currentIndex + direction;
+            if (newIndex < 0) newIndex = slides.length - 1;
+            if (newIndex >= slides.length) newIndex = 0;
+            
+            allerAuSlide(sliderId, newIndex);
+        }
+        
+        function allerAuSlide(sliderId, index) {
+            const slider = document.getElementById(sliderId);
+            const slides = slider.querySelectorAll('.slide');
+            const dotsContainer = document.getElementById('dots-' + sliderId.replace('slider-', ''));
+            const dots = dotsContainer ? dotsContainer.querySelectorAll('.dot') : [];
+            
+            slides.forEach(s => s.classList.remove('active'));
+            dots.forEach(d => d.classList.remove('active'));
+            
+            slides[index].classList.add('active');
+            if (dots[index]) dots[index].classList.add('active');
+        }
+    </script>
+
+    <script src="js/main.js"></script>
+
+</body>
+</html>

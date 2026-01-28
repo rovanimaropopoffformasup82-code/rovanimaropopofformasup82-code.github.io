@@ -1,0 +1,534 @@
+/* ══════════════════════════════════════════════════════════════════════════════
+   STYLE.CSS - Styles globaux du portfolio
+   RANDRIANOME Mercia
+   
+   Ce fichier contient TOUS les styles partagés entre les pages :
+   - Variables (couleurs, polices)
+   - Reset CSS
+   - Navigation
+   - Boutons
+   - Footer
+   - Responsive
+══════════════════════════════════════════════════════════════════════════════ */
+
+
+/* ==============================================================================
+   1. IMPORT DES POLICES GOOGLE FONTS
+   ==============================================================================
+   
+   On utilise 2 polices :
+   - Syne : pour les titres (moderne, géométrique, impactante)
+   - Inter : pour le texte courant (lisible, professionnelle)
+   
+   Ces polices sont gratuites et chargées depuis Google Fonts.
+*/
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+
+
+/* ==============================================================================
+   2. VARIABLES CSS (Personnalisation facile)
+   ==============================================================================
+   
+   Les variables permettent de changer les couleurs/polices à UN SEUL endroit.
+   Pour modifier une couleur sur tout le site, change juste la valeur ici.
+   
+   Utilisation : var(--nom-de-la-variable)
+   Exemple : background-color: var(--noir-profond);
+*/
+:root {
+    
+    /* --- COULEURS PRINCIPALES --- */
+    --noir-profond: #0a0a0a;      /* Fond principal (presque noir) */
+    --noir-secondaire: #141414;    /* Fond des sections alternées */
+    --gris-fonce: #1a1a1a;         /* Fond des cartes */
+    --gris-bordure: #2a2a2a;       /* Couleur des bordures */
+    
+    /* --- COULEURS DE TEXTE --- */
+    --blanc: #f5f5f5;              /* Texte principal */
+    --blanc-pur: #ffffff;          /* Titres */
+    --gris-texte: #888888;         /* Texte secondaire (paragraphes) */
+    --gris-clair: #aaaaaa;         /* Texte léger */
+    
+    /* --- COULEUR D'ACCENT (OR) --- */
+    --or: #d4af37;                 /* Couleur principale d'accent */
+    --or-clair: #e8c54d;           /* Or au survol (hover) */
+    --or-fonce: #b8962e;           /* Or foncé si besoin */
+    
+    /* --- POLICES --- */
+    --font-titre: 'Syne', sans-serif;
+    --font-corps: 'Inter', sans-serif;
+    
+    /* --- TRANSITIONS (animations fluides) --- */
+    --transition-rapide: 0.3s ease;
+    --transition-moyenne: 0.5s ease;
+    
+    /* --- OMBRES --- */
+    --ombre-carte: 0 4px 20px rgba(0, 0, 0, 0.3);
+    --ombre-or: 0 4px 20px rgba(212, 175, 55, 0.3);
+    
+    /* --- ESPACEMENTS --- */
+    --padding-page: 5%;            /* Marge gauche/droite des pages */
+}
+
+
+/* ==============================================================================
+   3. RESET CSS (Remise à zéro des styles par défaut)
+   ==============================================================================
+   
+   Les navigateurs appliquent des styles par défaut (marges, padding...).
+   Le reset permet de partir sur une base propre et identique partout.
+*/
+
+/* Applique box-sizing à tous les éléments */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;  /* Les padding/border sont inclus dans la largeur */
+}
+
+/* Défilement fluide quand on clique sur un lien ancre (#section) */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Styles de base du body */
+body {
+    font-family: var(--font-corps);
+    background-color: var(--noir-profond);
+    color: var(--blanc);
+    line-height: 1.6;                    /* Hauteur de ligne pour lisibilité */
+    overflow-x: hidden;                  /* Pas de scroll horizontal */
+}
+
+/* Personnalisation de la sélection de texte */
+::selection {
+    background-color: var(--or);
+    color: var(--noir-profond);
+}
+
+
+/* ==============================================================================
+   4. ÉLÉMENTS DE BASE (liens, images, titres, paragraphes)
+   ==============================================================================
+*/
+
+/* --- LIENS --- */
+a {
+    text-decoration: none;           /* Pas de soulignement */
+    color: inherit;                  /* Hérite la couleur du parent */
+    transition: var(--transition-rapide);
+}
+
+/* --- IMAGES --- */
+img {
+    max-width: 100%;                 /* Ne dépasse jamais son conteneur */
+    height: auto;
+    display: block;                  /* Évite l'espace sous les images */
+}
+
+/* --- TITRES --- */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-titre);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--blanc-pur);
+}
+
+.hero-note {
+    font-size: 0.85em;
+    opacity: 0.7;
+}
+
+
+/* Tailles des titres (responsive avec clamp) */
+/* clamp(min, preferred, max) = taille minimum, idéale, maximum */
+h1 { font-size: clamp(2.5rem, 6vw, 5rem); }
+h2 { font-size: clamp(2rem, 4vw, 3rem); }
+h3 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); }
+
+/* --- PARAGRAPHES --- */
+p {
+    color: var(--gris-texte);
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+
+/* ==============================================================================
+   5. NAVIGATION
+   ==============================================================================
+   
+   La navigation est fixée en haut de l'écran (position: fixed).
+   Elle reste visible quand on scroll.
+*/
+
+.nav {
+    /* Positionnement fixe en haut */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;                   /* Au-dessus de tout le contenu */
+    
+    /* Disposition des éléments */
+    display: flex;
+    justify-content: space-between;  /* Logo à gauche, liens à droite */
+    align-items: center;             /* Centré verticalement */
+    padding: 1.2rem var(--padding-page);
+    
+    /* Fond semi-transparent avec flou */
+    background-color: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(20px);     /* Effet de flou (style moderne) */
+    border-bottom: 1px solid var(--gris-bordure);
+}
+
+/* --- LOGO --- */
+.nav-logo {
+    font-family: var(--font-titre);
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--blanc-pur);
+}
+
+/* Le point après "MERCIA" est en or */
+.nav-logo span {
+    color: var(--or);
+}
+
+/* --- LIENS DE NAVIGATION --- */
+.nav-liens {
+    display: flex;
+    gap: 2.5rem;                     /* Espace entre les liens */
+    list-style: none;                /* Pas de puces */
+}
+
+.nav-liens a {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--gris-texte);
+    position: relative;              /* Pour l'animation du soulignement */
+    padding: 0.5rem 0;
+}
+
+/* Soulignement animé au survol */
+.nav-liens a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;                        /* Invisible par défaut */
+    height: 2px;
+    background-color: var(--or);
+    transition: var(--transition-rapide);
+}
+
+/* Au survol : texte blanc + soulignement visible */
+.nav-liens a:hover {
+    color: var(--blanc-pur);
+}
+
+.nav-liens a:hover::after {
+    width: 100%;                     /* Le soulignement apparaît */
+}
+
+/* Lien de la page actuelle (classe "actif") */
+.nav-liens a.actif {
+    color: var(--or);
+}
+
+.nav-liens a.actif::after {
+    width: 100%;
+}
+
+/* --- BOUTON "ME CONTACTER" --- */
+.nav-cta {
+    background-color: var(--or);
+    color: var(--noir-profond);
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;             /* Bouton arrondi */
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.nav-cta:hover {
+    background-color: var(--or-clair);
+    box-shadow: var(--ombre-or);
+    transform: translateY(-2px);     /* Légère élévation */
+}
+
+/* --- MENU BURGER (mobile) --- */
+/* Caché par défaut, visible uniquement sur mobile */
+.nav-burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.nav-burger span {
+    width: 25px;
+    height: 2px;
+    background-color: var(--blanc);
+    transition: var(--transition-rapide);
+}
+
+
+/* ==============================================================================
+   6. BOUTONS RÉUTILISABLES
+   ==============================================================================
+   
+   Classes à combiner : .btn + .btn-principal OU .btn + .btn-secondaire
+   Exemple : <a href="#" class="btn btn-principal">Cliquez ici</a>
+*/
+
+/* Style de base pour tous les boutons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;                     /* Espace entre texte et icône */
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-family: var(--font-corps);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: var(--transition-rapide);
+}
+
+/* Bouton principal (fond or) */
+.btn-principal {
+    background-color: var(--or);
+    color: var(--noir-profond);
+}
+
+.btn-principal:hover {
+    background-color: var(--or-clair);
+    box-shadow: var(--ombre-or);
+    transform: translateY(-3px);
+}
+
+/* Bouton secondaire (contour) */
+.btn-secondaire {
+    background-color: transparent;
+    color: var(--blanc);
+    border: 1px solid var(--gris-bordure);
+}
+
+.btn-secondaire:hover {
+    border-color: var(--or);
+    color: var(--or);
+}
+
+
+/* ==============================================================================
+   7. SECTIONS (styles communs)
+   ==============================================================================
+*/
+
+section {
+    padding: 100px var(--padding-page);
+}
+
+/* Titre de section avec mot en or */
+.section-titre {
+    margin-bottom: 1rem;
+}
+
+.section-titre span {
+    color: var(--or);
+}
+
+/* Sous-titre de section */
+.section-soustitre {
+    color: var(--gris-texte);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin-bottom: 3rem;
+}
+
+/* Conteneur pour centrer le contenu */
+.conteneur {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+
+/* ==============================================================================
+   8. FOOTER (pied de page)
+   ==============================================================================
+*/
+
+.footer {
+    background-color: var(--noir-secondaire);
+    border-top: 1px solid var(--gris-bordure);
+    padding: 60px var(--padding-page);
+}
+
+.footer-contenu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;                 /* Passe en colonne si pas assez de place */
+    gap: 2rem;
+}
+
+/* Logo du footer */
+.footer-logo {
+    font-family: var(--font-titre);
+    font-size: 1.3rem;
+    font-weight: 800;
+}
+
+.footer-logo span {
+    color: var(--or);
+}
+
+/* Liens du footer */
+.footer-liens {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.footer-liens a {
+    color: var(--gris-texte);
+    font-size: 0.9rem;
+}
+
+.footer-liens a:hover {
+    color: var(--or);
+}
+
+/* Icônes réseaux sociaux */
+.footer-reseaux {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer-reseaux a {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--gris-fonce);
+    border-radius: 50%;
+    color: var(--gris-texte);
+}
+
+.footer-reseaux a:hover {
+    background-color: var(--or);
+    color: var(--noir-profond);
+}
+
+/* Copyright */
+.footer-copyright {
+    width: 100%;
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid var(--gris-bordure);
+    color: var(--gris-texte);
+    font-size: 0.85rem;
+}
+
+
+/* ==============================================================================
+   9. ANIMATIONS
+   ==============================================================================
+*/
+
+/* Animation d'apparition (utilisée pour le hero) */
+@keyframes apparition {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation de pulsation (pour les points décoratifs) */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+
+/* ==============================================================================
+   10. RESPONSIVE (adaptation mobile/tablette)
+   ==============================================================================
+   
+   @media permet d'appliquer des styles selon la taille d'écran.
+   max-width: 768px = écrans de 768px de large ou moins (mobiles)
+*/
+
+/* --- TABLETTE (1024px et moins) --- */
+@media screen and (max-width: 1024px) {
+    :root {
+        --padding-page: 4%;
+    }
+    
+    .nav-liens {
+        gap: 1.5rem;
+    }
+}
+
+/* --- MOBILE (768px et moins) --- */
+@media screen and (max-width: 768px) {
+    :root {
+        --padding-page: 20px;
+    }
+    
+    /* Affiche le menu burger */
+    .nav-burger {
+        display: flex;
+    }
+    
+    /* Menu mobile (caché par défaut, à droite de l'écran) */
+    .nav-liens {
+        position: fixed;
+        top: 0;
+        right: -100%;                /* Caché hors écran */
+        width: 70%;
+        height: 100vh;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--noir-secondaire);
+        transition: var(--transition-moyenne);
+    }
+    
+    /* Menu visible quand la classe "actif" est ajoutée (via JavaScript) */
+    .nav-liens.actif {
+        right: 0;
+    }
+    
+    .nav-liens a {
+        font-size: 1.2rem;
+    }
+    
+    /* Cache le bouton CTA sur mobile */
+    .nav-cta {
+        display: none;
+    }
+    
+    /* Réduction du padding des sections */
+    section {
+        padding: 60px var(--padding-page);
+    }
+    
+    /* Footer en colonne */
+    .footer-contenu {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-liens {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

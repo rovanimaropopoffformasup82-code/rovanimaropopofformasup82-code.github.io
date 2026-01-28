@@ -1,0 +1,714 @@
+/* ══════════════════════════════════════════════════════════════════════════════
+   PROJETS.CSS - Styles de la page Projets
+   
+   Système de filtres avec sous-menus déroulants
+══════════════════════════════════════════════════════════════════════════════ */
+
+
+/* ==============================================================================
+   1. EN-TÊTE DE LA PAGE
+   ==============================================================================
+*/
+
+.projets-header {
+    padding-top: 140px;
+    padding-bottom: 60px;
+    text-align: center;
+}
+
+.projets-header h1 {
+    margin-bottom: 1rem;
+}
+
+.projets-header p {
+    font-size: 1.1rem;
+    color: var(--gris-clair);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+
+/* ==============================================================================
+   2. FILTRES
+   ==============================================================================
+*/
+
+.filtres-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 3rem;
+}
+
+/* Bouton filtre principal */
+.filtre-btn {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--gris-fonce);
+    border: 1px solid var(--gris-bordure);
+    border-radius: 50px;
+    color: var(--gris-clair);
+    font-family: var(--font-corps);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-rapide);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.filtre-btn:hover {
+    border-color: var(--or);
+    color: var(--blanc);
+}
+
+.filtre-btn.actif {
+    background-color: var(--or);
+    border-color: var(--or);
+    color: var(--noir-profond);
+}
+
+/* Icône flèche dans les boutons parents */
+.filtre-btn svg {
+    transition: transform 0.3s ease;
+}
+
+
+/* ==============================================================================
+   3. GROUPE FILTRE AVEC SOUS-MENU
+   ==============================================================================
+*/
+
+.filtre-groupe {
+    position: relative;
+}
+
+/* Sous-menu déroulant */
+.filtre-sous-menu {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--gris-fonce);
+    border: 1px solid var(--gris-bordure);
+    border-radius: 12px;
+    padding: 0.5rem;
+    min-width: 150px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 100;
+    box-shadow: var(--ombre-elevee);
+}
+
+/* Sous-menu ouvert */
+.filtre-groupe.ouvert .filtre-sous-menu {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Rotation de la flèche quand ouvert */
+.filtre-groupe.ouvert .filtre-btn svg {
+    transform: rotate(180deg);
+}
+
+/* Boutons dans le sous-menu */
+.filtre-sous-btn {
+    display: block;
+    width: 100%;
+    padding: 0.6rem 1rem;
+    background: none;
+    border: none;
+    border-radius: 8px;
+    color: var(--gris-clair);
+    font-family: var(--font-corps);
+    font-size: 0.85rem;
+    text-align: left;
+    cursor: pointer;
+    transition: var(--transition-rapide);
+}
+
+.filtre-sous-btn:hover {
+    background-color: var(--noir-secondaire);
+    color: var(--or);
+}
+
+.filtre-sous-btn.actif {
+    background-color: rgba(212, 175, 55, 0.15);
+    color: var(--or);
+}
+
+
+/* ==============================================================================
+   4. GRILLE DES PROJETS
+   ==============================================================================
+*/
+
+.projets-grille {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+
+/* ==============================================================================
+   5. CARTE PROJET
+   ==============================================================================
+*/
+
+.projet-carte {
+    background-color: var(--gris-fonce);
+    border: 1px solid var(--gris-bordure);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: var(--transition-moyenne);
+}
+
+.projet-carte:hover {
+    border-color: var(--or);
+    transform: translateY(-8px);
+    box-shadow: var(--ombre-carte);
+}
+
+/* Projet caché (filtré) */
+.projet-carte.cache {
+    display: none;
+}
+
+/* Image du projet */
+.projet-image {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16/10;
+}
+
+.projet-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-moyenne);
+}
+
+.projet-carte:hover .projet-image img {
+    transform: scale(1.08);
+}
+
+/* Overlay au survol */
+.projet-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.8) 0%,
+        rgba(0, 0, 0, 0.4) 50%,
+        transparent 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: var(--transition-rapide);
+}
+
+.projet-carte:hover .projet-overlay {
+    opacity: 1;
+}
+
+/* Bouton "Voir le projet" */
+.projet-lien {
+    padding: 0.85rem 1.75rem;
+    background-color: var(--or);
+    color: var(--noir-profond);
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 50px;
+    transform: translateY(20px);
+    transition: var(--transition-rapide);
+}
+
+.projet-carte:hover .projet-lien {
+    transform: translateY(0);
+}
+
+.projet-lien:hover {
+    background-color: var(--or-clair);
+    transform: scale(1.05);
+}
+
+/* Infos du projet */
+.projet-info {
+    padding: 1.5rem;
+}
+
+/* Tag de catégorie */
+.projet-tag {
+    display: inline-block;
+    padding: 0.3rem 0.75rem;
+    background-color: rgba(212, 175, 55, 0.15);
+    color: var(--or);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    border-radius: 50px;
+    margin-bottom: 0.75rem;
+}
+
+.projet-info h3 {
+    font-size: 1.1rem;
+    color: var(--blanc);
+    margin-bottom: 0.5rem;
+}
+
+.projet-info p {
+    font-size: 0.9rem;
+    color: var(--gris-texte);
+    line-height: 1.6;
+    margin: 0;
+}
+
+
+/* ==============================================================================
+   6. ANIMATION
+   ==============================================================================
+*/
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ==============================================================================
+   7. RESPONSIVE
+   ==============================================================================
+*/
+
+/* --- TABLETTE --- */
+@media screen and (max-width: 1024px) {
+    
+    .projets-grille {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+/* --- MOBILE --- */
+@media screen and (max-width: 768px) {
+    
+    .projets-header {
+        padding-top: 120px;
+        padding-bottom: 40px;
+    }
+    
+    /* Filtres en scroll horizontal */
+    .filtres-wrapper {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 1rem;
+        gap: 0.5rem;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .filtres-wrapper::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .filtre-btn {
+        white-space: nowrap;
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+    }
+    
+    /* Sous-menu sur mobile */
+    .filtre-sous-menu {
+        position: fixed;
+        top: auto;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        transform: none;
+        border-radius: 20px 20px 0 0;
+        padding: 1.5rem;
+        min-width: 100%;
+    }
+    
+    .filtre-sous-btn {
+        padding: 1rem;
+        font-size: 1rem;
+        text-align: center;
+    }
+    
+    /* Grille en 1 colonne */
+    .projets-grille {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .projet-info {
+        padding: 1.25rem;
+    }
+}
+
+/* ==============================================================================
+   8. STYLES POUR LES SITES (Lien cliquable)
+   ==============================================================================
+*/
+
+.projet-lien-site {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.projet-lien-site .projet-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+
+/* ==============================================================================
+   9. STYLES POUR LES VIDÉOS
+   ==============================================================================
+*/
+
+.projet-video {
+    position: relative;
+}
+
+.projet-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    pointer-events: none;
+    transition: var(--transition-rapide);
+}
+
+.projet-video:hover .video-play-icon {
+    opacity: 0;
+}
+
+
+/* ==============================================================================
+   10. BOUTON PROJET
+   ==============================================================================
+*/
+
+.projet-btn {
+    padding: 0.85rem 1.75rem;
+    background-color: var(--or);
+    color: var(--noir-profond);
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition-rapide);
+}
+
+.projet-btn:hover {
+    background-color: var(--or-clair);
+    transform: scale(1.05);
+}
+
+
+/* ==============================================================================
+   11. MODALS
+   ==============================================================================
+*/
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    padding: 2rem;
+}
+
+.modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-contenu {
+    background-color: var(--gris-fonce);
+    border-radius: 20px;
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: modalEntrer 0.3s ease;
+}
+
+.modal-large {
+    max-width: 900px;
+}
+
+@keyframes modalEntrer {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.modal-fermer {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    background-color: var(--noir-secondaire);
+    border: 1px solid var(--gris-bordure);
+    border-radius: 50%;
+    color: var(--blanc);
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: var(--transition-rapide);
+}
+
+.modal-fermer:hover {
+    background-color: var(--or);
+    color: var(--noir-profond);
+}
+
+.modal-image img {
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+}
+
+.modal-info {
+    padding: 1.5rem 2rem 2rem;
+}
+
+.modal-info h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.modal-categorie {
+    color: var(--or);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+}
+
+.modal-info p {
+    color: var(--gris-clair);
+    line-height: 1.7;
+}
+
+
+/* ==============================================================================
+   12. MODAL VIDÉO
+   ==============================================================================
+*/
+
+.modal-video {
+    padding: 0;
+}
+
+.modal-video video {
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+    display: block;
+}
+
+
+/* ==============================================================================
+   13. SLIDER (CANVA / INDESIGN)
+   ==============================================================================
+*/
+
+.modal-slider {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.slider-container {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.slide {
+    display: none;
+    width: 100%;
+}
+
+.slide.active {
+    display: block;
+    animation: fadeIn 0.4s ease;
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    background-color: var(--noir-secondaire);
+    border: 1px solid var(--gris-bordure);
+    border-radius: 50%;
+    color: var(--blanc);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: var(--transition-rapide);
+}
+
+.slider-btn:hover {
+    background-color: var(--or);
+    color: var(--noir-profond);
+}
+
+.slider-prev {
+    left: 0.5rem;
+}
+
+.slider-next {
+    right: 0.5rem;
+}
+
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--gris-bordure);
+    border: none;
+    cursor: pointer;
+    transition: var(--transition-rapide);
+}
+
+.dot.active {
+    background-color: var(--or);
+}
+
+.dot:hover {
+    background-color: var(--or-clair);
+}
+
+.modal-download {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 0 2rem 2rem;
+}
+
+
+/* ==============================================================================
+   14. RESPONSIVE MODALS
+   ==============================================================================
+*/
+
+@media screen and (max-width: 768px) {
+    .modal {
+        padding: 1rem;
+    }
+    
+    .modal-contenu {
+        max-height: 95vh;
+    }
+    
+    .modal-info {
+        padding: 1rem 1.5rem 1.5rem;
+    }
+    
+    .modal-info h2 {
+        font-size: 1.25rem;
+    }
+    
+    .slider-btn {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+
+/* ✅ Résumé des fonctionnalités
+
+| Type | Comportement |
+|------|--------------|
+| **Illustrator / Photoshop / Photo** | Modal avec image agrandie |
+| **InDesign** | Modal avec slider de pages + bouton télécharger PDF |
+| **Premiere Pro** | Modal avec lecteur vidéo |
+| **Sites (réels/fictifs)** | Image cliquable → ouvre le site dans un nouvel onglet |
+| **Canva** | Modal avec slider de slides |
+
+---
+
+## 📁 Structure des dossiers à créer
+```
+assets/images/projets/
+├── indesign/
+│   ├── page-1.jpg
+│   ├── page-2.jpg
+│   ├── page-3.jpg
+│   └── page-4.jpg
+├── canva/
+│   ├── slide-1.jpg
+│   ├── slide-2.jpg
+│   ├── slide-3.jpg
+│   └── slide-4.jpg
+├── canva2/
+│   ├── slide-1.jpg
+│   ├── slide-2.jpg
+│   └── slide-3.jpg
+assets/pdf/
+└── brochure.pdf*/

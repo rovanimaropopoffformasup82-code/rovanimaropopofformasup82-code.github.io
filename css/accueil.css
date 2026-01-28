@@ -1,0 +1,447 @@
+/* ══════════════════════════════════════════════════════════════════════════════
+   ACCUEIL.CSS - Styles spécifiques à la page d'accueil
+   
+   Ce fichier contient UNIQUEMENT les styles de la page index.html :
+   - Section Hero (en-tête avec ton nom)
+   - Section Services (ce que tu fais)
+   - Section Projets sélectionnés
+   - Section CTA (appel à l'action)
+   
+   Les styles globaux (nav, footer, boutons) sont dans style.css
+══════════════════════════════════════════════════════════════════════════════ */
+
+
+/* ==============================================================================
+   1. SECTION HERO (En-tête principale)
+   ==============================================================================
+   
+   C'est la PREMIÈRE chose que voit le visiteur.
+   Elle prend toute la hauteur de l'écran.
+   
+   Vocabulaire :
+   - vh = viewport height (hauteur de l'écran)
+   - 100vh = 100% de la hauteur de l'écran
+*/
+
+.hero {
+    min-height: 100vh;                         /* Prend toute la hauteur de l'écran */
+    display: flex;                             /* Active Flexbox */
+    align-items: center;                       /* Centre verticalement */
+    padding: 120px var(--padding-page) 80px;   /* 120px en haut à cause de la nav fixe */
+    position: relative;                        /* Pour positionner les décos */
+    overflow: hidden;                          /* Cache ce qui dépasse */
+}
+
+/* --- Contenu principal du Hero --- */
+.hero-contenu {
+    max-width: 800px;                          /* Limite la largeur */
+    position: relative;
+    z-index: 2;                                /* Au-dessus des décos (z-index: 1) */
+    animation: apparition 1s ease-out;         /* Animation définie dans style.css */
+}
+
+/* --- "Bonjour, je suis" --- */
+.hero-salutation {
+    color: var(--or);
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;                     /* Espace entre les lettres */
+    text-transform: uppercase;                 /* EN MAJUSCULES */
+    margin-bottom: 1rem;
+}
+
+/* --- Ton nom en GRAND --- */
+.hero-titre {
+    font-size: clamp(3rem, 8vw, 6rem);         /* Taille responsive */
+    font-weight: 800;
+    line-height: 1;                            /* Lignes serrées */
+    margin-bottom: 1.5rem;
+}
+
+/* "Mercia" en or sur une nouvelle ligne */
+.hero-titre span {
+    color: var(--or);
+    display: block;
+}
+
+/* --- Description sous le nom --- */
+.hero-description {
+    font-size: 1.15rem;
+    color: var(--gris-clair);
+    max-width: 550px;
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+}
+
+/* --- Boutons côte à côte --- */
+.hero-boutons {
+    display: flex;
+    gap: 1rem;                                 /* Espace entre les boutons */
+    flex-wrap: wrap;                           /* Passe à la ligne sur petit écran */
+}
+
+
+/* ==============================================================================
+   1b. DÉCORATIONS DU HERO (cercle et indicateur de scroll)
+   ==============================================================================
+*/
+
+/* Conteneur des décos (positionné à droite) */
+.hero-deco {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%);               /* Centre verticalement */
+    z-index: 1;
+}
+
+/* Grand cercle décoratif */
+.hero-cercle {
+    width: 500px;
+    height: 500px;
+    border: 1px solid var(--gris-bordure);
+    border-radius: 50%;                        /* Cercle parfait */
+    position: relative;
+}
+
+/* Lueur dorée au centre (pseudo-élément ::before) */
+.hero-cercle::before {
+    content: '';                               /* Obligatoire pour les pseudo-éléments */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+/* Petit point doré qui pulse (pseudo-élément ::after) */
+.hero-cercle::after {
+    content: '';
+    position: absolute;
+    top: 20%;
+    right: 10%;
+    width: 12px;
+    height: 12px;
+    background-color: var(--or);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;  /* Animation définie dans style.css */
+}
+
+/* --- Indicateur "Scroll" en bas à gauche --- */
+.hero-scroll {
+    position: absolute;
+    bottom: 40px;
+    left: var(--padding-page);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.hero-scroll span {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gris-texte);
+}
+
+/* Ligne animée à côté de "Scroll" */
+.hero-scroll-ligne {
+    width: 60px;
+    height: 1px;
+    background-color: var(--gris-bordure);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animation de la ligne (barre dorée qui passe) */
+.hero-scroll-ligne::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: var(--or);
+    animation: scroll-ligne 2s ease-in-out infinite;
+}
+
+@keyframes scroll-ligne {
+    0% { left: -100%; }
+    50% { left: 100%; }
+    100% { left: 100%; }
+}
+
+
+/* ==============================================================================
+   2. SECTION SERVICES
+   ==============================================================================
+   
+   Grille de 6 cartes présentant tes compétences.
+   Utilise CSS Grid (plus puissant que Flexbox pour les grilles).
+*/
+
+.services {
+    background-color: var(--noir-secondaire);  /* Fond légèrement différent */
+}
+
+/* Grille : 3 colonnes égales */
+.services-grille {
+    display: grid;                             /* Active CSS Grid */
+    grid-template-columns: repeat(3, 1fr);     /* 3 colonnes de 1 fraction chacune */
+    gap: 1.5rem;                               /* Espace entre les cartes */
+}
+
+/* --- Carte de service individuelle --- */
+.service-carte {
+    background-color: var(--gris-fonce);
+    border: 1px solid var(--gris-bordure);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    transition: var(--transition-moyenne);     /* Animation fluide au hover */
+}
+
+/* Effet au survol */
+.service-carte:hover {
+    border-color: var(--or);                   /* Bordure dorée */
+    transform: translateY(-5px);               /* Monte légèrement */
+    box-shadow: var(--ombre-carte);            /* Ajoute une ombre */
+}
+
+/* Icône dans un carré arrondi */
+.service-icone {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(212, 175, 55, 0.1); /* Or très transparent */
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    color: var(--or);                          /* Couleur de l'icône SVG */
+}
+
+/* Titre du service */
+.service-carte h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+/* Description du service */
+.service-carte p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+
+/* ==============================================================================
+   3. SECTION PROJETS SÉLECTIONNÉS
+   ==============================================================================
+   
+   Aperçu de 4 projets avec effet au survol.
+   Grille de 2 colonnes.
+*/
+
+.projets-selection {
+    background-color: var(--noir-profond);
+}
+
+/* En-tête : titre à gauche, bouton "Tous les projets" à droite */
+.projets-header {
+    display: flex;
+    justify-content: space-between;            /* Espace entre les deux */
+    align-items: flex-end;                     /* Alignés en bas */
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+/* Grille : 2 colonnes */
+.projets-grille {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+/* --- Carte de projet --- */
+.projet-carte {
+    border-radius: 16px;
+    overflow: hidden;                          /* Cache le débordement de l'image */
+    background-color: var(--gris-fonce);
+}
+
+/* Conteneur de l'image */
+.projet-image {
+    position: relative;                        /* Pour positionner l'overlay */
+    aspect-ratio: 16/10;                       /* Ratio fixe (comme une vidéo) */
+    overflow: hidden;
+    background-color: var(--gris-bordure);     /* Couleur si pas d'image */
+}
+
+/* L'image du projet */
+.projet-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;                         /* Remplit sans déformer */
+    transition: var(--transition-moyenne);
+}
+
+/* Overlay sombre (caché par défaut) */
+.projet-overlay {
+    position: absolute;
+    inset: 0;                                  /* = top, right, bottom, left: 0 */
+    background-color: rgba(10, 10, 10, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;                                /* Invisible */
+    transition: var(--transition-moyenne);
+}
+
+/* Au survol de la carte : overlay visible */
+.projet-carte:hover .projet-overlay {
+    opacity: 1;
+}
+
+/* Au survol de la carte : image zoom */
+.projet-carte:hover .projet-image img {
+    transform: scale(1.05);
+}
+
+/* Bouton "Voir le projet" */
+.projet-lien {
+    padding: 0.8rem 1.5rem;
+    border: 1px solid var(--or);
+    color: var(--or);
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: var(--transition-rapide);
+}
+
+.projet-lien:hover {
+    background-color: var(--or);
+    color: var(--noir-profond);
+}
+
+/* Infos sous l'image */
+.projet-info {
+    padding: 1.5rem;
+}
+
+/* Catégorie en petit */
+.projet-categorie {
+    color: var(--or);
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Titre du projet */
+.projet-info h3 {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+    font-weight: 600;
+}
+
+
+/* ==============================================================================
+   4. SECTION CTA (Call To Action)
+   ==============================================================================
+   
+   Section simple pour inciter à prendre contact.
+   Texte centré.
+*/
+
+.cta {
+    background-color: var(--noir-secondaire);
+    border-top: 1px solid var(--gris-bordure);
+    border-bottom: 1px solid var(--gris-bordure);
+}
+
+.cta-contenu {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;                            /* Centre horizontalement */
+}
+
+.cta-contenu h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 1rem;
+}
+
+/* Le "?" en or */
+.cta-contenu h2 span {
+    color: var(--or);
+}
+
+.cta-contenu p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: var(--gris-clair);
+}
+
+
+/* ==============================================================================
+   5. RESPONSIVE
+   ==============================================================================
+   
+   Adaptation aux différentes tailles d'écran.
+   
+   @media = "si la condition est vraie, applique ces styles"
+   max-width: 1024px = écrans de 1024px ou moins (tablettes)
+   max-width: 768px = écrans de 768px ou moins (mobiles)
+*/
+
+/* --- TABLETTE --- */
+@media screen and (max-width: 1024px) {
+    
+    /* Réduit la déco et la rend plus transparente */
+    .hero-deco {
+        opacity: 0.3;
+        right: -10%;
+    }
+    
+    .hero-cercle {
+        width: 350px;
+        height: 350px;
+    }
+    
+    /* Services : 2 colonnes au lieu de 3 */
+    .services-grille {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* --- MOBILE --- */
+@media screen and (max-width: 768px) {
+    
+    .hero {
+        padding-top: 100px;
+    }
+    
+    /* Cache les décorations sur mobile */
+    .hero-deco,
+    .hero-scroll {
+        display: none;
+    }
+    
+    /* Services : 1 seule colonne */
+    .services-grille {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Projets : 1 seule colonne */
+    .projets-grille {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Header projets en colonne */
+    .projets-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

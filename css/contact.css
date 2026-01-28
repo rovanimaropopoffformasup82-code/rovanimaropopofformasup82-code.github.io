@@ -1,0 +1,339 @@
+/* ══════════════════════════════════════════════════════════════════════════════
+   CONTACT.CSS - Styles de la page Contact
+   
+   Ce fichier contient :
+   - En-tête de la page
+   - Formulaire de contact
+   - Informations de contact
+   - Responsive
+══════════════════════════════════════════════════════════════════════════════ */
+
+
+/* ==============================================================================
+   1. EN-TÊTE DE LA PAGE
+   ==============================================================================
+*/
+
+.contact-header {
+    padding-top: 140px;
+    padding-bottom: 60px;
+    text-align: center;
+}
+
+.contact-header h1 {
+    margin-bottom: 1rem;
+}
+
+.contact-header p {
+    font-size: 1.1rem;
+    color: var(--gris-clair);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+
+/* ==============================================================================
+   2. LAYOUT PRINCIPAL
+   ==============================================================================
+   
+   2 colonnes : formulaire à gauche, infos à droite
+*/
+
+.contact-section {
+    padding-top: 0;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;          /* Formulaire plus large */
+    gap: 4rem;
+    align-items: start;
+}
+
+
+/* ==============================================================================
+   3. FORMULAIRE DE CONTACT
+   ==============================================================================
+*/
+
+.contact-formulaire {
+    background-color: var(--gris-fonce);
+    border: 1px solid var(--gris-bordure);
+    border-radius: 16px;
+    padding: 2.5rem;
+}
+
+.contact-formulaire h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.contact-formulaire > p {
+    color: var(--gris-texte);
+    margin-bottom: 2rem;
+}
+
+/* --- Groupe de champs (label + input) --- */
+.form-groupe {
+    margin-bottom: 1.5rem;
+}
+
+.form-groupe label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--blanc);
+    margin-bottom: 0.5rem;
+}
+
+/* Champ obligatoire (*) */
+.form-groupe label span {
+    color: var(--or);
+}
+
+/* --- Champs de saisie (input, textarea) --- */
+.form-groupe input,
+.form-groupe textarea,
+.form-groupe select {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    background-color: var(--noir-secondaire);
+    border: 1px solid var(--gris-bordure);
+    border-radius: 8px;
+    color: var(--blanc);
+    font-family: var(--font-corps);
+    font-size: 1rem;
+    transition: var(--transition-rapide);
+}
+
+/* Placeholder */
+.form-groupe input::placeholder,
+.form-groupe textarea::placeholder {
+    color: var(--gris-texte);
+}
+
+/* Focus (quand on clique dans le champ) */
+.form-groupe input:focus,
+.form-groupe textarea:focus,
+.form-groupe select:focus {
+    outline: none;
+    border-color: var(--or);
+    background-color: var(--noir-profond);
+}
+
+/* Textarea (zone de texte) */
+.form-groupe textarea {
+    min-height: 150px;
+    resize: vertical;                          /* Redimensionnable verticalement */
+}
+
+/* Select (liste déroulante) */
+.form-groupe select {
+    cursor: pointer;
+    appearance: none;                          /* Retire le style par défaut */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23888888' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+}
+
+/* --- 2 champs côte à côte --- */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+/* --- Bouton d'envoi --- */
+.form-submit {
+    margin-top: 1rem;
+}
+
+.form-submit .btn {
+    width: 100%;
+    justify-content: center;
+}
+
+
+/* ==============================================================================
+   4. INFORMATIONS DE CONTACT
+   ==============================================================================
+*/
+
+.contact-infos {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* --- Carte d'info individuelle --- */
+.info-carte {
+    background-color: var(--gris-fonce);
+    border: 1px solid var(--gris-bordure);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    transition: var(--transition-rapide);
+}
+
+.info-carte:hover {
+    border-color: var(--or);
+}
+
+/* Icône */
+.info-icone {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(212, 175, 55, 0.1);
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.info-icone svg {
+    width: 24px;
+    height: 24px;
+    color: var(--or);
+}
+
+/* Contenu texte */
+.info-contenu h4 {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+    color: var(--blanc-pur);
+}
+
+.info-contenu p {
+    font-size: 0.95rem;
+    color: var(--gris-texte);
+    margin: 0;
+}
+
+.info-contenu a {
+    color: var(--gris-clair);
+    transition: var(--transition-rapide);
+}
+
+.info-contenu a:hover {
+    color: var(--or);
+}
+
+
+/* ==============================================================================
+   5. RÉSEAUX SOCIAUX
+   ==============================================================================
+*/
+
+.contact-reseaux {
+    background-color: var(--gris-fonce);
+    border: 1px solid var(--gris-bordure);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.contact-reseaux h4 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: var(--blanc-pur);
+}
+
+.reseaux-liste {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.reseau-lien {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0a66c241;
+    border: 1px solid var(--gris-bordure);
+    border-radius: 10px;
+    color: var(--gris-texte);
+    transition: var(--transition-rapide);
+}
+
+.reseau-lien:hover {
+    background-color: var(--or);
+    border-color: var(--or);
+    color: var(--noir-profond);
+}
+
+.reseau-lien svg {
+    width: 20px;
+    height: 20px;
+}
+
+
+/* ==============================================================================
+   6. MESSAGE DE SUCCÈS / ERREUR
+   ==============================================================================
+*/
+
+.form-message {
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.form-message.succes {
+    background-color: rgba(34, 197, 94, 0.1);
+    border: 1px solid #22c55e;
+    color: #22c55e;
+}
+
+.form-message.erreur {
+    background-color: rgba(239, 68, 68, 0.1);
+    border: 1px solid #ef4444;
+    color: #ef4444;
+}
+
+
+/* ==============================================================================
+   7. RESPONSIVE
+   ==============================================================================
+*/
+
+/* --- TABLETTE --- */
+@media screen and (max-width: 1024px) {
+    
+    .contact-grid {
+        gap: 3rem;
+    }
+}
+
+/* --- MOBILE --- */
+@media screen and (max-width: 768px) {
+    
+    .contact-header {
+        padding-top: 120px;
+        padding-bottom: 40px;
+    }
+    
+    /* Passe en 1 colonne */
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    /* Formulaire */
+    .contact-formulaire {
+        padding: 1.5rem;
+    }
+    
+    /* Champs côte à côte → empilés */
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Réseaux sociaux centrés */
+    .reseaux-liste {
+        justify-content: center;
+    }
+}

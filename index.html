@@ -1,0 +1,390 @@
+    <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <!-- ══════════════════════════════════════════════════════════════════════
+         MÉTADONNÉES
+         Informations importantes pour le navigateur et le référencement
+    ══════════════════════════════════════════════════════════════════════ -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio de Mercia RANDRIANOME - Product Designer et Créatrice digitale basée à Moissac, France">
+    
+    <!-- Titre de l'onglet du navigateur -->
+    <title>Accueil | Mercia RANDRIANOME - Product Designer</title>
+    
+    <!-- ══════════════════════════════════════════════════════════════════════
+         FEUILLES DE STYLE CSS
+         1. style.css = styles globaux (nav, footer, couleurs, typo)
+         2. accueil.css = styles spécifiques à cette page
+    ══════════════════════════════════════════════════════════════════════ -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/accueil.css">
+</head>
+<body>
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+         NAVIGATION
+         - Logo à gauche
+         - Liens au centre
+         - Bouton CTA à droite
+         - Menu burger pour mobile (géré par JavaScript)
+    ══════════════════════════════════════════════════════════════════════ -->
+    <nav class="nav">
+        
+        <!-- Logo : lien vers l'accueil -->
+        <a href="index.html" class="nav-logo">
+            MERCIA<span>.</span>
+        </a>
+        
+        <!-- Liens de navigation -->
+        <ul class="nav-liens">
+            <li><a href="index.html" class="actif">Accueil</a></li>
+            <li><a href="apropos.html">À propos</a></li>
+            <li><a href="projets.html">Projets</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        
+        <!-- Bouton Call-to-Action -->
+        <a href="contact.html" class="nav-cta">Me contacter</a>
+        
+        <!-- Menu burger (visible uniquement sur mobile) -->
+        <div class="nav-burger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+    </nav>
+
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+         SECTION HERO (En-tête principale)
+         C'est la première chose que voit le visiteur.
+         Contient : salutation, nom, description, boutons d'action
+    ══════════════════════════════════════════════════════════════════════ -->
+    <section class="hero">
+        
+        <div class="hero-contenu">
+            
+            <!-- Petite phrase d'accroche -->
+            <p class="hero-salutation">Bonjour, je suis</p>
+            
+            <!-- Nom en grand -->
+            <h1 class="hero-titre">
+                Mercia
+                <span>RANDRIANOME</span>
+            </h1>
+            
+            <!-- Description courte -->
+            <p class="hero-description">
+                UI Designer en devenir, En formation chez Formasup82 à Montauban, 
+                j'apprends à conçevoir des interfaces simples, intuitives et centrées sur les besoins des utilisateurs. 
+
+             <br>
+    <em class="hero-note">
+        Portfolio en cours de développement : certaines pages ou liens peuvent être temporairement indisponibles.
+    </em>
+                
+            </p>
+            
+            <!-- Boutons d'action -->
+            <div class="hero-boutons">
+                
+                <!-- Bouton principal -->
+                <a href="projets.html" class="btn btn-principal">
+                    Voir mes projets
+                    <!-- Icône flèche (SVG) -->
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                
+                <!-- Bouton secondaire - Télécharger CV -->
+                <a href="assets/cv/Mercia-CV.pdf" class="btn btn-secondaire" download>
+                    Télécharger CV
+                </a>
+                
+            </div>
+            
+        </div>
+        
+        <!-- Éléments décoratifs (cercle) -->
+        <div class="hero-deco">
+            <div class="hero-cercle"></div>
+        </div>
+        
+        <!-- Indicateur de scroll -->
+        <div class="hero-scroll">
+            <span>Scroll</span>
+            <div class="hero-scroll-ligne"></div>
+        </div>
+        
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+         SECTION SERVICES
+         Présente ce que tu sais faire (tes compétences)
+         Chaque service est dans une "carte"
+    ══════════════════════════════════════════════════════════════════════ -->
+   <!-- ══════════════════════════════════════════════════════════════════════
+     SECTION SERVICES
+     Présente ce que tu sais faire (tes compétences)
+     Chaque service est dans une "carte"
+══════════════════════════════════════════════════════════════════════ -->
+<section id="services" class="services section">
+    <div class="conteneur">
+        
+        <div class="section-titre">
+            <h2>Mes <span class="or">compétences en dévéloppement</span></h2>
+            <p>Des solutions créatives et professionnelles pour tous projets</p>
+        </div>
+        
+        <div class="services-grille">
+            
+            <!-- Service 1 : Design Graphique -->
+            <div class="service-carte">
+                <div class="service-icone">
+                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                        <polyline points="21 15 16 10 5 21"/>
+                    </svg>
+                </div>
+                <h3>Design Graphique</h3>
+                <p>Création de logos, identités visuelles, affiches et supports de communication sur mesure avec la suite Adobe (Illustrator, Photoshop, InDesign).</p>
+            </div>
+            
+            <!-- Service 2 : Développement Web -->
+            <div class="service-carte">
+                <div class="service-icone">
+                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="16 18 22 12 16 6"/>
+                        <polyline points="8 6 2 12 8 18"/>
+                    </svg>
+                </div>
+                <h3>Développement Web</h3>
+                <p>Création de sites web modernes et responsives en HTML/CSS, WordPress et PrestaShop. Sites vitrines, e-commerce et solutions sur mesure.</p>
+            </div>
+            
+            <!-- Service 3 : UI/UX Design -->
+            <div class="service-carte">
+                <div class="service-icone">
+                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                        <line x1="8" y1="21" x2="16" y2="21"/>
+                        <line x1="12" y1="17" x2="12" y2="21"/>
+                    </svg>
+                </div>
+                <h3>UI/UX Design</h3>
+                <p>Conception d'interfaces utilisateur intuitives et expériences digitales optimisées pour améliorer l'engagement de vos visiteurs.</p>
+            </div>
+            
+            <!-- Service 4 : Montage Vidéo -->
+            <div class="service-carte">
+                <div class="service-icone">
+                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="23 7 16 12 23 17 23 7"/>
+                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                    </svg>
+                </div>
+                <h3>Montage Vidéo</h3>
+                <p>Montage et édition vidéo professionnelle avec Premiere Pro. Vidéos promotionnelles, clips et contenus pour les réseaux sociaux.</p>
+            </div>
+            
+            <!-- Service 5 : Photographie -->
+            <div class="service-carte">
+                <div class="service-icone">
+                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                        <circle cx="12" cy="13" r="4"/>
+                    </svg>
+                </div>
+                <h3>Photographie</h3>
+                <p>Séances photo professionnelles : portraits, événements, paysages et photographie produit pour vos besoins personnels ou commerciaux.</p>
+            </div>
+            
+            <!-- Service 6 : Création de Contenu -->
+            <div class="service-carte">
+                <div class="service-icone">
+                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+                        <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+                        <path d="M2 2l7.586 7.586"/>
+                        <circle cx="11" cy="11" r="2"/>
+                    </svg>
+                </div>
+                <h3>Création de Contenu</h3>
+                <p>Conception de visuels pour réseaux sociaux, présentations et supports marketing avec Canva et autres outils créatifs.</p>
+            </div>
+            
+        </div>
+        
+    </div>
+</section>
+
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+         SECTION PROJETS SÉLECTIONNÉS
+         Aperçu de quelques projets (les meilleurs)
+         Lien vers la page complète des projets
+    ══════════════════════════════════════════════════════════════════════ -->
+    <!-- <section class="projets-selection">
+        <div class="conteneur">
+            
+            <!-- En-tête avec titre + bouton 
+            <div class="projets-header">
+                <div>
+                    <h2 class="section-titre">Projets <span>sélectionnés</span></h2>
+                    <p class="section-soustitre">Une sélection de mes réalisations récentes.</p>
+                </div>
+                <a href="projets.html" class="btn btn-secondaire">Tous les projets</a>
+            </div>
+            
+            <!-- Grille de projets 
+            <div class="projets-grille">
+                
+                <!-- PROJET 1 
+                <article class="projet-carte">
+                    <div class="projet-image">
+                        <!-- Remplace par ta vraie image 
+                        <img src="assets/images/projets/projet-1.jpg" alt="Projet UI/UX Design">
+                        <div class="projet-overlay">
+                            <a href="projets/projet-1.html" class="projet-lien">Voir le projet</a>
+                        </div>
+                    </div>
+                    <div class="projet-info">
+                        <span class="projet-categorie">UI/UX Design</span>
+                        <h3>Maquette Application Mobile</h3>
+                    </div>
+                </article>
+                
+                <!-- PROJET 2 
+                <article class="projet-carte">
+                    <div class="projet-image">
+                        <img src="assets/images/projets/projet-2.jpg" alt="Projet Identité Visuelle">
+                        <div class="projet-overlay">
+                            <a href="projets/projet-2.html" class="projet-lien">Voir le projet</a>
+                        </div>
+                    </div>
+                    <div class="projet-info">
+                        <span class="projet-categorie">Branding</span>
+                        <h3>Identité Visuelle</h3>
+                    </div>
+                </article>
+                
+                <!-- PROJET 3 
+                <article class="projet-carte">
+                    <div class="projet-image">
+                        <img src="assets/images/projets/projet-3.jpg" alt="Projet Print">
+                        <div class="projet-overlay">
+                            <a href="projets/projet-3.html" class="projet-lien">Voir le projet</a>
+                        </div>
+                    </div>
+                    <div class="projet-info">
+                        <span class="projet-categorie">Print</span>
+                        <h3>Supports de Communication</h3>
+                    </div>
+                </article>
+                
+                <!-- PROJET 4 
+                <article class="projet-carte">
+                    <div class="projet-image">
+                        <img src="assets/images/projets/projet-4.jpg" alt="Projet Réseaux Sociaux">
+                        <div class="projet-overlay">
+                            <a href="projets/projet-4.html" class="projet-lien">Voir le projet</a>
+                        </div>
+                    </div>
+                    <div class="projet-info">
+                        <span class="projet-categorie">Social Media</span>
+                        <h3>Contenus Réseaux Sociaux</h3>
+                    </div>
+                </article>
+                
+            </div>
+            
+        </div>
+    </section> -->
+
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+         SECTION CTA (Call To Action)
+         Incitation à prendre contact
+    ══════════════════════════════════════════════════════════════════════ -->
+    <section class="cta">
+        <div class="conteneur">
+            <div class="cta-contenu">
+                
+                <h2>Un projet en tête<span>?</span></h2>
+                <p>
+                    Je suis disponible pour discuter de vos projets créatifs. 
+                    N'hésitez pas à me contacter !
+                </p>
+                <a href="contact.html" class="btn btn-principal">
+                    Travaillons ensemble
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+         FOOTER (Pied de page)
+         Présent sur toutes les pages
+    ══════════════════════════════════════════════════════════════════════ -->
+    <footer class="footer">
+        <div class="footer-contenu">
+            
+            <!-- Logo -->
+            <a href="index.html" class="footer-logo">
+                MERCIA<span>.</span>
+            </a>
+            
+            <!-- Liens rapides -->
+            <ul class="footer-liens">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="apropos.html">À propos</a></li>
+                <li><a href="projets.html">Projets</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            
+            <!-- Réseaux sociaux -->
+            <div class="footer-reseaux">
+                
+                <!-- LinkedIn - REMPLACE # PAR TON LIEN -->
+                <a href="#" aria-label="LinkedIn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                </a>
+                
+                <!-- Behance - REMPLACE # PAR TON LIEN -->
+                <a href="#" aria-label="Behance">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M6.938 4.503c.702 0 1.34.06 1.92.188.577.13 1.07.33 1.485.61.41.28.733.65.96 1.12.225.47.34 1.05.34 1.73 0 .74-.17 1.36-.507 1.86-.338.5-.837.9-1.502 1.22.906.26 1.576.72 2.022 1.37.448.66.665 1.45.665 2.36 0 .75-.13 1.39-.41 1.93-.28.55-.67 1-1.16 1.35-.48.348-1.05.6-1.67.767-.61.165-1.252.254-1.91.254H0V4.51h6.938v-.007zM6.545 9.66c.535 0 .97-.138 1.303-.41.334-.274.5-.676.5-1.21 0-.31-.06-.55-.17-.74-.11-.19-.26-.34-.44-.44-.18-.1-.39-.17-.64-.21-.24-.04-.49-.06-.76-.06H3.48v3.07h3.065zm.18 5.22c.3 0 .58-.03.84-.09.26-.06.5-.153.71-.29.21-.14.38-.33.5-.57.12-.24.18-.54.18-.91 0-.72-.21-1.24-.64-1.54-.43-.31-.98-.46-1.64-.46H3.48v3.86h3.245zm8.603-2.12c.24.47.59.83 1.06 1.09.47.26 1.01.39 1.62.39.74 0 1.35-.19 1.84-.56.49-.37.79-.77.92-1.18h2.89c-.47 1.43-1.2 2.46-2.19 3.09-.99.64-2.17.95-3.55.95-.96 0-1.83-.15-2.6-.47-.77-.31-1.43-.75-1.97-1.32-.54-.57-.96-1.25-1.25-2.04-.29-.79-.44-1.66-.44-2.61 0-.91.15-1.76.45-2.55.3-.79.72-1.47 1.26-2.05.54-.58 1.18-1.03 1.94-1.35.76-.33 1.6-.49 2.52-.49.99 0 1.87.19 2.64.58.77.39 1.41.92 1.93 1.57.52.66.91 1.42 1.15 2.29.25.87.34 1.79.29 2.75h-8.67c0 .72.22 1.38.52 1.87zm3.89-5.59c-.36-.38-.89-.58-1.56-.58-.45 0-.83.08-1.14.24-.31.16-.56.36-.75.59-.19.24-.33.49-.42.76-.09.27-.15.52-.17.76h5c-.1-.72-.39-1.35-.97-1.77zM15.5 4h5v1.5h-5V4z"/>
+                    </svg>
+                </a>
+                
+            </div>
+            
+            <!-- Copyright -->
+            <p class="footer-copyright">
+                © 2025 Mercia RANDRIANOME. Tous droits réservés.
+            </p>
+            
+        </div>
+    </footer>
+
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+         JAVASCRIPT
+         À la fin du body pour que le HTML soit chargé avant
+    ══════════════════════════════════════════════════════════════════════ -->
+    <script src="js/main.js"></script>
+
+</body>
+</html>
