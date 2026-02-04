@@ -559,7 +559,7 @@
 
 
 /* ==============================================================================
-   13. SLIDER (CANVA / INDESIGN)
+   13. SLIDER (CANVA / INDESIGN / MARKETING)
    ==============================================================================
 */
 
@@ -567,7 +567,8 @@
     position: relative;
     display: flex;
     align-items: center;
-    padding: 0 1rem;
+    padding: 2rem 1rem;
+    min-height: 400px;
 }
 
 .slider-container {
@@ -575,16 +576,22 @@
     position: relative;
     overflow: hidden;
     border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 350px;
 }
 
-.slide {
+.slider-container .slide {
     display: none;
     width: 100%;
+    height: auto;
+    max-height: 70vh;
+    object-fit: contain;
 }
 
-.slide.active {
+.slider-container .slide.active {
     display: block;
-    animation: fadeIn 0.4s ease;
 }
 
 .slider-btn {
@@ -608,14 +615,15 @@
 .slider-btn:hover {
     background-color: var(--or);
     color: var(--noir-profond);
+    border-color: var(--or);
 }
 
 .slider-prev {
-    left: 0.5rem;
+    left: 1rem;
 }
 
 .slider-next {
-    right: 0.5rem;
+    right: 1rem;
 }
 
 .slider-dots {
@@ -637,6 +645,7 @@
 
 .dot.active {
     background-color: var(--or);
+    transform: scale(1.2);
 }
 
 .dot:hover {
@@ -650,7 +659,6 @@
     gap: 0.5rem;
     margin: 0 2rem 2rem;
 }
-
 
 /* ==============================================================================
    14. RESPONSIVE MODALS
@@ -679,6 +687,8 @@
         height: 36px;
     }
 }
+
+
 
 
 /* ✅ Résumé des fonctionnalités
