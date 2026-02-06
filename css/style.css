@@ -144,7 +144,7 @@ h1, h2, h3, h4, h5, h6 {
 /* clamp(min, preferred, max) = taille minimum, idéale, maximum */
 h1 { font-size: clamp(2.5rem, 6vw, 5rem); }
 h1 span { display: block;
-  font-size: 0.65em;
+  font-size: 0.55em;
   line-height: 1.1; }
 h2 { font-size: clamp(2rem, 4vw, 3rem); }
 h3 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); }
