@@ -1,415 +1,978 @@
-    <!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-    <!-- ══════════════════════════════════════════════════════════════════════
-         MÉTADONNÉES
-         Informations importantes pour le navigateur et le référencement
-    ══════════════════════════════════════════════════════════════════════ -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio de Mercia RANDRIANOME - Product Designer et Créatrice digitale basée à Moissac, France">
-    
-    <!-- Titre de l'onglet du navigateur -->
-    <title>Accueil | Mercia RANDRIANOME - Designer Ui</title>
-    
-    <!-- ══════════════════════════════════════════════════════════════════════
-         FEUILLES DE STYLE CSS
-         1. style.css = styles globaux (nav, footer, couleurs, typo)
-         2. accueil.css = styles spécifiques à cette page
-    ══════════════════════════════════════════════════════════════════════ -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/accueil.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Mercia RANDRIANOME — Designer UI & Intégratrice Web. Sites WordPress, maquettes Figma, identité visuelle."
+    />
+    <title>Mercia RANDRIANOME — Designer UI & Intégratrice Web</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/skillsbgc.css" />
+    <style>
+      /* ── HERO ── */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 8rem var(--padding-page) 6rem;
+        background-color: #0d0d0d;
+        position: relative;
+        overflow: clip;
+      }
 
-    <!-- ══════════════════════════════════════════════════════════════════════
-         NAVIGATION
-         - Logo à gauche
-         - Liens au centre
-         - Bouton CTA à droite
-         - Menu burger pour mobile (géré par JavaScript)
-    ══════════════════════════════════════════════════════════════════════ -->
-    <nav class="nav">
-        
-        <!-- Logo : lien vers l'accueil -->
-        <a href="index.html" class="nav-logo">
-            MERCIA<span>.</span>
-        </a>
-        
-        <!-- Liens de navigation -->
-        <ul class="nav-liens">
-            <li><a href="index.html" class="actif">Accueil</a></li>
-            <li><a href="apropos.html">À propos</a></li>
-            <li><a href="projets.html">Projets</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-        
-        <!-- Bouton Call-to-Action -->
+      .hero-tag {
+        display: inline-block;
+        font-family: var(--font-corps);
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--or);
+        border: 1px solid rgba(201, 168, 76, 0.3);
+        padding: 0.4rem 1rem;
+        border-radius: 2px;
+        margin-bottom: 3rem;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.8rem, 7vw, 5.5rem);
+        font-weight: 800;
+        color: #ffffff;
+        line-height: 1.05;
+        margin-bottom: 0;
+      }
+
+      .hero h1 .nom {
+        display: block;
+      }
+
+      .hero h1 .titre {
+        display: block;
+        font-size: 0.42em;
+        color: var(--or);
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        margin-top: 1rem;
+      }
+
+      .hero-accroche {
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        color: #999;
+        max-width: 520px;
+        margin: 2.8rem auto 3.6rem;
+        line-height: 1.9;
+      }
+
+      .hero-boutons {
+        display: flex;
+        gap: 1.2rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .btn-hero {
+        font-family: var(--font-titre);
+        font-size: 0.9rem;
+        font-weight: 600;
+        padding: 0.85rem 2rem;
+        border-radius: 3px;
+        transition: var(--transition-rapide);
+        letter-spacing: 0.03em;
+      }
+
+      .btn-hero-or {
+        background-color: var(--or);
+        color: #0d0d0d;
+      }
+
+      .btn-hero-or:hover {
+        background-color: var(--or-clair);
+        transform: translateY(-2px);
+      }
+
+      .btn-hero-contour {
+        border: 1px solid var(--or);
+        color: var(--or);
+        background: transparent;
+      }
+
+      .btn-hero-contour:hover {
+        background-color: rgba(201, 168, 76, 0.1);
+        transform: translateY(-2px);
+      }
+
+      /* ── PARCOURS ── */
+      .parcours {
+        background-color: #0d0d0d;
+        padding: clamp(3.75rem, 8vw, 6.25rem) var(--padding-page);
+        border-top: 1px solid #1e1e1e;
+      }
+
+      .parcours-titre {
+        text-align: center;
+        font-size: 0.75rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--or);
+        margin-bottom: 3rem;
+      }
+
+      .parcours-liste {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.5rem;
+        max-width: 960px;
+        margin: 0 auto;
+      }
+
+      .parcours-item {
+        background-color: #141414;
+        border: 1px solid #222;
+        border-left: 3px solid var(--or);
+        padding: 1.4rem 1.6rem;
+        border-radius: 2px;
+      }
+
+      .parcours-item .periode {
+        font-size: 0.72rem;
+        color: var(--or);
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+      }
+
+      .parcours-item .poste {
+        font-family: var(--font-titre);
+        font-size: 1rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 0.3rem;
+      }
+
+      .parcours-item .lieu {
+        font-size: 0.82rem;
+        color: #777;
+      }
+
+      /* ── SYSTÈME ORBITAL ── */
+      .orbit-systeme {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: min(700px, 90vmin);
+        height: min(700px, 90vmin);
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      /* Anneau principal */
+      .orbit-anneau {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        border: 1px solid rgba(201, 168, 76, 0.18);
+      }
+
+      /* Anneau secondaire intérieur (pointillé) */
+      .orbit-anneau::before {
+        content: "";
+        position: absolute;
+        inset: 48px;
+        border-radius: 50%;
+        border: 1px dashed rgba(201, 168, 76, 0.07);
+      }
+
+      /* Bras invisible qui tourne (porte la planète) */
+      .orbit-bras {
+        position: absolute;
+        inset: 0;
+        animation: tourner 9s linear infinite;
+      }
+
+      @keyframes tourner {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* La planète */
+      .planet {
+        position: absolute;
+        top: -13px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle at 35% 30%,
+          #f0d87a,
+          #c9a84c 55%,
+          #7a5e1a
+        );
+        box-shadow:
+          0 0 16px rgba(201, 168, 76, 0.9),
+          0 0 40px rgba(201, 168, 76, 0.35),
+          inset -4px -3px 8px rgba(0, 0, 0, 0.5);
+        animation: no-spin 9s linear infinite;
+      }
+
+      /* Contre-rotation pour que la planète reste "droite" visuellement */
+      @keyframes no-spin {
+        to {
+          transform: translateX(-50%) rotate(-360deg);
+        }
+      }
+
+      /* Le contenu du hero passe au-dessus du système orbital */
+      .hero > *:not(.orbit-systeme) {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* ── SCROLL HINT ── */
+      .scroll-hint {
+        position: absolute;
+        /* suit le rayon de l'orbite : min(350px, 45vmin) + 40px de gap */
+        top: calc(50% + min(350px, 45vmin) + 40px);
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.6rem;
+        z-index: 1;
+        animation: hint-apparition 1s ease 1.2s both;
+      }
+
+      @keyframes hint-apparition {
+        from {
+          opacity: 0;
+          transform: translateX(-50%) translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(-50%) translateY(0);
+        }
+      }
+
+      /* scroll-hint suit maintenant l'orbite via min(350px,45vmin) — pas besoin de MQ */
+
+      .scroll-hint-label {
+        font-size: 0.6rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: rgba(201, 168, 76, 0.5);
+        font-weight: 600;
+      }
+
+      /* Souris */
+      .scroll-mouse {
+        width: 22px;
+        height: 34px;
+        border: 1.5px solid rgba(201, 168, 76, 0.4);
+        border-radius: 11px;
+        display: flex;
+        justify-content: center;
+        padding-top: 5px;
+      }
+
+      /* Molette qui descend */
+      .scroll-wheel {
+        width: 3px;
+        height: 7px;
+        background: var(--or);
+        border-radius: 2px;
+        animation: molette 1.8s ease-in-out infinite;
+      }
+
+      @keyframes molette {
+        0% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        60% {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        61% {
+          opacity: 0;
+          transform: translateY(0);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* orbit-systeme utilise min(700px,90vmin) — responsive sans MQ */
+      @media (max-width: 600px) {
+        .hero-boutons {
+          flex-direction: column;
+          align-items: center;
+        }
+        .btn-hero {
+          width: 100%;
+          max-width: 300px;
+          text-align: center;
+        }
+      }
+
+      /* ── HERO SPLIT : texte gauche + vidéo droite ── */
+      .hero {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: clamp(2rem, 4vw, 5rem);
+        text-align: left;
+        overflow: visible;
+      }
+
+      .hero-content {
+        flex: 1;
+        min-width: 0;
+        max-width: 540px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-boutons {
+        justify-content: flex-start;
+      }
+
+      /* Vidéo profil */
+      .hero-video-wrap {
+        flex-shrink: 0;
+        width: clamp(160px, 18vw, 280px);
+        aspect-ratio: 9/16;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid rgba(201, 168, 76, 0.2);
+        box-shadow: 0 0 40px rgba(201, 168, 76, 0.07);
+      }
+
+      .hero-video-wrap video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* Mobile : colonne, vidéo au-dessus */
+      @media (max-width: 820px) {
+        .hero {
+          flex-direction: column;
+          text-align: center;
+          gap: 2rem;
+        }
+        .hero-content {
+          align-items: center;
+          max-width: 100%;
+        }
+        .hero-boutons {
+          justify-content: center;
+        }
+        .hero-video-wrap {
+          width: clamp(120px, 38vw, 180px);
+          order: -1;
+        }
+      }
+
+      /* ── SCÈNE PARCOURS ── */
+      .parcours-scene {
+        position: relative;
+        height: 80px;
+        max-width: 960px;
+        margin: 0 auto 1.8rem;
+      }
+
+      .parcours-rail {
+        position: absolute;
+        top: 62%;
+        left: 3%;
+        right: 3%;
+        height: 1px;
+        background: repeating-linear-gradient(
+          to right,
+          rgba(201, 168, 76, 0.22) 0px,
+          rgba(201, 168, 76, 0.22) 5px,
+          transparent 5px,
+          transparent 13px
+        );
+      }
+
+      .parcours-stop {
+        position: absolute;
+        top: 62%;
+        width: 7px;
+        height: 7px;
+        border: 1.5px solid rgba(201, 168, 76, 0.35);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition:
+          background 0.3s,
+          border-color 0.3s;
+      }
+
+      .parcours-stop.actif {
+        background: var(--or);
+        border-color: var(--or);
+        box-shadow: 0 0 8px rgba(201, 168, 76, 0.6);
+      }
+
+      /* Personnage */
+      .scene-perso {
+        position: absolute;
+        top: 62%;
+        left: 12.5%;
+        transform: translate(-50%, -100%);
+        transition: left 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 4px;
+      }
+
+      .perso-bulle {
+        font-size: 15px;
+        line-height: 1;
+        margin-bottom: 3px;
+        opacity: 0;
+        transform: translateY(5px);
+        transition:
+          opacity 0.3s ease,
+          transform 0.3s ease;
+      }
+
+      .perso-bulle.show {
+        opacity: 1;
+        transform: translateY(0);
+        animation: bulle-bob 2s ease-in-out infinite;
+      }
+
+      @keyframes bulle-bob {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-3px);
+        }
+      }
+
+      .perso-tete {
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        background: #0d0d0d;
+        border: 1.5px solid var(--or);
+      }
+
+      .perso-corps {
+        width: 2px;
+        height: 13px;
+        background: rgba(201, 168, 76, 0.65);
+        margin: 1px auto;
+        position: relative;
+        border-radius: 1px;
+      }
+
+      /* Bras gauche */
+      .perso-corps::before {
+        content: "";
+        position: absolute;
+        width: 8px;
+        height: 1.5px;
+        background: rgba(201, 168, 76, 0.65);
+        border-radius: 1px;
+        right: calc(100% - 1px);
+        top: 3px;
+        transform-origin: right center;
+        transform: rotate(-40deg);
+        transition: transform 0.4s ease;
+      }
+
+      /* Bras droit */
+      .perso-corps::after {
+        content: "";
+        position: absolute;
+        width: 8px;
+        height: 1.5px;
+        background: rgba(201, 168, 76, 0.65);
+        border-radius: 1px;
+        left: calc(100% - 1px);
+        top: 3px;
+        transform-origin: left center;
+        transform: rotate(40deg);
+        transition: transform 0.4s ease;
+      }
+
+      /* Marche — tête qui rebondit */
+      .perso-walk .perso-tete {
+        animation: walk-bob 0.22s ease-in-out infinite alternate;
+      }
+      @keyframes walk-bob {
+        to {
+          transform: translateY(-2px);
+        }
+      }
+
+      /* Design : bras droit levé, crayon */
+      .action-design .perso-corps::before {
+        transform: rotate(-70deg);
+      }
+      .action-design .perso-corps::after {
+        transform: rotate(10deg);
+        animation: dessin 0.6s ease-in-out infinite alternate;
+      }
+      @keyframes dessin {
+        to {
+          transform: rotate(30deg);
+        }
+      }
+
+      /* E-commerce : tap répété bras droit */
+      .action-shop .perso-corps::before {
+        transform: rotate(-20deg);
+      }
+      .action-shop .perso-corps::after {
+        animation: tap 0.4s ease-in-out infinite;
+      }
+      @keyframes tap {
+        0%,
+        100% {
+          transform: rotate(20deg);
+        }
+        50% {
+          transform: rotate(50deg);
+        }
+      }
+
+      /* Code : frappe alternée */
+      .action-code .perso-corps::before {
+        animation: frappe-g 0.2s ease-in-out infinite alternate;
+      }
+      .action-code .perso-corps::after {
+        animation: frappe-d 0.2s ease-in-out infinite alternate 0.1s;
+      }
+      @keyframes frappe-g {
+        from {
+          transform: rotate(-25deg);
+        }
+        to {
+          transform: rotate(-55deg);
+        }
+      }
+      @keyframes frappe-d {
+        from {
+          transform: rotate(25deg);
+        }
+        to {
+          transform: rotate(55deg);
+        }
+      }
+
+      /* Formation : bras ouverts, livre */
+      .action-learn .perso-corps::before {
+        transform: rotate(-65deg);
+      }
+      .action-learn .perso-corps::after {
+        transform: rotate(65deg);
+      }
+
+      /* ── MOBILE < 480px : réduit les marges du hero ── */
+      @media (max-width: 480px) {
+        .hero-tag {
+          margin-bottom: 1.8rem;
+        }
+        .hero-accroche {
+          margin: 1.8rem auto 2.4rem;
+          font-size: 0.95rem;
+        }
+      }
+
+      /* ── TRÈS PETITS MOBILES < 380px ── */
+      @media (max-width: 380px) {
+        .hero {
+          padding-top: 6rem;
+          padding-bottom: 4rem;
+        }
+        .hero-accroche {
+          font-size: 0.88rem;
+          margin: 1.4rem auto 2rem;
+        }
+        .hero-video-wrap {
+          width: 100px;
+        }
+        .parcours-item {
+          padding: 1rem 1.2rem;
+        }
+      }
+
+      /* ── TABLETTE : 1 colonne comme mobile ── */
+      @media (min-width: 769px) and (max-width: 1024px) {
+        .parcours-liste {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ── MOBILE : scène verticale à gauche des cartes ── */
+      @media (max-width: 768px) {
+        .parcours-wrapper {
+          display: flex;
+          flex-direction: row;
+          gap: 0.8rem;
+          align-items: stretch;
+          max-width: 960px;
+          margin: 0 auto;
+        }
+
+        .parcours-scene {
+          display: block;
+          width: 36px;
+          flex-shrink: 0;
+          height: auto;
+          margin: 0;
+        }
+
+        /* Rail vertical */
+        .parcours-rail {
+          top: 2%;
+          bottom: 2%;
+          left: 50%;
+          right: auto;
+          height: auto;
+          width: 1px;
+          transform: none;
+          background: repeating-linear-gradient(
+            to bottom,
+            rgba(201, 168, 76, 0.22) 0px,
+            rgba(201, 168, 76, 0.22) 5px,
+            transparent 5px,
+            transparent 13px
+          );
+        }
+
+        /* Stops repositionnés en vertical */
+        .parcours-stop {
+          left: 50% !important;
+          transform: translate(-50%, -50%);
+        }
+        .parcours-stop:nth-child(2) {
+          top: 12.5%;
+        }
+        .parcours-stop:nth-child(3) {
+          top: 37.5%;
+        }
+        .parcours-stop:nth-child(4) {
+          top: 62.5%;
+        }
+        .parcours-stop:nth-child(5) {
+          top: 87.5%;
+        }
+
+        /* Personnage vertical */
+        .scene-perso {
+          left: 50% !important;
+          transform: translate(-50%, -50%) !important;
+          transition: top 0.9s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+
+        /* Bulle à droite du perso sur mobile */
+        .perso-bulle {
+          position: absolute;
+          left: calc(100% + 6px);
+          top: 50%;
+          transform: translateY(-50%);
+          margin-bottom: 0;
+          font-size: 13px;
+          animation: none !important;
+        }
+        .perso-bulle.show {
+          animation: none !important;
+        }
+
+        /* Liste prend le reste de l'espace */
+        .parcours-liste {
+          flex: 1;
+          max-width: none;
+          margin: 0;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="css/chatbot.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="nav">
+        <a href="index.html" class="nav-logo">MERCIA<span>.</span></a>
         <a href="contact.html" class="nav-cta">Me contacter</a>
-        
-        <!-- Menu burger (visible uniquement sur mobile) -->
-        <div class="nav-burger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        
-    </nav>
+        <div class="nav-burger"><span></span><span></span><span></span></div>
+      </div>
+      <nav class="nav-sub">
+        <ul class="nav-liens">
+          <li><a href="index.html" class="actif">Accueil</a></li>
+          <li><a href="projets.html">Projets</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
 
-
-    <!-- ══════════════════════════════════════════════════════════════════════
-         SECTION HERO (En-tête principale)
-         C'est la première chose que voit le visiteur.
-         Contient : salutation, nom, description, boutons d'action
-    ══════════════════════════════════════════════════════════════════════ -->
     <section class="hero">
-        
-        <div class="hero-contenu">
-            
-            <!-- Petite phrase d'accroche -->
-            <p class="hero-salutation">Bonjour, je suis</p>
-            
-            <!-- Nom en grand -->
-            <h1 class="hero-titre">
-                Mercia
-                <span>RANDRIANOME</span>
-            </h1>
-            
-            <!-- Description courte -->
-            <p class="hero-description">
-                UI Designer en devenir, En formation chez Formasup82 à Montauban, 
-                j'apprends à conçevoir des interfaces simples, intuitives et centrées sur les besoins des utilisateurs. 
+      <!-- Système orbital décoratif -->
+      <div class="orbit-systeme" aria-hidden="true">
+        <div class="orbit-anneau"></div>
+        <div class="orbit-bras">
+          <div class="planet"></div>
+        </div>
+      </div>
 
-             <br>
-    <em class="hero-note">
-        Portfolio en cours de développement : certaines pages ou liens peuvent être temporairement indisponibles.
-    </em>
-                
-            </p>
-            
-            <!-- Boutons d'action -->
-            <div class="hero-boutons">
-                
-                <!-- Bouton principal -->
-                <a href="projets.html" class="btn btn-principal">
-                    Voir mes projets
-                    <!-- Icône flèche (SVG) -->
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </a>
-                
-                <!-- Bouton secondaire - Télécharger CV -->
-                <a href="assets/document/cv.pdf" class="btn btn-secondaire" download>
-                    Télécharger CV
-                </a>
-                
-            </div>
-            
+      <div class="hero-content">
+        <span class="hero-tag">Designer UI &amp; Intégratrice Web</span>
+        <h1>
+          <span class="nom">Mercia RANDRIANOME</span>
+          <span class="titre"
+            >Développement Site Web · Conception Visuelle</span
+          >
+        </h1>
+        <p class="hero-accroche">
+          Site web ou identité visuelle&nbsp;?<br />
+          Je m'adapte à votre projet, votre budget et vos délais.<br />
+          <br />
+          Des créations modernes, soignées et cohérentes,<br />
+          qui inspirent confiance et assurance - à votre image.
+        </p>
+        <div class="hero-boutons">
+          <a href="projets.html?filter=dev" class="btn-hero btn-hero-or"
+            >Développement Site Web</a
+          >
+          <a href="projets.html?filter=visuel" class="btn-hero btn-hero-contour"
+            >Conception Visuelle</a
+          >
         </div>
-        
-        <!-- Éléments décoratifs (cercle) -->
-        <div class="hero-deco">
-            <div class="hero-cercle"></div>
+      </div>
+
+      <!-- Vidéo profil — déposer le fichier dans assets/video/ -->
+      <div class="hero-video-wrap">
+        <video
+          src="assets/video/Avatar.mp4"
+          autoplay
+          loop
+          muted
+          playsinline
+        ></video>
+      </div>
+
+      <div class="scroll-hint" aria-hidden="true">
+        <div class="scroll-mouse">
+          <div class="scroll-wheel"></div>
         </div>
-        
-        <!-- Indicateur de scroll -->
-        <div class="hero-scroll">
-            <span>Scroll</span>
-            <div class="hero-scroll-ligne"></div>
-        </div>
-        
+        <span class="scroll-hint-label">Scroll</span>
+      </div>
     </section>
 
+    <section class="parcours">
+      <p class="parcours-titre">Parcours professionnel</p>
 
-    <!-- ══════════════════════════════════════════════════════════════════════
-         SECTION SERVICES
-         Présente ce que tu sais faire (tes compétences)
-         Chaque service est dans une "carte"
-    ══════════════════════════════════════════════════════════════════════ -->
-   <!-- ══════════════════════════════════════════════════════════════════════
-     SECTION SERVICES
-     Présente ce que tu sais faire (tes compétences)
-     Chaque service est dans une "carte"
-══════════════════════════════════════════════════════════════════════ -->
-<section id="services" class="services section">
-    <div class="conteneur">
-        
-        <div class="section-titre">
-            <h2>Mes <span class="or">compétences en dévéloppement</span></h2>
-            <p>Des solutions créatives et professionnelles pour tous projets</p>
+      <div class="parcours-wrapper">
+        <!-- Scène animée -->
+        <div class="parcours-scene" aria-hidden="true">
+          <div class="parcours-rail"></div>
+          <div class="parcours-stop" style="left: 12.5%"></div>
+          <div class="parcours-stop" style="left: 37.5%"></div>
+          <div class="parcours-stop" style="left: 62.5%"></div>
+          <div class="parcours-stop" style="left: 87.5%"></div>
+          <div class="scene-perso" id="scenePerso">
+            <div class="perso-bulle" id="persoBulle"></div>
+            <div class="perso-tete"></div>
+            <div class="perso-corps"></div>
+          </div>
         </div>
-        
-        <div class="services-grille">
-            
-            <!-- Service 1 : Design Graphique -->
-            <div class="service-carte">
-                <div class="service-icone">
-                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                        <circle cx="8.5" cy="8.5" r="1.5"/>
-                        <polyline points="21 15 16 10 5 21"/>
-                    </svg>
-                </div>
-                <h3>Design Graphique</h3>
-                <p>Création de logos, identités visuelles, affiches et supports de communication sur mesure avec la suite Adobe (Illustrator, Photoshop, InDesign).</p>
-            </div>
-            
-            <!-- Service 2 : Développement Web -->
-            <div class="service-carte">
-                <div class="service-icone">
-                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="16 18 22 12 16 6"/>
-                        <polyline points="8 6 2 12 8 18"/>
-                    </svg>
-                </div>
-                <h3>Développement Web</h3>
-                <p>Création de sites web modernes et responsives en HTML/CSS, WordPress et PrestaShop. Sites vitrines, e-commerce et solutions sur mesure.</p>
-            </div>
-            
-            <!-- Service 3 : UI/UX Design -->
-            <div class="service-carte">
-                <div class="service-icone">
-                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-                        <line x1="8" y1="21" x2="16" y2="21"/>
-                        <line x1="12" y1="17" x2="12" y2="21"/>
-                    </svg>
-                </div>
-                <h3>UI/UX Design</h3>
-                <p>Conception d'interfaces utilisateur intuitives et expériences digitales optimisées pour améliorer l'engagement de vos visiteurs.</p>
-            </div>
-            
-            <!-- Service 4 : Montage Vidéo -->
-            <div class="service-carte">
-                <div class="service-icone">
-                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polygon points="23 7 16 12 23 17 23 7"/>
-                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
-                    </svg>
-                </div>
-                <h3>Montage Vidéo</h3>
-                <p>Montage et édition vidéo professionnelle avec Premiere Pro. Vidéos promotionnelles, clips et contenus pour les réseaux sociaux.</p>
-            </div>
-            
-            <!-- Service 5 : Photographie -->
-            <div class="service-carte">
-                <div class="service-icone">
-                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-                        <circle cx="12" cy="13" r="4"/>
-                    </svg>
-                </div>
-                <h3>Photographie</h3>
-                <p>Séances photo professionnelles : portraits, événements, paysages et photographie produit pour vos besoins personnels ou commerciaux.</p>
-            </div>
-            
-            <!-- Service 6 : Création de Contenu -->
-            <div class="service-carte">
-                <div class="service-icone">
-                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 19l7-7 3 3-7 7-3-3z"/>
-                        <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
-                        <path d="M2 2l7.586 7.586"/>
-                        <circle cx="11" cy="11" r="2"/>
-                    </svg>
-                </div>
-                <h3>Création de Contenu</h3>
-                <p>Conception de visuels pour réseaux sociaux, présentations et supports marketing avec Canva et autres outils créatifs.</p>
-            </div>
-            
-        </div>
-        
-    </div>
-</section>
 
-
-   <!-- ══════════════════════════════════════════════════════════════════════
-         SECTION PROJETS SÉLECTIONNÉS
-    ══════════════════════════════════════════════════════════════════════ -->
-    <section class="projets-selection section">
-    <div class="conteneur">
-        
-        <div class="projets-header">
-            <div class="section-titre">
-                <h2>Projets <span class="or">sélectionnés</span></h2>
-                <p>Une sélection de mes réalisations récentes</p>
-            </div>
-            <a href="projets.html" class="btn btn-secondaire">Tous les projets</a>
+        <div class="parcours-liste">
+          <div class="parcours-item">
+            <div class="periode">Oct 2025 – Juin 2026</div>
+            <div class="poste">Formation Designer UI</div>
+            <div class="lieu">Formasup82 — Montauban</div>
+          </div>
+          <div class="parcours-item">
+            <div class="periode">2021 – 2022</div>
+            <div class="poste">Responsable E-commerce &amp; CM</div>
+            <div class="lieu">Espace et Vie / Au fil de S.O.I.E</div>
+          </div>
+          <div class="parcours-item">
+            <div class="periode">Août – Déc 2020</div>
+            <div class="poste">Développeur Web</div>
+            <div class="lieu">Office de Tourisme de Moissac</div>
+          </div>
+          <div class="parcours-item">
+            <div class="periode">2019 – 2020</div>
+            <div class="poste">Formation Développeur Web &amp; Mobile</div>
+            <div class="lieu">BGE Sud-Ouest</div>
+          </div>
         </div>
-        
-        <div class="projets-grille">
-            
-            <!-- PROJET 1 : Site WordPress -->
-            <article class="projet-carte">
-                <div class="projet-image">
-                    <img src="assets/images/projets/mamtiazaza.png" alt="Site WordPress Mamtiazaza">
-                    <div class="projet-overlay">
-                        <a href="https://www.mamtiazaza.fr" target="_blank" rel="noopener noreferrer" class="projet-lien">
-                            Voir le site
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                <polyline points="15 3 21 3 21 9"></polyline>
-                                <line x1="10" y1="14" x2="21" y2="3"></line>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                <div class="projet-info">
-                    <span class="projet-categorie">Développement Web</span>
-                    <h3>Site WordPress Mamtiazaza</h3>
-                    <p>Site vitrine conçu sur WordPress avec personnalisation du thème et optimisation SEO.</p>
-                </div>
-            </article>
-            
-            <!-- PROJET 2 : Logo -->
-            <article class="projet-carte">
-                <div class="projet-image">
-                    <img src="assets/images/projets/tiazazalogo (1).svg" alt="Création de logo">
-                    <div class="projet-overlay">
-                        <a href="assets/images/projets/tiazazalogo (1).svg" target="_blank" class="projet-lien">
-                            Voir le logo
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                <polyline points="15 3 21 3 21 9"></polyline>
-                                <line x1="10" y1="14" x2="21" y2="3"></line>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                <div class="projet-info">
-                    <span class="projet-categorie">Branding</span>
-                    <h3>Création de Logo</h3>
-                    <p>Conception d'identité visuelle complète réalisée avec Adobe Illustrator.</p>
-                </div>
-            </article>
-            
-            <!-- PROJET 3 : Conseil Maintenance -->
-<article class="projet-carte">
-    <div class="projet-image">
-        <img src="assets/images/projets/conseil-maintenance-client.png" alt="Document Conseil Maintenance">
-        <div class="projet-overlay">
-            <a href="assets/document/conseil-maintenance-client.pdf" target="_blank" class="projet-lien">
-                Télécharger PDF
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                    <polyline points="7 10 12 15 17 10"></polyline>
-                    <line x1="12" y1="15" x2="12" y2="3"></line>
-                </svg>
-            </a>
-        </div>
-    </div>
-    <div class="projet-info">
-        <span class="projet-categorie">Documentation</span>
-        <h3>Conseil Maintenance Client</h3>
-        <p>Guide de maintenance technique rédigé pour accompagner les clients.</p>
-    </div>
-</article>
-
-<!-- PROJET 4 : Marketing -->
-<article class="projet-carte">
-    <div class="projet-image">
-        <img src="assets/images/projets/projet-marketing-ecole.png" alt="Projet Marketing Groupe">
-        <div class="projet-overlay">
-            <a href="assets/document/marketing.pdf" target="_blank" class="projet-lien">
-                Télécharger PDF
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                    <polyline points="7 10 12 15 17 10"></polyline>
-                    <line x1="12" y1="15" x2="12" y2="3"></line>
-                </svg>
-            </a>
-        </div>
-    </div>
-    <div class="projet-info">
-        <span class="projet-categorie">Marketing</span>
-        <h3>Projet Marketing Groupe École</h3>
-        <p>Analyse marketing stratégique réalisée en équipe durant la formation</p>
-    </div>
-</article>
-            
-        </div>
-        
-    </div>
-</section>
-    <!-- ══════════════════════════════════════════════════════════════════════
-         SECTION CTA (Call To Action)
-         Incitation à prendre contact
-    ══════════════════════════════════════════════════════════════════════ -->
-    <section class="cta">
-        <div class="conteneur">
-            <div class="cta-contenu">
-                
-                <h2>Un projet en tête<span>?</span></h2>
-                <p>
-                    Je suis disponible pour discuter de vos projets créatifs. 
-                    N'hésitez pas à me contacter !
-                </p>
-                <a href="contact.html" class="btn btn-principal">
-                    Travaillons ensemble
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </a>
-                
-            </div>
-        </div>
+        <!-- /.parcours-liste -->
+      </div>
+      <!-- /.parcours-wrapper -->
     </section>
 
+    <!-- Section des  outils et stacks -->
+    <section class="outils">
+      <div id="scene">
+        <p class="outils-titre">Mes outils de conception</p>
+        <!-- Anneau orbital décoratif (même style que le hero) -->
+        <div id="orbit-ring" aria-hidden="true">
+          <div class="orbit-anneau"></div>
+          <div class="orbit-bras"><div class="planet"></div></div>
+        </div>
 
-    <!-- ══════════════════════════════════════════════════════════════════════
-         FOOTER (Pied de page)
-         Présent sur toutes les pages
-    ══════════════════════════════════════════════════════════════════════ -->
+        <!-- Titre central -->
+        <div id="overlay">
+          <p id="hint-text">👆</p>
+          <h2 id="cat-name">Mes outils</h2>
+          <p id="cat-sub">Tous les logiciels</p>
+          <div id="nav-dots"></div>
+        </div>
+      </div>
+
+      <!-- Lightbox -->
+      <div id="lightbox" aria-hidden="true">
+        <div id="lb-bg"></div>
+        <img id="lb-img" src="" alt="" />
+        <button id="lb-close" aria-label="Fermer">&#x2715;</button>
+      </div>
+    </section>
+
     <footer class="footer">
-        <div class="footer-contenu">
-            
-            <!-- Logo -->
-            <a href="index.html" class="footer-logo">
-                MERCIA<span>.</span>
-            </a>
-            
-            <!-- Liens rapides -->
-            <ul class="footer-liens">
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="apropos.html">À propos</a></li>
-                <li><a href="projets.html">Projets</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-            
-            <!-- Réseaux sociaux -->
-            <div class="footer-reseaux">
-                
-                <!-- LinkedIn - REMPLACE # PAR TON LIEN -->
-                <a href="https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile" aria-label="LinkedIn">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                    </svg>
-                </a>
-                
-                <!-- Behance - REMPLACE # PAR TON LIEN -->
-                <a href="#" aria-label="Behance">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M6.938 4.503c.702 0 1.34.06 1.92.188.577.13 1.07.33 1.485.61.41.28.733.65.96 1.12.225.47.34 1.05.34 1.73 0 .74-.17 1.36-.507 1.86-.338.5-.837.9-1.502 1.22.906.26 1.576.72 2.022 1.37.448.66.665 1.45.665 2.36 0 .75-.13 1.39-.41 1.93-.28.55-.67 1-1.16 1.35-.48.348-1.05.6-1.67.767-.61.165-1.252.254-1.91.254H0V4.51h6.938v-.007zM6.545 9.66c.535 0 .97-.138 1.303-.41.334-.274.5-.676.5-1.21 0-.31-.06-.55-.17-.74-.11-.19-.26-.34-.44-.44-.18-.1-.39-.17-.64-.21-.24-.04-.49-.06-.76-.06H3.48v3.07h3.065zm.18 5.22c.3 0 .58-.03.84-.09.26-.06.5-.153.71-.29.21-.14.38-.33.5-.57.12-.24.18-.54.18-.91 0-.72-.21-1.24-.64-1.54-.43-.31-.98-.46-1.64-.46H3.48v3.86h3.245zm8.603-2.12c.24.47.59.83 1.06 1.09.47.26 1.01.39 1.62.39.74 0 1.35-.19 1.84-.56.49-.37.79-.77.92-1.18h2.89c-.47 1.43-1.2 2.46-2.19 3.09-.99.64-2.17.95-3.55.95-.96 0-1.83-.15-2.6-.47-.77-.31-1.43-.75-1.97-1.32-.54-.57-.96-1.25-1.25-2.04-.29-.79-.44-1.66-.44-2.61 0-.91.15-1.76.45-2.55.3-.79.72-1.47 1.26-2.05.54-.58 1.18-1.03 1.94-1.35.76-.33 1.6-.49 2.52-.49.99 0 1.87.19 2.64.58.77.39 1.41.92 1.93 1.57.52.66.91 1.42 1.15 2.29.25.87.34 1.79.29 2.75h-8.67c0 .72.22 1.38.52 1.87zm3.89-5.59c-.36-.38-.89-.58-1.56-.58-.45 0-.83.08-1.14.24-.31.16-.56.36-.75.59-.19.24-.33.49-.42.76-.09.27-.15.52-.17.76h5c-.1-.72-.39-1.35-.97-1.77zM15.5 4h5v1.5h-5V4z"/>
-                    </svg>
-                </a>
-                
-            </div>
-            
-            <!-- Copyright -->
-            <p class="footer-copyright">
-                © 2025 Mercia RANDRIANOME. Tous droits réservés.
-            </p>
-            
+      <div class="footer-contenu">
+        <p class="footer-logo">MERCIA<span>.</span></p>
+        <div class="footer-liens">
+          <a href="projets.html">Projets</a>
+          <a href="contact.html">Contact</a>
         </div>
+        <p class="footer-copyright">
+          © 2026 Mercia RANDRIANOME — Designer UI &amp; Intégratrice Web
+        </p>
+      </div>
     </footer>
-
-
-    <!-- ══════════════════════════════════════════════════════════════════════
-         JAVASCRIPT
-         À la fin du body pour que le HTML soit chargé avant
-    ══════════════════════════════════════════════════════════════════════ -->
     <script src="js/main.js"></script>
+    <script>
+      // ── Animation personnage parcours ──
+      (function () {
+        const perso = document.getElementById("scenePerso");
+        const bulle = document.getElementById("persoBulle");
+        const stops = document.querySelectorAll(".parcours-stop");
+        if (!perso) return;
 
-</body>
+        const steps = [
+          { pos: 12.5, icon: "🎨 💻", action: "design", stopIdx: 0 },
+          { pos: 37.5, icon: "🛒 💻", action: "shop", stopIdx: 1 },
+          {
+            pos: 62.5,
+            icon: '💻 <span style="font-family:monospace;font-size:10px;color:#c9a84c;vertical-align:middle">&lt;/&gt;</span>',
+            action: "code",
+            stopIdx: 2,
+          },
+          {
+            pos: 87.5,
+            icon: '🖥️ <span style="font-family:monospace;font-size:10px;color:#c9a84c;vertical-align:middle">&lt;/&gt;</span>',
+            action: "learn",
+            stopIdx: 3,
+          },
+        ];
+        const actions = steps.map((s) => "action-" + s.action);
+        let current = 0;
+
+        const isMobile = () => window.innerWidth <= 768;
+
+        function clearActions() {
+          perso.classList.remove("perso-walk", ...actions);
+          stops.forEach((s) => s.classList.remove("actif"));
+        }
+
+        function arrive(i) {
+          clearActions();
+          perso.classList.add("action-" + steps[i].action);
+          stops[steps[i].stopIdx].classList.add("actif");
+          bulle.innerHTML = steps[i].icon;
+          bulle.classList.add("show");
+        }
+
+        function walk(nextPos) {
+          perso.classList.remove(...actions);
+          perso.classList.add("perso-walk");
+          bulle.classList.remove("show");
+          stops.forEach((s) => s.classList.remove("actif"));
+          if (!isMobile()) {
+            const cur = parseFloat(perso.style.left);
+            perso.style.transform =
+              nextPos < cur
+                ? "translate(-50%, -100%) scaleX(-1)"
+                : "translate(-50%, -100%) scaleX(1)";
+          }
+        }
+
+        function moveTo(pos) {
+          if (isMobile()) {
+            perso.style.top = pos + "%";
+          } else {
+            perso.style.left = pos + "%";
+          }
+        }
+
+        function next() {
+          const nextIdx = (current - 1 + steps.length) % steps.length;
+          walk(steps[nextIdx].pos);
+          moveTo(steps[nextIdx].pos);
+
+          const dist = Math.abs(steps[nextIdx].pos - steps[current].pos);
+          const walkDuration = dist <= 25 ? 900 : 1600;
+
+          setTimeout(() => {
+            current = nextIdx;
+            arrive(current);
+            setTimeout(next, 2800);
+          }, walkDuration);
+        }
+
+        function init() {
+          const mob = isMobile();
+          perso.style.transition = "none";
+          if (mob) {
+            perso.style.left = "50%";
+            perso.style.top = steps[0].pos + "%";
+          } else {
+            perso.style.left = steps[0].pos + "%";
+          }
+          requestAnimationFrame(() =>
+            requestAnimationFrame(() => {
+              const prop = mob ? "top" : "left";
+              perso.style.transition = `${prop} 0.9s cubic-bezier(0.4, 0, 0.2, 1)`;
+              setTimeout(() => {
+                arrive(0);
+                setTimeout(next, 2800);
+              }, 800);
+            }),
+          );
+        }
+
+        init();
+        window.addEventListener("resize", () => {
+          // Réinitialise si on bascule desktop/mobile
+          current = 0;
+          init();
+        });
+      })();
+    </script>
+    <script src="js/skillsbgc.js"></script>
+    <script src="js/chatbot.js"></script>
+  </body>
 </html>

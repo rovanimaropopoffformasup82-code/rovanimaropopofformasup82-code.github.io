@@ -53,19 +53,17 @@ tousLesLiens.forEach(function(lien) {
    - Le fond devient plus opaque
 */
 
-const nav = document.querySelector('.nav');
+const header = document.querySelector('.header');
+const navBar = document.querySelector('.nav');
 
 window.addEventListener('scroll', function() {
-    
-    // Si on a scrollé de plus de 100px
+    const pad = getComputedStyle(document.documentElement).getPropertyValue('--padding-page').trim();
     if (window.scrollY > 100) {
-        nav.style.padding = '0.8rem 5%';
-        nav.style.backgroundColor = 'rgba(10, 10, 10, 0.95)';
-    } 
-    // Sinon (en haut de la page)
-    else {
-        nav.style.padding = '1.2rem 5%';
-        nav.style.backgroundColor = 'rgba(10, 10, 10, 0.85)';
+        navBar.style.padding = `0.75rem ${pad}`;
+        header.style.backgroundColor = 'rgba(10, 10, 10, 0.97)';
+    } else {
+        navBar.style.padding = `1.1rem ${pad}`;
+        header.style.backgroundColor = 'rgba(10, 10, 10, 0.9)';
     }
 });
 
