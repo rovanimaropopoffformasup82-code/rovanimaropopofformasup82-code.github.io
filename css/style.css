@@ -89,6 +89,7 @@
 /* Défilement fluide quand on clique sur un lien ancre (#section) */
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;                  /* Pas de scroll horizontal — sur html pour ne pas casser position:fixed */
 }
 
 /* Styles de base du body */
@@ -96,8 +97,7 @@ body {
     font-family: var(--font-corps);
     background-color: var(--noir-profond);
     color: var(--blanc);
-    line-height: 1.6;                    /* Hauteur de ligne pour lisibilité */
-    overflow-x: hidden;                  /* Pas de scroll horizontal */
+    line-height: 1.6;
 }
 
 /* Personnalisation de la sélection de texte */
