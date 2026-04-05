@@ -33,12 +33,13 @@
 }
 
 /* --- Contenu principal du Hero --- */
-.hero-contenu {
+.hero-content {
     max-width: 800px;                          /* Limite la largeur */
     position: relative;
     z-index: 2;                                /* Au-dessus des décos (z-index: 1) */
     animation: apparition 1s ease-out;         /* Animation définie dans style.css */
 }
+.
 
 /* --- "Bonjour, je suis" --- */
 .hero-salutation {
@@ -50,7 +51,7 @@
     margin-bottom: 1rem;
 }
 
-/* --- Ton nom en GRAND --- */
+/* --- Nom en GRAND --- */
 .hero-titre {
     font-size: clamp(3rem, 8vw, 6rem);         /* Taille responsive */
     font-weight: 800;
@@ -81,12 +82,15 @@
 }
 
 
+
+
 /* ==============================================================================
    1b. DÉCORATIONS DU HERO (cercle et indicateur de scroll)
    ==============================================================================
 */
 
 /* Conteneur des décos (positionné à droite) */
+
 .hero-deco {
     position: absolute;
     top: 50%;

@@ -1,297 +1,311 @@
 /* ══════════════════════════════════════════════════════════════════════════════
-   CONTACT.CSS - Styles de la page Contact
-   
-   Ce fichier contient :
-   - En-tête de la page
-   - Formulaire de contact
-   - Informations de contact
-   - Responsive
+   CONTACT.CSS — Redesign v2
+   Cormorant Garamond + DM Sans
 ══════════════════════════════════════════════════════════════════════════════ */
 
 
 /* ==============================================================================
-   1. EN-TÊTE DE LA PAGE
+   1. FOND — bruit SVG + halo radial gold
+   ==============================================================================
+*/
+
+.contact-bg {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.bg-noise {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.04;
+}
+
+.bg-halo {
+    position: absolute;
+    top: -30%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+    height: 700px;
+    background: radial-gradient(ellipse at center, rgba(201, 168, 76, 1) 0%, transparent 65%);
+    opacity: 0.06;
+}
+
+
+/* ==============================================================================
+   2. PAGE
+   ==============================================================================
+*/
+
+.page-contact {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 130px var(--padding-page) 6rem;
+}
+
+.contact-wrap {
+    width: 100%;
+    max-width: 600px;
+}
+
+
+/* ==============================================================================
+   3. EN-TÊTE
    ==============================================================================
 */
 
 .contact-header {
-    padding-top: 140px;
-    padding-bottom: 60px;
-    text-align: center;
+    margin-bottom: 3rem;
 }
 
-.contact-header h1 {
-    margin-bottom: 1rem;
-}
-
-.contact-header p {
-    font-size: 1.1rem;
-    color: var(--gris-clair);
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-
-/* ==============================================================================
-   2. LAYOUT PRINCIPAL
-   ==============================================================================
-   
-   2 colonnes : formulaire à gauche, infos à droite
-*/
-
-.contact-section {
-    padding-top: 0;
-}
-
-.contact-grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;          /* Formulaire plus large */
-    gap: 4rem;
-    align-items: start;
-}
-
-
-/* ==============================================================================
-   3. FORMULAIRE DE CONTACT
-   ==============================================================================
-*/
-
-.contact-formulaire {
-    background-color: var(--gris-fonce);
-    border: 1px solid var(--gris-bordure);
-    border-radius: 16px;
-    padding: 2.5rem;
-}
-
-.contact-formulaire h2 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.contact-formulaire > p {
-    color: var(--gris-texte);
-    margin-bottom: 2rem;
-}
-
-/* --- Groupe de champs (label + input) --- */
-.form-groupe {
-    margin-bottom: 1.5rem;
-}
-
-.form-groupe label {
-    display: block;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--blanc);
-    margin-bottom: 0.5rem;
-}
-
-/* Champ obligatoire (*) */
-.form-groupe label span {
-    color: var(--or);
-}
-
-/* --- Champs de saisie (input, textarea) --- */
-.form-groupe input,
-.form-groupe textarea,
-.form-groupe select {
-    width: 100%;
-    padding: 1rem 1.25rem;
-    background-color: var(--noir-secondaire);
-    border: 1px solid var(--gris-bordure);
-    border-radius: 8px;
-    color: var(--blanc);
-    font-family: var(--font-corps);
-    font-size: 1rem;
-    transition: var(--transition-rapide);
-}
-
-/* Placeholder */
-.form-groupe input::placeholder,
-.form-groupe textarea::placeholder {
-    color: var(--gris-texte);
-}
-
-/* Focus (quand on clique dans le champ) */
-.form-groupe input:focus,
-.form-groupe textarea:focus,
-.form-groupe select:focus {
-    outline: none;
-    border-color: var(--or);
-    background-color: var(--noir-profond);
-}
-
-/* Textarea (zone de texte) */
-.form-groupe textarea {
-    min-height: 150px;
-    resize: vertical;                          /* Redimensionnable verticalement */
-}
-
-/* Select (liste déroulante) */
-.form-groupe select {
-    cursor: pointer;
-    appearance: none;                          /* Retire le style par défaut */
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23888888' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 1rem center;
-}
-
-/* --- 2 champs côte à côte --- */
-.form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-}
-
-/* --- Bouton d'envoi --- */
-.form-submit {
-    margin-top: 1rem;
-}
-
-.form-submit .btn {
-    width: 100%;
-    justify-content: center;
-}
-
-
-/* ==============================================================================
-   4. INFORMATIONS DE CONTACT
-   ==============================================================================
-*/
-
-.contact-infos {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-/* --- Carte d'info individuelle --- */
-.info-carte {
-    background-color: var(--gris-fonce);
-    border: 1px solid var(--gris-bordure);
-    border-radius: 12px;
-    padding: 1.5rem;
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    transition: var(--transition-rapide);
-}
-
-.info-carte:hover {
-    border-color: var(--or);
-}
-
-/* Icône */
-.info-icone {
-    width: 48px;
-    height: 48px;
+/* Eyebrow : trait + label */
+.contact-eyebrow {
     display: flex;
     align-items: center;
-    justify-content: center;
-    background-color: rgba(212, 175, 55, 0.1);
-    border-radius: 10px;
+    gap: 0.75rem;
+    margin-bottom: 1.1rem;
+}
+
+.eyebrow-ligne {
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: #c9a84c;
     flex-shrink: 0;
 }
 
-.info-icone svg {
-    width: 24px;
-    height: 24px;
-    color: var(--or);
+.eyebrow-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #c9a84c;
 }
 
-/* Contenu texte */
-.info-contenu h4 {
-    font-size: 1rem;
-    margin-bottom: 0.25rem;
-    color: var(--blanc-pur);
-}
-
-.info-contenu p {
-    font-size: 0.95rem;
-    color: var(--gris-texte);
+/* Titre */
+.contact-header h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300;
+    font-size: 58px;
+    line-height: 1.1;
+    color: #fff;
     margin: 0;
 }
 
-.info-contenu a {
-    color: var(--gris-clair);
-    transition: var(--transition-rapide);
-}
-
-.info-contenu a:hover {
-    color: var(--or);
+.contact-header h1 em {
+    font-style: italic;
+    color: #c9a84c;
 }
 
 
 /* ==============================================================================
-   5. RÉSEAUX SOCIAUX
+   4. FORMULAIRE — grille de cellules bordées
    ==============================================================================
 */
 
-.contact-reseaux {
-    background-color: var(--gris-fonce);
-    border: 1px solid var(--gris-bordure);
-    border-radius: 12px;
-    padding: 1.5rem;
-}
-
-.contact-reseaux h4 {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-    color: var(--blanc-pur);
-}
-
-.reseaux-liste {
+.contact-form {
+    border: 0.5px solid rgba(255, 255, 255, 0.1);
     display: flex;
-    gap: 0.75rem;
+    flex-direction: column;
 }
 
-.reseau-lien {
-    width: 44px;
-    height: 44px;
+/* Ligne Nom + Email */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
+}
+
+.form-row .form-field + .form-field {
+    border-left: 0.5px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Cellule générique */
+.form-field {
+    padding: 20px 24px;
+    position: relative;
+    transition: background 0.25s ease;
+}
+
+/* Champs full-width (hors form-row) */
+.contact-form > .form-field {
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Focus : fond subtil + bordure gold en inset */
+.form-field:focus-within {
+    background: rgba(201, 168, 76, 0.03);
+    box-shadow: inset 0 0 0 0.5px rgba(201, 168, 76, 0.7);
+    z-index: 1;
+}
+
+/* Label */
+.form-field label {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.35);
+    margin-bottom: 8px;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Inputs / select / textarea */
+.form-field input,
+.form-field select,
+.form-field textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: rgba(255, 255, 255, 0.88);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 300;
+    padding: 0;
+    line-height: 1.5;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+    color: rgba(255, 255, 255, 0.18);
+}
+
+/* Select : flèche personnalisée */
+.form-field select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,0.3)' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 2px center;
+    padding-right: 1.2rem;
+}
+
+.form-field select option {
+    background: #111;
+    color: rgba(255, 255, 255, 0.88);
+}
+
+/* Textarea */
+.form-field textarea {
+    resize: none;
+    min-height: 110px;
+    line-height: 1.7;
+}
+
+
+/* ==============================================================================
+   5. FOOTER DU FORMULAIRE
+   ==============================================================================
+*/
+
+.form-footer {
     display: flex;
     align-items: center;
-    justify-content: center;
-    background-color: #0a66c241;
-    border: 1px solid var(--gris-bordure);
-    border-radius: 10px;
-    color: var(--gris-texte);
-    transition: var(--transition-rapide);
+    justify-content: space-between;
+    padding: 18px 24px;
+    gap: 1rem;
 }
 
-.reseau-lien:hover {
-    background-color: var(--or);
-    border-color: var(--or);
-    color: var(--noir-profond);
+/* Note "Réponse sous 24 h" */
+.form-delai {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.28);
+    letter-spacing: 0.02em;
+    white-space: nowrap;
 }
 
-.reseau-lien svg {
-    width: 20px;
-    height: 20px;
+/* Dot pulsant gold */
+.dot-pulsant {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #c9a84c;
+    flex-shrink: 0;
+    animation: dotPulse 2s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.3; transform: scale(0.65); }
+}
+
+/* Bouton Envoyer */
+.btn-envoyer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #0d0d0d;
+    background: #c9a84c;
+    border: none;
+    padding: 0.72rem 1.6rem;
+    cursor: pointer;
+    transition: letter-spacing 0.35s ease, background 0.2s ease;
+    white-space: nowrap;
+}
+
+.btn-envoyer .btn-fleche {
+    display: inline-block;
+    transition: transform 0.35s ease;
+}
+
+.btn-envoyer:hover {
+    letter-spacing: 0.22em;
+    background: #d4b86a;
+}
+
+.btn-envoyer:hover .btn-fleche {
+    transform: translateX(5px);
 }
 
 
 /* ==============================================================================
-   6. MESSAGE DE SUCCÈS / ERREUR
+   6. EMAIL DIRECT (sous le formulaire)
    ==============================================================================
 */
 
-.form-message {
-    padding: 1rem 1.25rem;
-    border-radius: 8px;
-    margin-bottom: 1.5rem;
-    font-size: 0.95rem;
+.contact-email {
+    margin-top: 1.8rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.2);
+    text-align: center;
+    letter-spacing: 0.02em;
 }
 
-.form-message.succes {
-    background-color: rgba(34, 197, 94, 0.1);
-    border: 1px solid #22c55e;
-    color: #22c55e;
+.contact-email a {
+    color: rgba(201, 168, 76, 0.55);
+    transition: color 0.2s;
 }
 
-.form-message.erreur {
-    background-color: rgba(239, 68, 68, 0.1);
-    border: 1px solid #ef4444;
-    color: #ef4444;
+.contact-email a:hover {
+    color: #c9a84c;
 }
 
 
@@ -300,40 +314,39 @@
    ==============================================================================
 */
 
-/* --- TABLETTE --- */
-@media screen and (max-width: 1024px) {
-    
-    .contact-grid {
-        gap: 3rem;
-    }
-}
+@media (max-width: 640px) {
 
-/* --- MOBILE --- */
-@media screen and (max-width: 768px) {
-    
-    .contact-header {
-        padding-top: 120px;
-        padding-bottom: 40px;
+    .page-contact {
+        padding-top: 100px;
+        align-items: flex-start;
     }
-    
-    /* Passe en 1 colonne */
-    .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+
+    .contact-header h1 {
+        font-size: 40px;
     }
-    
-    /* Formulaire */
-    .contact-formulaire {
-        padding: 1.5rem;
-    }
-    
-    /* Champs côte à côte → empilés */
+
+    /* Nom + Email empilés */
     .form-row {
         grid-template-columns: 1fr;
+        border-bottom: none;
     }
-    
-    /* Réseaux sociaux centrés */
-    .reseaux-liste {
+
+    .form-row .form-field {
+        border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .form-row .form-field + .form-field {
+        border-left: none;
+    }
+
+    /* Footer du form */
+    .form-footer {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .btn-envoyer {
+        width: 100%;
         justify-content: center;
     }
 }

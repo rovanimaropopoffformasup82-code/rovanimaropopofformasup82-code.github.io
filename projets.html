@@ -3,786 +3,784 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Découvrez mes projets de design, sites web et créations graphiques.">
-    <title>Projets | Mercia RANDRIANOME - Product Designer</title>
-    
-    <!-- CSS -->
+    <meta name="description" content="Projets de Mercia RANDRIANOME — Développement Site Web et Conception Visuelle.">
+    <title>Projets | Mercia RANDRIANOME</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/projets.css">
+    <style>
+
+        /* ── CARTE ── */
+        .bento-card {
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+            background: #111;
+            cursor: pointer;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.35s ease;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+        }
+
+        .bento-card.masque {
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0.97);
+        }
+
+        /* Image de fond */
+        .carte-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center top;
+            transition: transform 0.6s ease;
+        }
+
+        .bento-card:hover .carte-bg {
+            transform: scale(1.04);
+        }
+
+        /* Gradient permanent pour lisibilité */
+        .carte-gradient {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(13,13,13,0.15) 0%,
+                rgba(13,13,13,0.3) 50%,
+                rgba(13,13,13,0.88) 100%
+            );
+            z-index: 1;
+        }
+
+        /* Chrome navigateur (projets web) */
+        .browser-chrome {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 30px;
+            background: rgba(10,10,10,0.92);
+            border-bottom: 1px solid #222;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 0 12px;
+            z-index: 3;
+        }
+
+        .browser-dots span {
+            display: inline-block;
+            width: 8px; height: 8px;
+            border-radius: 50%;
+        }
+
+        .browser-dots span:nth-child(1) { background: #ff5f57; }
+        .browser-dots span:nth-child(2) { background: #ffbd2e; }
+        .browser-dots span:nth-child(3) { background: #28c940; }
+
+        .browser-url {
+            font-family: monospace;
+            font-size: 0.62rem;
+            color: #555;
+            margin-left: 10px;
+            letter-spacing: 0.03em;
+        }
+
+        /* Numéro du projet */
+        .carte-num {
+            position: absolute;
+            top: 42px;
+            right: 14px;
+            font-family: var(--font-titre);
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: rgba(201,168,76,0.5);
+            letter-spacing: 0.15em;
+            z-index: 3;
+        }
+
+        .bento-card:not(:has(.browser-chrome)) .carte-num {
+            top: 14px;
+        }
+
+        /* Étiquettes tag (visibles en permanence) */
+        .carte-tags-top {
+            position: absolute;
+            top: 46px;
+            left: 14px;
+            display: flex;
+            gap: 0.4rem;
+            z-index: 3;
+        }
+
+        .bento-card:not(:has(.browser-chrome)) .carte-tags-top {
+            top: 14px;
+        }
+
+        .tag-pill {
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.22rem 0.65rem;
+            border-radius: 50px;
+        }
+
+        .tag-dev    { background: rgba(201,168,76,0.18); color: var(--or); border: 1px solid rgba(201,168,76,0.3); }
+        .tag-visuel { background: rgba(100,180,220,0.14); color: #7ec8e3; border: 1px solid rgba(100,180,220,0.25); }
+
+        /* ── OVERLAY SLIDE-UP ── */
+        .carte-overlay {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            z-index: 4;
+            background: rgba(10, 10, 10, 0.88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-top: 1px solid rgba(201,168,76,0.15);
+            padding: 1.4rem 1.6rem;
+            transform: translateY(calc(100% - 72px));
+            transition: transform 0.42s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .bento-card:hover .carte-overlay {
+            transform: translateY(0);
+        }
+
+        /* Partie toujours visible (nom + flèche) */
+        .overlay-peek {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 1rem;
+        }
+
+        .overlay-nom {
+            font-family: var(--font-titre);
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.1;
+        }
+
+        .overlay-fleche {
+            font-size: 1.1rem;
+            color: var(--or);
+            transform: rotate(-45deg);
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 0.5rem;
+        }
+
+        .bento-card:hover .overlay-fleche {
+            transform: rotate(0deg);
+        }
+
+        /* Partie révélée au hover */
+        .overlay-desc {
+            font-size: 0.82rem;
+            color: #aaa;
+            line-height: 1.65;
+            margin-bottom: 1rem;
+        }
+
+        .overlay-tech {
+            display: flex;
+            gap: 0.35rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.2rem;
+        }
+
+        .tech-b {
+            font-size: 0.65rem;
+            color: #666;
+            border: 1px solid #2a2a2a;
+            padding: 0.18rem 0.55rem;
+            border-radius: 3px;
+        }
+
+        .overlay-actions {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-overlay-or {
+            font-family: var(--font-titre);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.6rem 1.2rem;
+            background: var(--or);
+            color: #0d0d0d;
+            border-radius: 3px;
+            transition: background 0.2s;
+            display: inline-block;
+        }
+
+        .btn-overlay-or:hover { background: var(--or-clair); }
+
+        .btn-overlay-ghost {
+            font-family: var(--font-titre);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.6rem 1.2rem;
+            border: 1px solid #333;
+            color: #aaa;
+            border-radius: 3px;
+            transition: border-color 0.2s, color 0.2s;
+            display: inline-block;
+        }
+
+        .btn-overlay-ghost:hover { border-color: var(--or); color: var(--or); }
+
+        /* Carte Portfolio Mercia — fond CSS (pas d'image) */
+        .bg-portfolio {
+            background: linear-gradient(135deg, #0d0d0d 0%, #1a1410 40%, #231c0a 100%);
+        }
+
+        .portfolio-deco {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        .portfolio-deco-text {
+            font-family: var(--font-titre);
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 800;
+            color: rgba(201,168,76,0.08);
+            letter-spacing: 0.1em;
+            user-select: none;
+            white-space: nowrap;
+        }
+
+        .portfolio-deco-ring {
+            position: absolute;
+            width: 280px; height: 280px;
+            border-radius: 50%;
+            border: 1px solid rgba(201,168,76,0.08);
+        }
+
+        .portfolio-deco-ring:nth-child(2) { width: 180px; height: 180px; border-style: dashed; }
+
+        .bg-coco {
+            background: linear-gradient(135deg, #0d0a10 0%, #16101c 50%, #1a0e18 100%);
+        }
+        .coco-deco {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+            flex-direction: column;
+            gap: 0;
+        }
+        .coco-deco-text {
+            font-size: clamp(2.5rem, 6vw, 5.5rem);
+            font-weight: 900;
+            color: rgba(201,168,76,0.07);
+            letter-spacing: 0.06em;
+            user-select: none;
+            white-space: nowrap;
+            line-height: 1;
+        }
+        .coco-deco-sub {
+            font-size: clamp(0.7rem, 1.5vw, 1rem);
+            color: rgba(201,168,76,0.12);
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            user-select: none;
+        }
+        .coco-deco-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(201,168,76,0.06);
+        }
+
+        .sim-block { scroll-margin-top: 100px; }
+        .sim-block.masque { display: none; }
+        .shell-screen { cursor: pointer; }
+        .shell-screen .carte-overlay { z-index: 10; }
+        .shell-screen:hover .carte-overlay { transform: translateY(0); }
+
+        /* ── MOBILE ── */
+        @media (max-width: 900px) {
+            .bento-card { height: 220px; }
+            .carte-overlay { transform: translateY(calc(100% - 65px)); }
+        }
+
+        @media (max-width: 600px) {
+            .bento-card { height: 180px; }
+            .carte-overlay { transform: translateY(calc(100% - 60px)); }
+        }
+
+    </style>
+    <link rel="stylesheet" href="css/chatbot.css">
 </head>
 <body>
 
-    <!-- NAVIGATION -->
-    <nav class="nav">
-        <a href="index.html" class="nav-logo">
-            MERCIA<span>.</span>
-        </a>
-        
-        <ul class="nav-liens">
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="apropos.html">À propos</a></li>
-            <li><a href="projets.html" class="actif">Projets</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-        
-        <a href="contact.html" class="nav-cta">Me contacter</a>
-        
-        <div class="nav-burger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </nav>
-
-    <!-- EN-TÊTE -->
-    <header class="projets-header">
-        <div class="conteneur">
-            <h1>Mes <span class="or">projets</span></h1>
-            <p>Découvrez mes réalisations en design graphique, création web et marketing.</p>
-        </div>
-    </header>
-
-    <!-- FILTRES + PROJETS -->
-    <section class="projets-section section">
-        <div class="conteneur">
-            
-            <!-- FILTRES -->
-            <div class="filtres-wrapper">
-                
-                <button class="filtre-btn actif" data-filtre="tous">Tous</button>
-                
-                <!-- SUITE ADOBE -->
-                <div class="filtre-groupe">
-                    <button class="filtre-btn filtre-parent" data-filtre="adobe">
-                        Suite Adobe
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M6 9l6 6 6-6"/>
-                        </svg>
-                    </button>
-                    <div class="filtre-sous-menu">
-                        <button class="filtre-sous-btn" data-filtre="illustrator">Illustrator</button>
-                        <button class="filtre-sous-btn" data-filtre="photoshop">Photoshop</button>
-                        <button class="filtre-sous-btn" data-filtre="indesign">InDesign</button>
-                        <button class="filtre-sous-btn" data-filtre="premiere">Premiere Pro</button>
-                    </div>
-                </div>
-                
-                <!-- SITES RÉELS -->
-                <div class="filtre-groupe">
-                    <button class="filtre-btn filtre-parent" data-filtre="sites-reels">
-                        Sites Réels
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M6 9l6 6 6-6"/>
-                        </svg>
-                    </button>
-                    <div class="filtre-sous-menu">
-                        <button class="filtre-sous-btn" data-filtre="wp-reel">WordPress</button>
-                    </div>
-                </div>
-                
-                <button class="filtre-btn" data-filtre="canva">Canva</button>
-                <button class="filtre-btn" data-filtre="marketing">Marketing</button>
-                
-            </div>
-            
-            
-            <!-- GRILLE DES PROJETS -->
-            <div class="projets-grille">
-                
-                <!-- ==================== ILLUSTRATOR ==================== -->
-                
-                <!-- Logo Faites Le Mur -->
-                <article class="projet-carte" data-categorie="adobe illustrator">
-                    <div class="projet-image">
-                        <img src="assets/images/projets/faites-le-mur.webp" alt="Logo Faites Le Mur">
-                        <div class="projet-overlay">
-                            <button class="projet-btn" onclick="ouvrirModal('modal-illustrator-1')">Voir le projet</button>
-                        </div>
-                    </div>
-                    <div class="projet-info">
-                        <span class="projet-tag">Illustrator</span>
-                        <h3>Faites Le Mur</h3>
-                        <p>Logo pour une entreprise de tapisserie (formation)</p>
-                    </div>
-                </article>
-                
-                <!-- Logo La Perruche -->
-                <article class="projet-carte" data-categorie="adobe illustrator">
-                    <div class="projet-image">
-                        <img src="assets/images/projets/la-perruche.png" alt="La Perruche">
-                        <div class="projet-overlay">
-                            <button class="projet-btn" onclick="ouvrirModal('modal-illustrator-2')">Voir le projet</button>
-                        </div>
-                    </div>
-                    <div class="projet-info">
-                        <span class="projet-tag">Illustrator - Simplification d'objet</span>
-                        <h3>La Perruche</h3>
-                        <p>Logo créé par simplification d'objet pour un salon de coiffure (formation)</p>
-                    </div>
-                </article>
-
-               <!-- Affiche Mam Tiazaza -->
-<article class="projet-carte" data-categorie="adobe illustrator">
-    <div class="projet-image">
-        <img src="assets/images/projets/Affiche-Tiazaza.png" alt="Affiche A2 Mam Tiazaza">
-        <div class="projet-overlay">
-            <button class="projet-btn" onclick="ouvrirModal('modal-illustrator-3')">Voir le projet</button>
-        </div>
-    </div>
-    <div class="projet-info">
-        <span class="projet-tag">Illustrator</span>
-        <h3>Affiche A2 Mam Tiazaza</h3>
-        <p>Affiche 40×60 cm pour une MAM</p>
-    </div>
-</article>
-
-                <!-- Logo Tiazaza -->
-                <article class="projet-carte" data-categorie="adobe illustrator">
-                    <div class="projet-image">
-                        <img src="assets/images/projets/tiazaza.jpg" alt="Tiazaza">
-                        <div class="projet-overlay">
-                            <button class="projet-btn" onclick="ouvrirModal('modal-illustrator-4')">Voir le projet</button>
-                        </div>
-                    </div>
-                    <div class="projet-info">
-                        <span class="projet-tag">Illustrator</span>
-                        <h3>Tiazaza</h3>
-                        <p>3 propositions de logos pour une MAM</p>
-                    </div>
-                </article>
-
-                <!-- Déclinaisons Tiazaza -->
-                <article class="projet-carte" data-categorie="adobe illustrator">
-                    <div class="projet-image">
-                        <img src="assets/images/projets/tiazazalogo (1).svg" alt="Déclinaisons Tiazaza">
-                        <div class="projet-overlay">
-                            <button class="projet-btn" onclick="ouvrirModal('modal-illustrator-5')">Voir le projet</button>
-                        </div>
-                    </div>
-                    <div class="projet-info">
-                        <span class="projet-tag">Illustrator</span>
-                        <h3>Déclinaisons Tiazaza</h3>
-                        <p>Déclinaisons du logo sur différents supports</p>
-                    </div>
-                </article>
-                
-                
-                <!-- ==================== PHOTOSHOP ==================== -->
-                <article class="projet-carte" data-categorie="adobe photoshop">
-                    <div class="projet-image">
-                        <img src="assets/images/projets/photoshop-1.jpg" alt="Projet Photoshop">
-                        <div class="projet-overlay">
-                            <button class="projet-btn" onclick="ouvrirModal('modal-photoshop-1')">Voir le projet</button>
-                        </div>
-                    </div>
-                    <div class="projet-info">
-                        <span class="projet-tag">Photoshop</span>
-                        <h3>Retouche Photo</h3>
-                        <p>Retouche et montage photo professionnel</p>
-                    </div>
-                </article>
-                
-                <!-- ==================== INDESIGN ==================== -->
-                <article class="projet-carte" data-categorie="adobe indesign">
-                    <div class="projet-image">
-                        <img src="assets/images/projets/page-1.png" alt="Identité visuelle et charte graphique">
-                        <div class="projet-overlay">
-                            <button class="projet-btn" onclick="ouvrirModal('modal-indesign-1')">Voir le projet</button>
-                        </div>
-                    </div>
-                    <div class="projet-info">
-                        <span class="projet-tag">InDesign</span>
-                        <h3>Identité Visuelle et Charte Graphique</h3>
-                        <p>Projet de fin d'année - Formation</p>
-                    </div>
-                </article>
-                
-                <!-- ==================== PREMIERE PRO ==================== -->
-                <article class="projet-carte" data-categorie="adobe premiere">
-                    <div class="projet-image projet-video">
-                        <video src="assets/images/projets/chamonix.mp4" muted loop></video>
-                        <div class="projet-overlay">
-                            <button class="projet-btn" onclick="ouvrirModal('modal-video-1')">Voir la vidéo</button>
-                        </div>
-                        <div class="video-play-icon">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
-                                <polygon points="5 3 19 12 5 21 5 3"/>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="projet-info">
-                        <span class="projet-tag">Premiere Pro</span>
-                        <h3>Chamonix</h3>
-                        <p>Montage vidéo promotionnel (formation)</p>
-                    </div>
-                </article>
-                
-                <!-- ==================== SITES RÉELS - WORDPRESS ==================== -->
-                <article class="projet-carte" data-categorie="sites-reels wp-reel">
-                    <a href="https://www.mamtiazaza.fr" target="_blank" class="projet-lien-site">
-                        <div class="projet-image">
-                            <img src="assets/images/projets/mamtiazaza.png" alt="Mam Tiazaza">
-                            <div class="projet-overlay">
-                                <span class="projet-btn">
-                                    Visiter le site
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                                        <polyline points="15 3 21 3 21 9"/>
-                                        <line x1="10" y1="14" x2="21" y2="3"/>
-                                    </svg>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="projet-info">
-                            <span class="projet-tag">WordPress - Site vitrine</span>
-                            <h3>Mam Tiazaza</h3>
-                            <p>Site vitrine pour une MAM</p>
-                        </div>
-                    </a>
-                </article>
-
-                <article class="projet-carte" data-categorie="sites-reels wp-reel">
-                    <a href="https://www.jaozafysaveur.fr" target="_blank" class="projet-lien-site">
-                        <div class="projet-image">
-                            <img src="assets/images/projets/jaozafy-saveur.png" alt="Jaozafy Saveur">
-                            <div class="projet-overlay">
-                                <span class="projet-btn">
-                                    Visiter le site
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                                        <polyline points="15 3 21 3 21 9"/>
-                                        <line x1="10" y1="14" x2="21" y2="3"/>
-                                    </svg>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="projet-info">
-                            <span class="projet-tag">WordPress - E-commerce</span>
-                            <h3>Jaozafy Saveur</h3>
-                            <p>Site e-commerce pour une épicerie fine</p>
-                        </div>
-                    </a>
-                </article>
-                
-                <!-- ==================== CANVA ==================== -->
-                <article class="projet-carte" data-categorie="canva">
-                    <div class="projet-image">
-                        <img src="assets/images/projets/sticker-cartable.png" alt="Projet Canva">
-                        <div class="projet-overlay">
-                            <button class="projet-btn" onclick="ouvrirModal('modal-canva-1')">Voir les slides</button>
-                        </div>
-                    </div>
-                    <div class="projet-info">
-                        <span class="projet-tag">Canva</span>
-                        <h3>Posts Réseaux Sociaux</h3>
-                        <p>Série de visuels pour Instagram</p>
-                    </div>
-                </article>
-                
-                <article class="projet-carte" data-categorie="canva">
-                    <div class="projet-image">
-                        <img src="assets/images/projets/canva-2.jpg" alt="Projet Canva">
-                        <div class="projet-overlay">
-                            <button class="projet-btn" onclick="ouvrirModal('modal-canva-2')">Voir les slides</button>
-                        </div>
-                    </div>
-                    <div class="projet-info">
-                        <span class="projet-tag">Canva</span>
-                        <h3>Présentation Client</h3>
-                        <p>Deck de présentation commerciale</p>
-                    </div>
-                </article>
-
-                <!-- ==================== MARKETING ==================== -->
-                <article class="projet-carte" data-categorie="marketing">
-                    <div class="projet-image">
-                        <img src="assets/images/projets/slide-2.png" alt="Stratégie Marketing">
-                        <div class="projet-overlay">
-                            <button class="projet-btn" onclick="ouvrirModal('modal-marketing-1')">Voir le projet</button>
-                        </div>
-                    </div>
-                    <div class="projet-info">
-                        <span class="projet-tag">Marketing</span>
-                        <h3>Stratégie Marketing</h3>
-                        <p>Projet de fin d'année - Formation</p>
-                    </div>
-                </article>
-                
-            </div>
-            
-        </div>
-    </section>
-
-
-    <!-- MODALS -->
-    
-    <!-- Modal Illustrator 1 -->
-    <div id="modal-illustrator-1" class="modal">
-        <div class="modal-contenu">
-            <button class="modal-fermer" onclick="fermerModal('modal-illustrator-1')">&times;</button>
-            <div class="modal-image">
-                <img src="assets/images/projets/faites-le-mur.webp" alt="Logo Faites Le Mur">
-            </div>
-            <div class="modal-info">
-                <h2>Logo Faites Le Mur</h2>
-                <p class="modal-categorie">Illustrator</p>
-                <p>Création d'une identité visuelle audacieuse pour une entreprise de tapisserie et décoration murale. 
-                    Le logo joue sur la typographie avec "LE MUR" intégré dans "FAITES", créant un visuel percutant qui évoque le métier de tapissier-décorateur. 
-                    Les trois déclinaisons de couleurs (beige, crème et noir) permettent une adaptation flexible sur tous les supports de communication.</p>
+    <header class="header">
+        <div class="nav">
+            <a href="index.html" class="nav-logo">MERCIA<span>.</span></a>
+            <a href="contact.html" class="nav-cta">Me contacter</a>
+            <div class="nav-burger">
+                <span></span><span></span><span></span>
             </div>
         </div>
-    </div>
-    
-    <!-- Modal Illustrator 2 -->
-    <div id="modal-illustrator-2" class="modal">
-        <div class="modal-contenu">
-            <button class="modal-fermer" onclick="fermerModal('modal-illustrator-2')">&times;</button>
-            <div class="modal-image">
-                <img src="assets/images/projets/la-perruche.png" alt="La Perruche">
-            </div>
-            <div class="modal-info">
-                <h2>Logo La Perruche</h2>
-                <p class="modal-categorie">Illustrator - Simplification d'objet</p>
-                <p>Logo créé par simplification d'objet pour le salon de coiffure "La Perruche". 
-                     À partir d'un dessin réaliste de perruche, le logo a été créé en simplifiant progressivement les formes pour obtenir une illustration épurée et stylisée. 
-                     Cette démarche graphique permet de conserver l'identité visuelle de l'oiseau tout en créant un logo moderne et facilement mémorisable, accompagné du slogan "On coiffe et on caquette".</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Modal Illustrator 3 - Affiche PDF -->
-<div id="modal-illustrator-3" class="modal">
-    <div class="modal-contenu modal-large">
-        <button class="modal-fermer" onclick="fermerModal('modal-illustrator-3')">&times;</button>
-        <div class="modal-info">
-            <h2>Affiche A2 Tiazaza</h2>
-            <p class="modal-categorie">Illustrator - Format A2</p>
-            <p>Affiche publicitaire format A2 pour la MAM Tiazaza.</p>
-        </div>
-        <div class="modal-pdf">
-            <iframe src="assets/document/Affiche-Tiazaza.pdf" width="100%" height="600px" style="border: none; border-radius: 12px;"></iframe>
-        </div>
-        <div style="padding: 1.5rem; text-align: center;">
-            <a href="assets/images/projets/Affiche-Tiazaza.pdf" target="_blank" class="btn btn-secondaire">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                    <polyline points="7 10 12 15 17 10"/>
-                    <line x1="12" y1="15" x2="12" y2="3"/>
-                </svg>
-                Télécharger le PDF
-            </a>
-        </div>
-    </div>
-</div>
-    
-    <!-- Modal Illustrator 4 -->
-    <div id="modal-illustrator-4" class="modal">
-        <div class="modal-contenu">
-            <button class="modal-fermer" onclick="fermerModal('modal-illustrator-4')">&times;</button>
-            <div class="modal-image">
-                <img src="assets/images/projets/tiazaza.jpg" alt="Tiazaza">
-            </div>
-            <div class="modal-info">
-                <h2>Logo Tiazaza</h2>
-                <p class="modal-categorie">Illustrator</p>
-                <p>3 propositions de logos joyeux et rassurants pour une MAM (Maison d'Assistantes Maternelles) axée sur l'éveil naturel. 
-                    Le personnage de bébé souriant accompagné de papillons évoque la douceur, la joie et le développement harmonieux des tout-petits. 
-                    L'ensemble crée une atmosphère bienveillante et accueillante, parfaite pour rassurer les parents.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Illustrator 5 - avec slider -->
-    <div id="modal-illustrator-5" class="modal">
-        <div class="modal-contenu modal-large">
-            <button class="modal-fermer" onclick="fermerModal('modal-illustrator-5')">&times;</button>
-            <div class="modal-info">
-                <h2>Déclinaisons du logo Tiazaza</h2>
-                <p class="modal-categorie">Illustrator</p>
-                <p>Exploration complète des variations chromatiques du logo Tiazaza. 
-                    Plusieurs déclinaisons permettent une adaptation sur tous types de supports et fonds.
-                     Chaque version conserve l'esprit ludique et naturel du logo original tout en offrant une flexibilité maximale pour l'identité visuelle de la MAM.</p>
-            </div>
-            <div class="modal-slider">
-                <button class="slider-btn slider-prev" onclick="changerSlide('slider-illustrator-5', -1)">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M15 18l-6-6 6-6"/>
-                    </svg>
-                </button>
-                <div class="slider-container" id="slider-illustrator-5">
-                    <img src="assets/images/projets/tiazazalogo (1).svg" alt="Déclinaison 1" class="slide active">
-                    <img src="assets/images/projets/tiazazalogo (3).svg" alt="Déclinaison 2" class="slide">
-                    <img src="assets/images/projets/tiazazalogo (4).svg" alt="Déclinaison 3" class="slide">
-                    <img src="assets/images/projets/tiazazalogo (5).svg" alt="Déclinaison 4" class="slide">
-                    <img src="assets/images/projets/tiazazalogo (6).svg" alt="Déclinaison 5" class="slide">
-                    <img src="assets/images/projets/tiazazalogo (7).svg" alt="Déclinaison 6" class="slide">
-                </div>
-                <button class="slider-btn slider-next" onclick="changerSlide('slider-illustrator-5', 1)">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M9 18l6-6-6-6"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="slider-dots" id="dots-illustrator-5"></div>
-        </div>
-    </div>
-    
-    <!-- Modal Photoshop -->
-    <div id="modal-photoshop-1" class="modal">
-        <div class="modal-contenu">
-            <button class="modal-fermer" onclick="fermerModal('modal-photoshop-1')">&times;</button>
-            <div class="modal-image">
-                <img src="assets/images/projets/photoshop-1.jpg" alt="Retouche Photo">
-            </div>
-            <div class="modal-info">
-                <h2>Retouche Photo</h2>
-                <p class="modal-categorie">Photoshop</p>
-                <p>Retouche et montage photo professionnel avec correction des couleurs et optimisation de la qualité d'image.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Modal InDesign -->
-    <div id="modal-indesign-1" class="modal">
-        <div class="modal-contenu modal-large">
-            <button class="modal-fermer" onclick="fermerModal('modal-indesign-1')">&times;</button>
-            <div class="modal-info">
-                <h2>Identité Visuelle et Charte Graphique</h2>
-                <p class="modal-categorie">InDesign - Projet de fin d'année</p>
-                <p>Création complète d'une identité visuelle et de sa charte graphique dans le cadre du projet de fin d'année de formation.</p>
-            </div>
-            <div class="modal-slider">
-                <button class="slider-btn slider-prev" onclick="changerSlide('slider-indesign-1', -1)">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M15 18l-6-6 6-6"/>
-                    </svg>
-                </button>
-                <div class="slider-container" id="slider-indesign-1">
-                    <img src="assets/images/projets/page-1.png" alt="Page 1" class="slide active">
-                    <img src="assets/images/projets/page-2.png" alt="Page 2" class="slide">
-                    <img src="assets/images/projets/page-3.png" alt="Page 3" class="slide">
-                    <img src="assets/images/projets/page-4.png" alt="Page 4" class="slide">
-                </div>
-                <button class="slider-btn slider-next" onclick="changerSlide('slider-indesign-1', 1)">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M9 18l6-6-6-6"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="slider-dots" id="dots-indesign-1"></div>
-            <a href="assets/document/identite-visuelle-charte.pdf" target="_blank" class="btn btn-secondaire modal-download">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                    <polyline points="7 10 12 15 17 10"/>
-                    <line x1="12" y1="15" x2="12" y2="3"/>
-                </svg>
-                Télécharger le PDF
-            </a>
-        </div>
-    </div>
-    
-    <!-- Modal Vidéo -->
-    <div id="modal-video-1" class="modal">
-        <div class="modal-contenu modal-large">
-            <button class="modal-fermer" onclick="fermerModal('modal-video-1')">&times;</button>
-            <div class="modal-video">
-                <video id="video-chamonix" src="assets/images/projets/chamonix.mp4" controls></video>
-            </div>
-            <div class="modal-info">
-                <h2>Chamonix</h2>
-                <p class="modal-categorie">Premiere Pro</p>
-                <p>Montage vidéo promotionnel dynamique pour la destination touristique de Chamonix. 
-                    Le rythme du montage et les transitions fluides capturent l'essence de cette station de montagne emblématique.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Modal Canva 1 -->
-    <div id="modal-canva-1" class="modal">
-        <div class="modal-contenu modal-large">
-            <button class="modal-fermer" onclick="fermerModal('modal-canva-1')">&times;</button>
-            <div class="modal-info">
-                <h2>Visuel canva</h2>
-                <p class="modal-categorie">Canva</p>
-                <p>Série de visuels fait sur canva.</p>
-            </div>
-            <div class="modal-slider">
-                <button class="slider-btn slider-prev" onclick="changerSlide('slider-canva-1', -1)">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M15 18l-6-6 6-6"/>
-                    </svg>
-                </button>
-                <div class="slider-container" id="slider-canva-1">
-                    <img src="assets/images/projets/cartevisite.png" alt="Slide 1" class="slide active">
-                    <img src="assets/images/projets/flyer.png" alt="Slide 2" class="slide">
-                    <img src="assets/images/projets/sticker-cartable.png" alt="Slide 3" class="slide">
-                    <img src="assets/images/projets/video-invitation.mp4" alt="Slide 4" class="slide">
-                </div>
-                <button class="slider-btn slider-next" onclick="changerSlide('slider-canva-1', 1)">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M9 18l6-6-6-6"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="slider-dots" id="dots-canva-1"></div>
-        </div>
-    </div>
-    
-    <!-- Modal Canva 2 -->
-    <div id="modal-canva-2" class="modal">
-        <div class="modal-contenu modal-large">
-            <button class="modal-fermer" onclick="fermerModal('modal-canva-2')">&times;</button>
-            <div class="modal-info">
-                <h2>Présentation Client</h2>
-                <p class="modal-categorie">Canva</p>
-                <p>Deck de présentation commerciale professionnel et impactant, conçu pour convaincre et séduire les clients potentiels.</p>
-            </div>
-            <div class="modal-slider">
-                <button class="slider-btn slider-prev" onclick="changerSlide('slider-canva-2', -1)">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M15 18l-6-6 6-6"/>
-                    </svg>
-                </button>
-                <div class="slider-container" id="slider-canva-2">
-                    <img src="assets/images/projets/canva2/slide-1.jpg" alt="Slide 1" class="slide active">
-                    <img src="assets/images/projets/canva2/slide-2.jpg" alt="Slide 2" class="slide">
-                    <img src="assets/images/projets/canva2/slide-3.jpg" alt="Slide 3" class="slide">
-                </div>
-                <button class="slider-btn slider-next" onclick="changerSlide('slider-canva-2', 1)">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M9 18l6-6-6-6"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="slider-dots" id="dots-canva-2"></div>
-        </div>
-    </div>
-
-    <!-- Modal Marketing -->
-    <div id="modal-marketing-1" class="modal">
-        <div class="modal-contenu modal-large">
-            <button class="modal-fermer" onclick="fermerModal('modal-marketing-1')">&times;</button>
-            <div class="modal-info">
-                <h2>Stratégie Marketing</h2>
-                <p class="modal-categorie">Marketing - Projet de fin d'année</p>
-                <p>Analyse marketing stratégique complète réalisée dans le cadre du projet de fin d'année de formation. 
-                    Inclut analyse PESTEL, matrice SWOT, étude de marché et stratégie de développement.</p>
-            </div>
-            <div class="modal-slider">
-                <button class="slider-btn slider-prev" onclick="changerSlide('slider-marketing-1', -1)">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M15 18l-6-6 6-6"/>
-                    </svg>
-                </button>
-                <div class="slider-container" id="slider-marketing-1">
-                    <img src="assets/images/projets/slide-1.png" alt="Slide 1" class="slide active">
-                    <img src="assets/images/projets/slide-2.png" alt="Slide 2" class="slide">
-                    <img src="assets/images/projets/slide-3.png" alt="Slide 3" class="slide">
-                    <img src="assets/images/projets/slide-4.png" alt="Slide 4" class="slide">
-                </div>
-                <button class="slider-btn slider-next" onclick="changerSlide('slider-marketing-1', 1)">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M9 18l6-6-6-6"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="slider-dots" id="dots-marketing-1"></div>
-            <a href="assets/document/dossier-marketing-mercia.pdf" target="_blank" class="btn btn-secondaire modal-download">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                    <polyline points="7 10 12 15 17 10"/>
-                    <line x1="12" y1="15" x2="12" y2="3"/>
-                </svg>
-                Télécharger le PDF
-            </a>
-        </div>
-    </div>
-
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-contenu">
-            <a href="index.html" class="footer-logo">MERCIA<span>.</span></a>
-            <ul class="footer-liens">
+        <nav class="nav-sub">
+            <ul class="nav-liens">
                 <li><a href="index.html">Accueil</a></li>
-                <li><a href="apropos.html">À propos</a></li>
-                <li><a href="projets.html">Projets</a></li>
+                <li><a href="projets.html" class="actif">Projets</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
-            <div class="footer-reseaux">
-                <a href="https://www.linkedin.com/in/merciarandrianome" target="_blank" aria-label="LinkedIn">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                    </svg>
-                </a>
+        </nav>
+    </header>
+
+
+    <!-- ══════════════════════════════════════════════
+         SHOWCASE RESPONSIVE — simulateur device
+    ══════════════════════════════════════════════ -->
+    <section class="showcase" id="showcase">
+    <style>
+        .showcase { padding: 2rem var(--padding-page) 7rem; background: #0d0d0d; }
+
+        .showcase-heading { text-align:center; padding-bottom:3.5rem; }
+        .showcase-heading .label { font-size:0.68rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--or); display:block; margin-bottom:0.7rem; }
+        .showcase-heading h2 { font-size:clamp(1.6rem,3vw,2.4rem); color:#fff; }
+        .showcase-heading h2 span { color:var(--or); }
+        .showcase-heading p { color:#666; font-size:0.88rem; margin-top:0.4rem; }
+
+        /* Bloc par projet */
+        .sim-block {
+            max-width: 900px;
+            margin: 0 auto 5rem;
+        }
+
+        .sim-block-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 1.6rem;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .sim-block-meta {}
+        .sim-block-num { font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(201,168,76,0.45); display:block; margin-bottom:0.3rem; }
+        .sim-block-name { font-family:var(--font-titre); font-size:clamp(1.2rem,3vw,1.8rem); font-weight:800; color:#fff; display:block; }
+
+        .sim-block-cta {
+            font-family:var(--font-titre); font-size:0.78rem; font-weight:700;
+            padding:0.55rem 1.2rem; background:var(--or); color:#0d0d0d;
+            border-radius:3px; transition:background 0.2s; white-space:nowrap;
+        }
+        .sim-block-cta:hover { background:var(--or-clair); }
+
+        /* Zone device */
+        .sim-zone { display:flex; align-items:center; justify-content:center; gap:1rem; }
+
+        .sim-mode-arrow {
+            width:42px; height:42px; border:1px solid #2a2a2a; border-radius:50%;
+            background:transparent; color:#666; font-size:1.1rem; cursor:pointer;
+            transition:all 0.25s; flex-shrink:0; display:flex; align-items:center; justify-content:center;
+        }
+        .sim-mode-arrow:hover { border-color:var(--or); color:var(--or); }
+
+        /* Frame morphant */
+        .sim-shell {
+            background:#181818; border:1.5px solid #252525;
+            box-shadow:0 24px 70px rgba(0,0,0,0.65);
+            transition: width 0.5s cubic-bezier(0.4,0,0.2,1),
+                        padding 0.5s cubic-bezier(0.4,0,0.2,1),
+                        border-radius 0.5s cubic-bezier(0.4,0,0.2,1);
+            overflow:hidden; position:relative;
+        }
+        .sim-shell.mode-desktop { width:min(680px,78vw); border-radius:8px 8px 4px 4px; padding:0; }
+        .sim-shell.mode-tablet  { width:min(340px,52vw); border-radius:24px; padding:14px 8px 12px; }
+        .sim-shell.mode-mobile  { width:min(190px,30vw); border-radius:36px; padding:18px 6px 22px; }
+
+        .shell-chrome { height:28px; background:#111; border-bottom:1px solid #1e1e1e; display:flex; align-items:center; padding:0 10px; gap:5px; }
+        .mode-tablet .shell-chrome, .mode-mobile .shell-chrome { display:none; }
+        .sd { width:7px; height:7px; border-radius:50%; }
+        .sd.r{background:#ff5f57}.sd.y{background:#ffbd2e}.sd.g{background:#28c940}
+        .s-url { font-family:monospace; font-size:0.58rem; color:#3a3a3a; margin-left:8px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+
+        .shell-notch { display:none; width:34px; height:4px; background:#252525; border-radius:2px; margin:0 auto 8px; }
+        .mode-tablet .shell-notch, .mode-mobile .shell-notch { display:block; }
+
+        .shell-screen {
+            height:400px; overflow:hidden; background:#080808; position:relative;
+            transition:border-radius 0.5s ease;
+        }
+        .mode-tablet .shell-screen, .mode-mobile .shell-screen { border-radius:6px; }
+
+        /* Image screenshot live */
+        .shell-screen img {
+            width:100%; height:100%; object-fit:cover; object-position:top center;
+            display:block; transition:opacity 0.3s;
+        }
+        .shell-screen img.loading { opacity:0.3; filter:blur(4px); }
+
+        /* Loading placeholder */
+        .screen-loading {
+            position:absolute; inset:0;
+            display:flex; align-items:center; justify-content:center;
+            font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase;
+            color:#333; background:#080808;
+            transition:opacity 0.4s;
+        }
+        .screen-loading.hidden { opacity:0; pointer-events:none; }
+
+        /* Fond portfolio CSS */
+        .screen-porto {
+            width:100%; height:100%;
+            background:linear-gradient(135deg,#0d0d0d,#1a1410);
+            display:flex; align-items:center; justify-content:center;
+            font-family:var(--font-titre); font-weight:800;
+            color:rgba(201,168,76,0.2); letter-spacing:0.15em;
+            font-size:2.5rem;
+        }
+
+        .shell-home { display:none; width:34px; height:4px; background:#252525; border-radius:2px; margin:8px auto 0; }
+        .mode-mobile .shell-home { display:block; }
+
+        /* Nav device pills */
+        .sim-device-nav { display:flex; justify-content:center; gap:0.4rem; margin-top:1.4rem; }
+        .dev-pill {
+            font-family:var(--font-titre); font-size:0.7rem; font-weight:600;
+            padding:0.38rem 0.9rem; border:1px solid #2a2a2a; border-radius:50px;
+            background:transparent; color:#555; cursor:pointer; transition:all 0.25s;
+            display:flex; align-items:center; gap:0.35rem;
+        }
+        .dev-pill:hover { color:#aaa; border-color:#444; }
+        .dev-pill.actif { background:rgba(201,168,76,0.12); border-color:var(--or); color:var(--or); }
+
+        /* Swipe hint */
+        .swipe-hint { text-align:center; margin-top:0.6rem; font-size:0.58rem; letter-spacing:0.14em; text-transform:uppercase; color:#2d2d2d; display:none; }
+
+        /* ── FILTRES ── */
+        .filtres { display:flex; justify-content:center; gap:0.5rem; flex-wrap:wrap; }
+        .filtre-btn { font-family:var(--font-titre); font-size:0.78rem; font-weight:600; padding:0.55rem 1.3rem; border:1px solid #2a2a2a; border-radius:50px; background:transparent; color:#777; cursor:pointer; transition:all 0.3s ease; }
+        .filtre-btn:hover { border-color:var(--or); color:var(--or); }
+        .filtre-btn.actif { background:var(--or); border-color:var(--or); color:#0d0d0d; }
+
+        /* Séparateur entre projets */
+        .sim-sep { border:none; height:1px; background:linear-gradient(to right, transparent, #1e1e1e 30%, #1e1e1e 70%, transparent); margin:0 auto 5rem; max-width:900px; }
+
+        @media (max-width:700px) {
+            .sim-mode-arrow { width:34px; height:34px; font-size:0.9rem; }
+            .shell-screen { height:260px; }
+            .swipe-hint { display:block; }
+            .sim-block-header { flex-direction:column; align-items:flex-start; }
+        }
+
+        /* ── OVERLAY ADAPTATIF PAR MODE SIMULATEUR ── */
+
+        /* Mode tablette */
+        .sim-shell.mode-tablet .carte-overlay {
+            padding: 1rem 1.1rem;
+            transform: translateY(calc(100% - 58px));
+        }
+        .sim-shell.mode-tablet .overlay-nom { font-size: 0.85rem; }
+        .sim-shell.mode-tablet .overlay-desc {
+            font-size: 0.73rem;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 0.6rem;
+        }
+        .sim-shell.mode-tablet .overlay-tech { gap: 0.2rem; margin-bottom: 0.7rem; }
+        .sim-shell.mode-tablet .tech-b { font-size: 0.58rem; padding: 0.14rem 0.42rem; }
+        .sim-shell.mode-tablet .btn-overlay-or,
+        .sim-shell.mode-tablet .btn-overlay-ghost { font-size: 0.68rem; padding: 0.5rem 0.9rem; }
+
+        /* Mode mobile */
+        .sim-shell.mode-mobile .carte-overlay {
+            padding: 0.7rem 0.8rem;
+            transform: translateY(calc(100% - 50px));
+        }
+        .sim-shell.mode-mobile .overlay-peek { margin-bottom: 0.55rem; }
+        .sim-shell.mode-mobile .overlay-nom {
+            font-size: 0.72rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 130px;
+        }
+        .sim-shell.mode-mobile .overlay-desc {
+            font-size: 0.68rem;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+        .sim-shell.mode-mobile .overlay-tech { gap: 0.18rem; margin-bottom: 0.5rem; }
+        .sim-shell.mode-mobile .tech-b { font-size: 0.53rem; padding: 0.1rem 0.35rem; }
+        .sim-shell.mode-mobile .btn-overlay-or,
+        .sim-shell.mode-mobile .btn-overlay-ghost { font-size: 0.62rem; padding: 0.4rem 0.7rem; }
+
+        /* ── OVERLAY CLIQUABLE — classe ajoutée par JS au clic ── */
+        .shell-screen.ouvert .carte-overlay {
+            transform: translateY(0) !important;
+        }
+    </style>
+
+    <div class="showcase-heading">
+        <span class="label">— Portfolio —</span>
+        <h2>Mes <span>Projets</span></h2>
+        <p>Swipez &#8592; &#8594; pour changer de vue · Survolez la carte pour les détails</p>
+        <div class="filtres" style="margin-top:1.6rem;">
+            <button class="filtre-btn actif" data-filtre="tous">Tous les projets</button>
+            <button class="filtre-btn" data-filtre="dev">Développement Site Web</button>
+            <button class="filtre-btn" data-filtre="visuel">Conception Visuelle</button>
+        </div>
+    </div>
+
+    <!-- Projet 1 -->
+    <div class="sim-block" id="sim-1" data-categorie="dev" data-url="https://jaozafysaveur.fr">
+        <div class="sim-zone">
+            <button class="sim-mode-arrow sim-prev">&#8592;</button>
+            <div class="sim-shell mode-desktop">
+                <div class="shell-chrome"><span class="sd r"></span><span class="sd y"></span><span class="sd g"></span><span class="s-url">jaozafysaveur.fr</span></div>
+                <div class="shell-notch"></div>
+                <div class="shell-screen">
+                    <div class="screen-loading">Chargement&#8230;</div>
+                    <img src="" alt="jaozafysaveur.fr" data-desktop="assets/images/projets/jaozafy-desktop.png" data-tablet="assets/images/projets/jaozafy-tablet.png" data-mobile="assets/images/projets/jaozafy-mobile.png">
+                    <div class="carte-overlay">
+                        <div class="overlay-peek"><div class="overlay-nom">jaozafysaveur.fr</div><span class="overlay-fleche">↗</span></div>
+                        <p class="overlay-desc">Boutique e-commerce épices malgaches. WooCommerce, CGV, newsletter, RGPD, livraison gratuite dès 60 €.</p>
+                        <div class="overlay-tech"><span class="tech-b">WordPress</span><span class="tech-b">WooCommerce</span><span class="tech-b">Elementor</span><span class="tech-b">RGPD</span></div>
+                        <div class="overlay-actions"><a href="https://jaozafysaveur.fr" target="_blank" rel="noopener" class="btn-overlay-or">Voir le site ↗</a></div>
+                    </div>
+                </div>
+                <div class="shell-home"></div>
             </div>
-            <p class="footer-copyright">© 2025 Mercia RANDRIANOME. Tous droits réservés.</p>
+            <button class="sim-mode-arrow sim-next">&#8594;</button>
+        </div>
+        <div class="sim-device-nav">
+            <button class="dev-pill actif" data-mode="0"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Desktop</button>
+            <button class="dev-pill" data-mode="1"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="18" r="1" fill="currentColor"/></svg>Tablette</button>
+            <button class="dev-pill" data-mode="2"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.5" stroke-width="3" stroke-linecap="round"/></svg>Mobile</button>
+        </div>
+        <p class="swipe-hint">&#8592; swiper pour changer la vue &#8594;</p>
+    </div>
+
+    <hr class="sim-sep">
+
+    <!-- Projet 2 -->
+    <div class="sim-block" id="sim-2" data-categorie="dev" data-url="https://mamtiazaza.fr">
+        <div class="sim-zone">
+            <button class="sim-mode-arrow sim-prev">&#8592;</button>
+            <div class="sim-shell mode-desktop">
+                <div class="shell-chrome"><span class="sd r"></span><span class="sd y"></span><span class="sd g"></span><span class="s-url">mamtiazaza.fr</span></div>
+                <div class="shell-notch"></div>
+                <div class="shell-screen">
+                    <div class="screen-loading">Chargement&#8230;</div>
+                    <img src="" alt="mamtiazaza.fr" data-desktop="assets/images/projets/mamtiazaza-desktop.png" data-tablet="assets/images/projets/mamtiazaza-tablet.png" data-mobile="assets/images/projets/mamtiazaza-mobile.png">
+                    <div class="carte-overlay">
+                        <div class="overlay-peek"><div class="overlay-nom">mamtiazaza.fr</div><span class="overlay-fleche">↗</span></div>
+                        <p class="overlay-desc">Site vitrine WordPress. Logo Illustrator, intégration Elementor, documentation client livrée.</p>
+                        <div class="overlay-tech"><span class="tech-b">WordPress</span><span class="tech-b">Elementor</span><span class="tech-b">Illustrator</span></div>
+                        <div class="overlay-actions"><a href="https://mamtiazaza.fr" target="_blank" rel="noopener" class="btn-overlay-or">Voir le site ↗</a></div>
+                    </div>
+                </div>
+                <div class="shell-home"></div>
+            </div>
+            <button class="sim-mode-arrow sim-next">&#8594;</button>
+        </div>
+        <div class="sim-device-nav">
+            <button class="dev-pill actif" data-mode="0"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Desktop</button>
+            <button class="dev-pill" data-mode="1"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="18" r="1" fill="currentColor"/></svg>Tablette</button>
+            <button class="dev-pill" data-mode="2"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.5" stroke-width="3" stroke-linecap="round"/></svg>Mobile</button>
+        </div>
+        <p class="swipe-hint">&#8592; swiper pour changer la vue &#8594;</p>
+    </div>
+
+    <hr class="sim-sep">
+
+    <!-- Projet 3 : Portfolio -->
+    <div class="sim-block" id="sim-3" data-categorie="dev" data-url="index.html">
+        <div class="sim-zone">
+            <button class="sim-mode-arrow sim-prev">&#8592;</button>
+            <div class="sim-shell mode-desktop">
+                <div class="shell-chrome"><span class="sd r"></span><span class="sd y"></span><span class="sd g"></span><span class="s-url">portfolio · mercia randrianome</span></div>
+                <div class="shell-notch"></div>
+                <div class="shell-screen">
+                    <div class="screen-porto">MERCIA.</div>
+                    <div class="carte-overlay">
+                        <div class="overlay-peek"><div class="overlay-nom">Portfolio Mercia</div><span class="overlay-fleche">↗</span></div>
+                        <p class="overlay-desc">Conçu et codé avec IA. Animations CSS orbitales, système de filtre. HTML / CSS / JS vanilla.</p>
+                        <div class="overlay-tech"><span class="tech-b">HTML</span><span class="tech-b">CSS</span><span class="tech-b">JavaScript</span></div>
+                        <div class="overlay-actions"><a href="index.html" class="btn-overlay-or">Voir le site ↗</a></div>
+                    </div>
+                </div>
+                <div class="shell-home"></div>
+            </div>
+            <button class="sim-mode-arrow sim-next">&#8594;</button>
+        </div>
+        <div class="sim-device-nav">
+            <button class="dev-pill actif" data-mode="0"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Desktop</button>
+            <button class="dev-pill" data-mode="1"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="18" r="1" fill="currentColor"/></svg>Tablette</button>
+            <button class="dev-pill" data-mode="2"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.5" stroke-width="3" stroke-linecap="round"/></svg>Mobile</button>
+        </div>
+        <p class="swipe-hint">&#8592; swiper pour changer la vue &#8594;</p>
+    </div>
+
+    <hr class="sim-sep">
+
+    <!-- Projet 4 : Co & Co Shop -->
+    <div class="sim-block" id="sim-4" data-categorie="dev" data-url="https://co-co-shop.netlify.app/">
+        <div class="sim-zone">
+            <button class="sim-mode-arrow sim-prev">&#8592;</button>
+            <div class="sim-shell mode-desktop">
+                <div class="shell-chrome"><span class="sd r"></span><span class="sd y"></span><span class="sd g"></span><span class="s-url">co-co-shop.netlify.app</span></div>
+                <div class="shell-notch"></div>
+                <div class="shell-screen">
+                    <div class="screen-porto" style="background:linear-gradient(135deg,#0d0a10,#16101c);color:rgba(201,168,76,0.15);font-size:2rem;letter-spacing:0.2em;">CO&amp;CO</div>
+                    <div class="carte-overlay">
+                        <div class="overlay-peek"><div class="overlay-nom">Co &amp; Co Shop</div><span class="overlay-fleche">↗</span></div>
+                        <p class="overlay-desc">Boutique en ligne conçue et mise en ligne sur Netlify.</p>
+                        <div class="overlay-tech"><span class="tech-b">HTML</span><span class="tech-b">CSS</span><span class="tech-b">JavaScript</span><span class="tech-b">Netlify</span></div>
+                        <div class="overlay-actions"><a href="https://co-co-shop.netlify.app/" target="_blank" rel="noopener" class="btn-overlay-or">Voir le site ↗</a></div>
+                    </div>
+                </div>
+                <div class="shell-home"></div>
+            </div>
+            <button class="sim-mode-arrow sim-next">&#8594;</button>
+        </div>
+        <div class="sim-device-nav">
+            <button class="dev-pill actif" data-mode="0"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Desktop</button>
+            <button class="dev-pill" data-mode="1"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="18" r="1" fill="currentColor"/></svg>Tablette</button>
+            <button class="dev-pill" data-mode="2"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.5" stroke-width="3" stroke-linecap="round"/></svg>Mobile</button>
+        </div>
+        <p class="swipe-hint">&#8592; swiper pour changer la vue &#8594;</p>
+    </div>
+
+    <hr class="sim-sep">
+
+    <!-- Projet 5 : Tiazaza (visuel, pas de simulateur) -->
+    <div class="sim-block" id="sim-5" data-categorie="visuel">
+        <div class="sim-zone">
+            <button class="sim-mode-arrow sim-prev" style="visibility:hidden"></button>
+            <div class="sim-shell mode-desktop">
+                <div class="shell-chrome"><span class="sd r"></span><span class="sd y"></span><span class="sd g"></span><span class="s-url">Tiazaza — Identité visuelle</span></div>
+                <div class="shell-screen">
+                    <div style="width:100%;height:100%;background-image:url('assets/images/projets/Affiche-Tiazaza.png');background-size:cover;background-position:center;"></div>
+                    <div class="carte-overlay">
+                        <div class="overlay-peek"><div class="overlay-nom">Tiazaza — Identité visuelle</div><span class="overlay-fleche">↗</span></div>
+                        <p class="overlay-desc">Logo décliné en 8 versions, affiche événementielle, carte de visite, flyer. Palette cohérente, typographie choisie au caractère.</p>
+                        <div class="overlay-tech"><span class="tech-b">Illustrator</span><span class="tech-b">Logo</span><span class="tech-b">Affiche</span><span class="tech-b">Flyer</span></div>
+                        <div class="overlay-actions"><a href="contact.html" class="btn-overlay-ghost">Me contacter</a></div>
+                    </div>
+                </div>
+            </div>
+            <button class="sim-mode-arrow sim-next" style="visibility:hidden"></button>
+        </div>
+    </div>
+
+    </section>
+
+    <script>
+    (function () {
+        var modeClasses = ['mode-desktop','mode-tablet','mode-mobile'];
+        var modeKeys    = ['desktop','tablet','mobile'];
+
+        document.querySelectorAll('.sim-block').forEach(function(block) {
+            var shell  = block.querySelector('.sim-shell');
+            var screen = block.querySelector('.shell-screen');
+            var img    = screen ? screen.querySelector('img') : null;
+            var loader = screen ? screen.querySelector('.screen-loading') : null;
+            var pills  = block.querySelectorAll('.dev-pill');
+            var mode   = 0;
+
+            function setMode(m) {
+                mode = (m + 3) % 3;
+                shell.className = 'sim-shell ' + modeClasses[mode];
+                if (screen) screen.classList.remove('ouvert');
+                pills.forEach(function(p, i) { p.classList.toggle('actif', i === mode); });
+
+                if (img) {
+                    var src = img.dataset[modeKeys[mode]];
+                    if (src && img.src !== src) {
+                        if (loader) loader.classList.remove('hidden');
+                        img.style.opacity = '0.3';
+                        img.src = src;
+                        img.onload = function() {
+                            img.style.opacity = '1';
+                            if (loader) loader.classList.add('hidden');
+                        };
+                        img.onerror = function() {
+                            img.style.opacity = '0.1';
+                            if (loader) { loader.textContent = 'Aperçu indisponible'; loader.classList.remove('hidden'); }
+                        };
+                    }
+                }
+            }
+
+            block.querySelector('.sim-prev').addEventListener('click', function(){ setMode(mode-1); });
+            block.querySelector('.sim-next').addEventListener('click', function(){ setMode(mode+1); });
+            pills.forEach(function(p){ p.addEventListener('click', function(){ setMode(+p.dataset.mode); }); });
+
+            var sx = 0;
+            shell.addEventListener('touchstart', function(e){ sx = e.touches[0].clientX; }, {passive:true});
+            shell.addEventListener('touchend', function(e){
+                var dx = e.changedTouches[0].clientX - sx;
+                if (Math.abs(dx) > 40) setMode(dx < 0 ? mode+1 : mode-1);
+            });
+
+            // Init : charge la première capture
+            setMode(0);
+        });
+
+        // Clic pour révéler/cacher l'overlay (mobile + desktop)
+        document.querySelectorAll('.shell-screen').forEach(function(scr) {
+            scr.addEventListener('click', function(e) {
+                if (e.target.closest('a, button')) return;
+                document.querySelectorAll('.shell-screen.ouvert').forEach(function(s) {
+                    if (s !== scr) s.classList.remove('ouvert');
+                });
+                scr.classList.toggle('ouvert');
+            });
+        });
+    })();
+    </script>
+
+    <footer class="footer">
+        <div class="footer-contenu">
+            <p class="footer-logo">MERCIA<span>.</span></p>
+            <div class="footer-liens">
+                <a href="projets.html">Projets</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <p class="footer-copyright">© 2026 Mercia RANDRIANOME — Designer UI &amp; Intégratrice Web</p>
         </div>
     </footer>
 
-    <!-- JAVASCRIPT -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const filtresBtns = document.querySelectorAll('.filtre-btn');
-            const filtresSousBtns = document.querySelectorAll('.filtre-sous-btn');
-            const filtresGroupes = document.querySelectorAll('.filtre-groupe');
-            const projets = document.querySelectorAll('.projet-carte');
-            
-            filtresGroupes.forEach(groupe => {
-                const parent = groupe.querySelector('.filtre-parent');
-                parent.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    filtresGroupes.forEach(g => { if (g !== groupe) g.classList.remove('ouvert'); });
-                    groupe.classList.toggle('ouvert');
-                    const filtre = parent.getAttribute('data-filtre');
-                    filtrerProjets(filtre);
-                    majBoutonsActifs(parent);
-                });
-            });
-            
-            document.addEventListener('click', function() {
-                filtresGroupes.forEach(g => g.classList.remove('ouvert'));
-            });
-            
-            filtresBtns.forEach(btn => {
-                if (!btn.classList.contains('filtre-parent')) {
-                    btn.addEventListener('click', function() {
-                        const filtre = this.getAttribute('data-filtre');
-                        filtrerProjets(filtre);
-                        majBoutonsActifs(this);
-                        filtresGroupes.forEach(g => g.classList.remove('ouvert'));
-                    });
-                }
-            });
-            
-            filtresSousBtns.forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    const filtre = this.getAttribute('data-filtre');
-                    filtrerProjets(filtre);
-                    majSousBoutonsActifs(this);
-                });
-            });
-            
-            function filtrerProjets(filtre) {
-                projets.forEach(projet => {
-                    const categories = projet.getAttribute('data-categorie');
-                    if (filtre === 'tous' || categories.includes(filtre)) {
-                        projet.classList.remove('cache');
-                        projet.style.animation = 'fadeIn 0.4s ease forwards';
-                    } else {
-                        projet.classList.add('cache');
-                    }
-                });
-            }
-            
-            function majBoutonsActifs(boutonActif) {
-                filtresBtns.forEach(btn => btn.classList.remove('actif'));
-                filtresSousBtns.forEach(btn => btn.classList.remove('actif'));
-                boutonActif.classList.add('actif');
-            }
-            
-            function majSousBoutonsActifs(boutonActif) {
-                filtresBtns.forEach(btn => btn.classList.remove('actif'));
-                filtresSousBtns.forEach(btn => btn.classList.remove('actif'));
-                boutonActif.classList.add('actif');
-                const groupe = boutonActif.closest('.filtre-groupe');
-                const parent = groupe.querySelector('.filtre-parent');
-                parent.classList.add('actif');
-            }
-            
-            document.querySelectorAll('.projet-video').forEach(videoContainer => {
-                const video = videoContainer.querySelector('video');
-                if (video) {
-                    videoContainer.addEventListener('mouseenter', () => video.play());
-                    videoContainer.addEventListener('mouseleave', () => {
-                        video.pause();
-                        video.currentTime = 0;
-                    });
-                }
-            });
-            
-            initSliderDots();
-        });
-        
-        function ouvrirModal(modalId) {
-            const modal = document.getElementById(modalId);
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            const video = modal.querySelector('video');
-            if (video) video.currentTime = 0;
+        const btns   = document.querySelectorAll('.filtre-btn');
+        const blocs  = document.querySelectorAll('.sim-block');
+
+        function filtrer(f) {
+            blocs.forEach(b => b.classList.toggle('masque', f !== 'tous' && b.dataset.categorie !== f));
+            btns.forEach(b => b.classList.toggle('actif', b.dataset.filtre === f));
         }
-        
-        function fermerModal(modalId) {
-            const modal = document.getElementById(modalId);
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-            const video = modal.querySelector('video');
-            if (video) video.pause();
-        }
-        
-        document.querySelectorAll('.modal').forEach(modal => {
-            modal.addEventListener('click', function(e) {
-                if (e.target === this) {
-                    this.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                    const video = this.querySelector('video');
-                    if (video) video.pause();
-                }
-            });
-        });
-        
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                document.querySelectorAll('.modal.active').forEach(modal => {
-                    modal.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                    const video = modal.querySelector('video');
-                    if (video) video.pause();
-                });
-            }
-        });
-        
-        function initSliderDots() {
-            document.querySelectorAll('.slider-container').forEach(slider => {
-                const slides = slider.querySelectorAll('.slide');
-                const dotsContainer = document.getElementById('dots-' + slider.id.replace('slider-', ''));
-                if (dotsContainer) {
-                    dotsContainer.innerHTML = '';
-                    slides.forEach((_, index) => {
-                        const dot = document.createElement('button');
-                        dot.classList.add('dot');
-                        if (index === 0) dot.classList.add('active');
-                        dot.onclick = () => allerAuSlide(slider.id, index);
-                        dotsContainer.appendChild(dot);
-                    });
-                }
-            });
-        }
-        
-        function changerSlide(sliderId, direction) {
-            const slider = document.getElementById(sliderId);
-            const slides = slider.querySelectorAll('.slide');
-            const currentIndex = Array.from(slides).findIndex(s => s.classList.contains('active'));
-            let newIndex = currentIndex + direction;
-            if (newIndex < 0) newIndex = slides.length - 1;
-            if (newIndex >= slides.length) newIndex = 0;
-            allerAuSlide(sliderId, newIndex);
-        }
-        
-        function allerAuSlide(sliderId, index) {
-            const slider = document.getElementById(sliderId);
-            const slides = slider.querySelectorAll('.slide');
-            const dotsContainer = document.getElementById('dots-' + sliderId.replace('slider-', ''));
-            const dots = dotsContainer ? dotsContainer.querySelectorAll('.dot') : [];
-            slides.forEach(s => s.classList.remove('active'));
-            dots.forEach(d => d.classList.remove('active'));
-            slides[index].classList.add('active');
-            if (dots[index]) dots[index].classList.add('active');
-        }
+
+        btns.forEach(b => b.addEventListener('click', () => filtrer(b.dataset.filtre)));
+
+        const param = new URLSearchParams(location.search).get('filter');
+        if (param) filtrer(param);
     </script>
 
     <script src="js/main.js"></script>
-
+    <script src="js/chatbot.js"></script>
 </body>
 </html>

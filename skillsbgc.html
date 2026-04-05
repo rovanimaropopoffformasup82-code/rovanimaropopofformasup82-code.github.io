@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skills 3D</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/skillsbgc.css">
+  <style>
+    body {
+      background: #0d0d0d;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="scene">
+
+    <!-- Anneau orbital décoratif (même style que le hero) -->
+    <div id="orbit-ring" aria-hidden="true">
+      <div class="orbit-anneau"></div>
+      <div class="orbit-bras"><div class="planet"></div></div>
+    </div>
+
+    <!-- Titre central -->
+    <div id="overlay">
+      <p id="hint-text">👆</p>
+      <h1 id="cat-name">Mes outils</h1>
+      <p id="cat-sub">Tous les logiciels</p>
+      <div id="nav-dots"></div>
+    </div>
+
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" aria-hidden="true">
+    <div id="lb-bg"></div>
+    <img id="lb-img" src="" alt="">
+    <button id="lb-close" aria-label="Fermer">&#x2715;</button>
+  </div>
+
+  <script src="js/skillsbgc.js"></script>
+</body>
+</html>
