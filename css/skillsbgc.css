@@ -104,6 +104,7 @@ section.outils {
   /* left + top définis par JS, centrage via transform */
   z-index: 2;
   pointer-events: none;
+  will-change: transform; /* pré-alloue la couche GPU pour le RAF — évite que l'animation interfère avec position:fixed */
   /* transition utilisée UNIQUEMENT quand JS l'ajoute */
 }
 
