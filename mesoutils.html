@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mes outils de conception — Mercia RANDRIANOME, Designer UI & Intégratrice Web.">
+  <title>Mes outils | Mercia RANDRIANOME</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/skillsbgc.css">
+  <style>
+    body {
+      background: #0d0d0d;
+      overflow: hidden;
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
+    }
+    .header {
+      flex-shrink: 0;
+    }
+    section.outils {
+      flex: 1;
+      min-height: 0;
+    }
+    section.outils #scene {
+      height: 100%;
+      min-height: 480px;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="nav">
+      <a href="index.html" class="nav-logo">MERCIA<span>.</span></a>
+      <a href="contact.html" class="nav-cta">Me contacter</a>
+      <div class="nav-burger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav class="nav-sub">
+      <ul class="nav-liens">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="projets.html">Projets</a></li>
+        <li><a href="mesoutils.html" class="actif">Mes outils</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="outils">
+    <div id="scene">
+      <p class="outils-titre">Mes outils de conception</p>
+
+      <!-- Anneau orbital décoratif (même style que le hero) -->
+      <div id="orbit-ring" aria-hidden="true">
+        <div class="orbit-anneau"></div>
+        <div class="orbit-bras"><div class="planet"></div></div>
+      </div>
+
+      <!-- Titre central -->
+      <div id="overlay">
+        <p id="hint-text">👆</p>
+        <h1 id="cat-name">Mes outils</h1>
+        <p id="cat-sub">Tous les logiciels</p>
+        <div id="nav-dots"></div>
+      </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" aria-hidden="true">
+      <div id="lb-bg"></div>
+      <img id="lb-img" src="" alt="">
+      <button id="lb-close" aria-label="Fermer">&#x2715;</button>
+    </div>
+  </section>
+
+  <script src="js/main.js"></script>
+  <script src="js/skillsbgc.js"></script>
+</body>
+</html>

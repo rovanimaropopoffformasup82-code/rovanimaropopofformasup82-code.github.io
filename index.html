@@ -9,7 +9,6 @@
     />
     <title>Mercia RANDRIANOME — Designer UI & Intégratrice Web</title>
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/skillsbgc.css" />
     <style>
       /* ── HERO ── */
       .hero {
@@ -332,7 +331,7 @@
         align-items: center;
         gap: clamp(2rem, 4vw, 5rem);
         text-align: left;
-        overflow: visible;
+        overflow-x: clip; /* bloque le débordement horizontal des coins de l'orbit-bras en rotation */
       }
 
       .hero-content {
@@ -721,6 +720,7 @@
         <ul class="nav-liens">
           <li><a href="index.html" class="actif">Accueil</a></li>
           <li><a href="projets.html">Projets</a></li>
+          <li><a href="mesoutils.html">Mes outils</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
@@ -824,32 +824,6 @@
       <!-- /.parcours-wrapper -->
     </section>
 
-    <!-- Section des  outils et stacks -->
-    <section class="outils">
-      <div id="scene">
-        <p class="outils-titre">Mes outils de conception</p>
-        <!-- Anneau orbital décoratif (même style que le hero) -->
-        <div id="orbit-ring" aria-hidden="true">
-          <div class="orbit-anneau"></div>
-          <div class="orbit-bras"><div class="planet"></div></div>
-        </div>
-
-        <!-- Titre central -->
-        <div id="overlay">
-          <p id="hint-text">👆</p>
-          <h2 id="cat-name">Mes outils</h2>
-          <p id="cat-sub">Tous les logiciels</p>
-          <div id="nav-dots"></div>
-        </div>
-      </div>
-
-      <!-- Lightbox -->
-      <div id="lightbox" aria-hidden="true">
-        <div id="lb-bg"></div>
-        <img id="lb-img" src="" alt="" />
-        <button id="lb-close" aria-label="Fermer">&#x2715;</button>
-      </div>
-    </section>
 
     <footer class="footer">
       <div class="footer-contenu">
@@ -972,7 +946,6 @@
         });
       })();
     </script>
-    <script src="js/skillsbgc.js"></script>
     <script src="js/chatbot.js"></script>
   </body>
 </html>
