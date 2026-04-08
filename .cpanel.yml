@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/wami9481/mercia.ikala-ni.fr/
+    - /bin/cp -R . $DEPLOYPATH
