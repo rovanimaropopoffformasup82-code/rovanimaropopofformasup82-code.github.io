@@ -64,10 +64,9 @@ RedirectMatch 404 /\.git
 
 
 # ── 5. Redirection vers https ──
-# À activer UNIQUEMENT une fois AutoSSL passé et le certificat valide.
-# Tant que le certificat est auto-signé, cette règle enverrait tous les
-# visiteurs sur un avertissement de sécurité.
-#
-# RewriteEngine On
-# RewriteCond %{HTTPS} off
-# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# Certificat Let's Encrypt valide depuis le 30/07/2026 : toute visite en
+# http bascule définitivement vers l'adresse sécurisée.
+
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
