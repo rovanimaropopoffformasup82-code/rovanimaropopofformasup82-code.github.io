@@ -23,6 +23,7 @@
     <meta name="twitter:description" content="CV de Mercia RANDRIANOME, conceptrice designer UI : expérience, réalisations, formation et compétences." />
     <meta name="twitter:image" content="https://portfolio-mercia.ikala-ni.fr/assets/images/og/og-mercia.jpg" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/accessibilite.css" />
     <style>
       .cv-page {
         display: flex;
@@ -156,7 +157,8 @@
       .cv-dl-btn {
         position: fixed;
         left: clamp(16px, 3vw, 28px);
-        bottom: clamp(16px, 3vw, 28px);
+        /* Décalé vers le haut : le bouton d'accessibilité occupe le coin */
+        bottom: calc(clamp(16px, 3vw, 28px) + 64px);
         z-index: 900;
         display: inline-flex;
         align-items: center;
@@ -417,6 +419,7 @@
     </a>
 
     <script src="js/main.js?v=2"></script>
+    <script src="js/accessibilite.js?v=1"></script>
     <script>
       document.getElementById("cvDl").addEventListener("click", function () {
         window.print();

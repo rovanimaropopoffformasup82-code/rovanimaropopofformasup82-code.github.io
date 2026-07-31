@@ -1,0 +1,192 @@
+/* ══════════════════════════════════════════════════════════════════════
+   RÉGLAGES D'ACCESSIBILITÉ
+   Bouton flottant + panneau de préférences, mémorisées dans le navigateur.
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* ── Bouton flottant (en bas à gauche, à l'opposé de WhatsApp) ── */
+.a11y-btn {
+  position: fixed;
+  left: clamp(16px, 3vw, 28px);
+  bottom: clamp(16px, 3vw, 28px);
+  z-index: 950;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--or, #c9a84c);
+  color: var(--noir-profond, #0d0d0d);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.a11y-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(201, 168, 76, 0.45);
+}
+.a11y-btn svg {
+  width: 28px;
+  height: 28px;
+}
+
+/* ── Panneau ── */
+.a11y-panneau {
+  position: fixed;
+  left: clamp(16px, 3vw, 28px);
+  bottom: calc(clamp(16px, 3vw, 28px) + 64px);
+  z-index: 951;
+  width: min(320px, calc(100vw - 32px));
+  padding: 1.4rem;
+  background-color: #141414;
+  border: 1px solid var(--or, #c9a84c);
+  border-radius: 14px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+}
+.a11y-panneau[hidden] {
+  display: none;
+}
+.a11y-panneau h2 {
+  font-family: var(--font-corps, sans-serif);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--or, #c9a84c);
+  font-weight: 600;
+  margin: 0 0 1rem;
+}
+
+.a11y-ligne {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.65rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.a11y-ligne:first-of-type {
+  border-top: none;
+}
+.a11y-ligne span {
+  font-family: var(--font-corps, sans-serif);
+  font-size: 0.9rem;
+  color: #e8e8e8;
+}
+
+/* Interrupteur */
+.a11y-switch {
+  flex-shrink: 0;
+  width: 46px;
+  height: 26px;
+  padding: 0;
+  border: 1px solid var(--gris-bordure, #2a2a2a);
+  border-radius: 50px;
+  background-color: #222;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+.a11y-switch::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: #888;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+.a11y-switch[aria-pressed="true"] {
+  background-color: rgba(201, 168, 76, 0.28);
+  border-color: var(--or, #c9a84c);
+}
+.a11y-switch[aria-pressed="true"]::after {
+  transform: translateX(20px);
+  background-color: var(--or, #c9a84c);
+}
+
+.a11y-reinit {
+  display: block;
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.6rem;
+  font-family: var(--font-corps, sans-serif);
+  font-size: 0.82rem;
+  color: #bdbdbd;
+  background-color: transparent;
+  border: 1px solid var(--gris-bordure, #2a2a2a);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.a11y-reinit:hover {
+  color: #fff;
+  border-color: var(--or, #c9a84c);
+}
+
+/* ══════════ EFFETS APPLIQUÉS À LA PAGE ══════════ */
+
+/* Texte agrandi : tout le site étant en rem, la base suffit */
+html.a11y-texte-1 { font-size: 112.5%; }
+html.a11y-texte-2 { font-size: 125%; }
+
+/* Contraste renforcé */
+html.a11y-contraste body {
+  background-color: #000;
+}
+html.a11y-contraste p,
+html.a11y-contraste li,
+html.a11y-contraste .carte-corps p,
+html.a11y-contraste .mini-corps p,
+html.a11y-contraste .sim-bloc p,
+html.a11y-contraste .sim-liste li,
+html.a11y-contraste .cc-intro,
+html.a11y-contraste .cv-entry p {
+  color: #f2f2f2;
+}
+html.a11y-contraste .carte-tags span,
+html.a11y-contraste .cv-chips span,
+html.a11y-contraste .sim-formats span,
+html.a11y-contraste .navframe-url,
+html.a11y-contraste .cc-delai,
+html.a11y-contraste .footer-copyright,
+html.a11y-contraste .lien-ext {
+  color: #dcdcdc;
+}
+html.a11y-contraste a {
+  color: #f5d97a;
+}
+html.a11y-contraste .carte-site,
+html.a11y-contraste .carte-mini,
+html.a11y-contraste .sim-action {
+  border-color: #6d5c2e;
+}
+
+/* Liens soulignés : repérables sans compter sur la couleur */
+html.a11y-liens main a,
+html.a11y-liens .footer a,
+html.a11y-liens .nav-liens a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Animations coupées */
+html.a11y-anim-off *,
+html.a11y-anim-off *::before,
+html.a11y-anim-off *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+
+@media (max-width: 560px) {
+  .a11y-btn {
+    width: 46px;
+    height: 46px;
+  }
+  .a11y-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+}
