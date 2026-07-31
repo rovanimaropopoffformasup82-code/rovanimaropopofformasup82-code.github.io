@@ -2,7 +2,7 @@
 
 E-portfolio de Mercia RANDRIANOME, conceptrice designer UI. Sites web, conception visuelle, SEO et accessibilité.
 
-En ligne : https://mercia.ikala-ni.fr
+En ligne : https://portfolio-mercia.ikala-ni.fr
 
 ## 1. Présentation
 
@@ -86,7 +86,7 @@ Pour convertir des images en WebP : glisser une image ou un dossier sur `tools/c
 
 ### o2switch (production actuelle)
 
-Déploiement automatique via `.cpanel.yml` et le Git Version Control de cPanel. Un `git push origin main` déclenche la mise en ligne sur `mercia.ikala-ni.fr`.
+Déploiement automatique via `.cpanel.yml` et le Git Version Control de cPanel. Un `git push` déclenche la mise en ligne sur `portfolio-mercia.ikala-ni.fr`.
 
 ### GitHub Pages (alternative)
 

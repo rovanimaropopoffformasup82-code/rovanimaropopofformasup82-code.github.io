@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mercia.ikala-ni.fr/sitemap.xml
+Sitemap: https://portfolio-mercia.ikala-ni.fr/sitemap.xml

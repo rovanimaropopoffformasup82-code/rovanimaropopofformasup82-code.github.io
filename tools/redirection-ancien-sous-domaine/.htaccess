@@ -1,0 +1,15 @@
+# ═══════════════════════════════════════════════════════════════════
+# À DÉPOSER DANS LE DOSSIER DE L'ANCIEN SOUS-DOMAINE mercia.ikala-ni.fr
+# (pas dans celui du portfolio)
+#
+# Rôle : renvoyer définitivement chaque visiteur et chaque robot vers
+# la nouvelle adresse, en conservant le chemin demandé.
+# Le code 301 dit à Google que le déménagement est définitif : c'est ce
+# qui transfère l'ancienneté et les liens existants vers le nouveau site.
+#
+# À faire avant : lancer AutoSSL sur les deux sous-domaines, sinon cette
+# redirection envoie les visiteurs sur un avertissement de certificat.
+# ═══════════════════════════════════════════════════════════════════
+
+RewriteEngine On
+RewriteRule ^(.*)$ https://portfolio-mercia.ikala-ni.fr/$1 [L,R=301]
