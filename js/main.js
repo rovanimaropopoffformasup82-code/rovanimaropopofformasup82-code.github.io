@@ -131,11 +131,6 @@ elementsAAnimer.forEach(function(element) {
         a.textContent = affiche || numero;
     });
 
-    // Formulaire de contact : l'adresse de destination est reconstruite ici
-    document.querySelectorAll('form[data-envoi]').forEach(function (f) {
-        const cible = lire(f.getAttribute('data-envoi'));
-        if (cible) f.action = cible;
-    });
 })();
 
 

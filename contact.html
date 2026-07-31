@@ -147,6 +147,15 @@
         font-size: 0.92rem;
         margin-bottom: 1.6rem;
       }
+      .cc-erreur {
+        background: rgba(180, 60, 45, 0.14);
+        border: 1px solid #c25243;
+        color: #f0a99e;
+        border-radius: 8px;
+        padding: 0.9rem 1.1rem;
+        font-size: 0.92rem;
+        margin-bottom: 1.6rem;
+      }
 
       @media (max-width: 520px) {
         .cc-row { grid-template-columns: 1fr; }
@@ -185,16 +194,10 @@
             </p>
 
             <!--
-                Envoi via FormSubmit (aucun backend). Activation : au premier
-                envoi, cliquer le lien de confirmation reçu par email.
+                Envoi traité par contact-envoi.php, hébergé sur le serveur.
+                L'adresse de destination n'apparaît donc pas dans cette page.
             -->
-            <form class="cc-form" method="POST" action="#" data-envoi="aHR0cHM6Ly9mb3Jtc3VibWl0LmNvL3JhbmRyaWFub21lbWVyY2lhQGdtYWlsLmNvbQ==">
-                <input type="hidden" name="_subject" value="Nouveau message depuis le portfolio">
-                <!-- Mise en page du mail reçu : box = encadré lisible, un champ par ligne -->
-                <input type="hidden" name="_template" value="box">
-                <!-- Accusé de réception envoyé automatiquement à la personne qui écrit -->
-                <input type="hidden" name="_autoresponse" value="Bonjour, j'ai bien reçu votre message et je vous remercie de m'avoir écrit. Je vous réponds sous 24 heures ouvrées. Je travaille du lundi au vendredi : je ne suis disponible ni le week-end ni les jours fériés, un message laissé vendredi soir trouvera donc sa réponse le lundi. En semaine, si votre demande est urgente, vous pouvez me joindre directement sur WhatsApp depuis mon site. À très vite. Mercia RANDRIANOME, conceptrice designer UI. portfolio-mercia.ikala-ni.fr">
-                <input type="hidden" name="_next" value="https://portfolio-mercia.ikala-ni.fr/contact.html?envoye=1">
+            <form class="cc-form" method="POST" action="contact-envoi.php">
                 <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
 
                 <div class="cc-row">
@@ -269,16 +272,38 @@
 
     <script src="js/main.js?v=2"></script>
     <script>
+      // Message affiché au retour du traitement PHP : confirmation ou erreur.
       (function () {
-        if (new URLSearchParams(location.search).get("envoye") !== "1") return;
+        var params = new URLSearchParams(location.search);
         var card = document.querySelector(".cc-card");
         var form = document.querySelector(".cc-form");
         if (!card || !form) return;
-        var ok = document.createElement("p");
-        ok.className = "cc-ok";
-        ok.setAttribute("role", "status");
-        ok.textContent = "Merci, votre message a bien été envoyé. Je vous réponds sous 24 h.";
-        card.insertBefore(ok, form);
+
+        var texte = null;
+        var classe = "cc-ok";
+
+        if (params.get("envoye") === "1") {
+          texte =
+            "Merci, votre message a bien été envoyé. Vous allez recevoir un accusé de réception par email. Je vous réponds sous 24 h ouvrées.";
+        } else if (params.has("erreur")) {
+          classe = "cc-erreur";
+          var raisons = {
+            champs: "Il manque le nom, l'email ou le message. Merci de compléter le formulaire.",
+            email: "L'adresse email saisie ne semble pas valide. Merci de la vérifier.",
+            frequence: "Un message vient déjà d'être envoyé. Patientez quelques instants avant de réessayer.",
+            methode: "L'envoi n'a pas abouti. Merci de renvoyer le formulaire."
+          };
+          texte =
+            raisons[params.get("erreur")] ||
+            "L'envoi n'a pas abouti. Vous pouvez me joindre sur WhatsApp en attendant.";
+        }
+
+        if (!texte) return;
+        var bloc = document.createElement("p");
+        bloc.className = classe;
+        bloc.setAttribute("role", "status");
+        bloc.textContent = texte;
+        card.insertBefore(bloc, form);
       })();
     </script>
 </body>
