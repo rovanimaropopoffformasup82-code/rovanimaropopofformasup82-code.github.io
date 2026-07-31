@@ -16,7 +16,7 @@
 
 // ── Réglages ──────────────────────────────────────────────────────────
 $DESTINATAIRE   = 'randrianomemercia@gmail.com';
-$EXPEDITEUR     = 'portfolio@ikala-ni.fr';   // adresse technique sur le domaine
+$EXPEDITEUR     = 'contact@ikala-ni.fr';   // adresse d'envoi sur le domaine
 $NOM_EXPEDITEUR = 'Portfolio Mercia';
 $SITE           = 'https://portfolio-mercia.ikala-ni.fr';
 $PAGE_CONTACT   = $SITE . '/contact.html';
@@ -199,30 +199,27 @@ envoyer(
 // ── 2. L'accusé de réception envoyé au visiteur ───────────────────────
 
 $corpsAccuse = '<p style="margin:0 0 16px;">Bonjour ' . h($nom) . ',</p>
-<p style="margin:0 0 16px;">J\'ai bien reçu votre message et je vous remercie de m\'avoir écrit. Je vous réponds sous 24 heures ouvrées.</p>
-<p style="margin:0 0 22px;">Je travaille du lundi au vendredi : je ne suis disponible ni le week-end ni les jours fériés. Un message laissé vendredi soir trouve donc sa réponse le lundi.</p>
+<p style="margin:0 0 24px;">J\'ai bien reçu votre message et je vous remercie de m\'avoir écrit. Je vous réponds sous 24 heures ouvrées.</p>
 
-<p style="margin:0 0 8px;font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8a8a;">Votre message</p>
+<p style="margin:0 0 8px;font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8a8a;">Ce que vous m\'avez écrit</p>
 <div style="padding:18px 20px;background-color:#faf9f7;border-left:3px solid #c9a84c;border-radius:0 8px 8px 0;">' . $messageHtml . '</div>
 
 <p style="margin:24px 0 0;">En attendant, vous pouvez parcourir mes réalisations :</p>
 <p style="margin:14px 0 0;">
-  <a href="' . $SITE . '/realisations.html" style="display:inline-block;background-color:#c9a84c;color:#0d0d0d;text-decoration:none;font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:bold;padding:13px 26px;border-radius:8px;">Voir mes réalisations</a>
+  <a href="' . $SITE . '/realisations.html" style="display:inline-block;background-color:#c9a84c;color:#0d0d0d;text-decoration:none;font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:bold;padding:13px 26px;border-radius:8px;">Découvrir mes réalisations</a>
 </p>
 <p style="margin:26px 0 0;">À très vite,<br><strong>Mercia RANDRIANOME</strong><br>Conceptrice designer UI</p>';
 
 $accuseTexte = "Bonjour $nom,\n\n"
     . "J'ai bien recu votre message et je vous remercie de m'avoir ecrit. "
     . "Je vous reponds sous 24 heures ouvrees.\n\n"
-    . "Je travaille du lundi au vendredi : je ne suis disponible ni le week-end ni les jours feries. "
-    . "Un message laisse vendredi soir trouve donc sa reponse le lundi.\n\n"
-    . "Votre message :\n$message\n\n"
+    . "Ce que vous m'avez ecrit :\n$message\n\n"
     . "A tres vite,\nMercia RANDRIANOME\nConceptrice designer UI\n$SITE\n";
 
 envoyer(
     $email,
-    'Votre message est bien arrivé - Mercia RANDRIANOME',
-    gabarit('Votre message est bien arrivé', $corpsAccuse, 'Ce message est automatique, mais vous pouvez y répondre : il arrive directement dans ma boîte. <a href="' . $SITE . '" style="color:#8a8a8a;">portfolio-mercia.ikala-ni.fr</a>'),
+    'Merci pour votre message - Mercia RANDRIANOME',
+    gabarit('Merci pour votre message', $corpsAccuse, 'Ce message est automatique, mais vous pouvez y répondre sans hésiter : il arrive directement dans ma boîte. <a href="' . $SITE . '" style="color:#8a8a8a;">portfolio-mercia.ikala-ni.fr</a>'),
     $accuseTexte,
     $EXPEDITEUR,
     'Mercia RANDRIANOME',
