@@ -12,4 +12,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/wami9481/mercia.ikala-ni.fr/
-    - /usr/bin/rsync -a --exclude='.git' --exclude='.gitignore' --exclude='.cpanel.yml' --exclude='_archives' --exclude='tools' --exclude='.vs' --exclude='CLAUDE.md' --exclude='MERCIA_BRIEF.md' --exclude='README.md' --exclude='projets/template-projet.html' --exclude='.well-known' --exclude='.htaccess' --exclude='cgi-bin' ./ $DEPLOYPATH
+    - /usr/bin/rsync -a --exclude='.git' --exclude='.gitignore' --exclude='.cpanel.yml' --exclude='_archives' --exclude='tools' --exclude='.vs' --exclude='CLAUDE.md' --exclude='MERCIA_BRIEF.md' --exclude='README.md' --exclude='projets/template-projet.html' --exclude='.well-known' --exclude='cgi-bin' ./ $DEPLOYPATH

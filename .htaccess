@@ -1,0 +1,73 @@
+# ═══════════════════════════════════════════════════════════════════
+# Portfolio Mercia RANDRIANOME - configuration Apache
+# ═══════════════════════════════════════════════════════════════════
+
+# ── 1. Rien de privé ne doit être lisible depuis le web ──
+
+# Pas de listing quand un dossier n'a pas d'index.html
+Options -Indexes
+
+# Tous les fichiers commençant par un point : .git, .gitignore, .cpanel.yml, .env
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+
+# Le dossier .git en entier, au cas où il atterrirait ici par erreur
+RedirectMatch 404 /\.git
+
+# Fichiers de travail qui n'ont rien à faire en ligne
+<FilesMatch "\.(md|yml|yaml|py|bat|sh|log|bak|zip)$">
+  Require all denied
+</FilesMatch>
+
+
+# ── 2. Compression : divise le poids des pages par trois environ ──
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+
+# ── 3. Cache navigateur : les visiteurs qui reviennent ne retéléchargent rien ──
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # Images et polices : un an, elles ne changent pas
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+
+  # CSS et JS : une semaine (le ?v=2 sur main.js force la mise à jour au besoin)
+  ExpiresByType text/css "access plus 1 week"
+  ExpiresByType application/javascript "access plus 1 week"
+
+  # Pages HTML : jamais mises en cache longtemps, sinon les corrections tardent
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+
+# ── 4. Sécurité de base ──
+
+<IfModule mod_headers.c>
+  # Empêche le navigateur de deviner le type d'un fichier
+  Header set X-Content-Type-Options "nosniff"
+  # Interdit l'affichage du site dans une iframe d'un autre domaine
+  Header set X-Frame-Options "SAMEORIGIN"
+  # Limite les informations envoyées aux sites externes
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+
+# ── 5. Redirection vers https ──
+# À activer UNIQUEMENT une fois AutoSSL passé et le certificat valide.
+# Tant que le certificat est auto-signé, cette règle enverrait tous les
+# visiteurs sur un avertissement de sécurité.
+#
+# RewriteEngine On
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
