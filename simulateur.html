@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SocialSim, simulateur de réseaux sociaux | Mercia RANDRIANOME</title>
+    <meta
+      name="description"
+      content="SocialSim, l'outil que j'ai développé pour prévisualiser une publication sur Facebook, Instagram, LinkedIn et TikTok avant de la mettre en ligne."
+    />
+    <link rel="canonical" href="https://portfolio-mercia.ikala-ni.fr/simulateur.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="SocialSim, simulateur de réseaux sociaux" />
+    <meta property="og:description" content="Écrire une publication une fois, voir son rendu sur cinq formats avant de publier." />
+    <meta property="og:url" content="https://portfolio-mercia.ikala-ni.fr/simulateur.html" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:image" content="https://portfolio-mercia.ikala-ni.fr/assets/images/og/og-mercia.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Mercia RANDRIANOME, conceptrice designer UI - sites web, conception visuelle, SEO et accessibilité" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SocialSim, simulateur de réseaux sociaux" />
+    <meta name="twitter:description" content="Écrire une publication une fois, voir son rendu sur cinq formats avant de publier." />
+    <meta name="twitter:image" content="https://portfolio-mercia.ikala-ni.fr/assets/images/og/og-mercia.jpg" />
+
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      /* ══════════ PAGE SIMULATEUR ══════════ */
+      .sim-intro {
+        padding: 11rem var(--padding-page) 2.5rem;
+        background-color: var(--noir-profond);
+        text-align: center;
+      }
+      .sim-intro .suptitre {
+        font-size: 0.72rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--or);
+        font-weight: 600;
+        margin-bottom: 0.9rem;
+      }
+      .sim-intro h1 {
+        font-size: clamp(2.2rem, 5vw, 3.4rem);
+      }
+      .sim-intro p {
+        max-width: 640px;
+        margin: 1.2rem auto 0;
+        line-height: 1.75;
+      }
+
+      .sim-zone {
+        padding: 1rem var(--padding-page) 5rem;
+        background-color: var(--noir-profond);
+      }
+      .sim-corps {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      /* Aperçu dans un cadre navigateur, comme les fiches projet */
+      .sim-apercu {
+        background-color: #181818;
+        border: 1px solid var(--gris-bordure);
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 3rem;
+      }
+      .sim-apercu-barre {
+        height: 34px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 0 12px;
+        border-bottom: 1px solid #1e1e1e;
+      }
+      .sim-dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+      }
+      .sim-dot.r { background: #ff5f57; }
+      .sim-dot.y { background: #ffbd2e; }
+      .sim-dot.g { background: #28c940; }
+      .sim-url {
+        margin-left: 10px;
+        font-family: monospace;
+        font-size: 0.7rem;
+        color: #555;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .sim-apercu img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      /* Si la capture ne charge pas, le cadre reste lisible */
+      .sim-apercu-vide {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 260px;
+        color: rgba(201, 168, 76, 0.55);
+        font-family: var(--font-titre);
+        font-size: 1.4rem;
+      }
+
+      .sim-bloc {
+        margin-bottom: 2.6rem;
+      }
+      .sim-bloc h2 {
+        font-size: 0.78rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--or);
+        font-weight: 600;
+        margin-bottom: 1.1rem;
+        padding-bottom: 0.6rem;
+        border-bottom: 1px solid var(--gris-bordure);
+      }
+      .sim-bloc p {
+        line-height: 1.8;
+        margin-bottom: 1rem;
+      }
+      .sim-liste {
+        list-style: none;
+        display: grid;
+        gap: 0.9rem;
+      }
+      .sim-liste li {
+        position: relative;
+        padding-left: 1.6rem;
+        line-height: 1.7;
+        color: var(--gris-clair);
+      }
+      .sim-liste li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.65em;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: var(--or);
+      }
+      .sim-liste strong {
+        color: var(--blanc-pur);
+        font-weight: 600;
+      }
+
+      .sim-formats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1.2rem;
+      }
+      .sim-formats span {
+        font-size: 0.78rem;
+        color: var(--gris-clair);
+        background-color: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--gris-bordure);
+        border-radius: 4px;
+        padding: 0.35rem 0.75rem;
+      }
+
+      /* Bloc d'action final */
+      .sim-action {
+        margin-top: 3.2rem;
+        padding: 2.4rem;
+        text-align: center;
+        background-color: var(--gris-fonce);
+        border: 1px solid rgba(201, 168, 76, 0.35);
+        border-radius: 14px;
+      }
+      .sim-action p {
+        color: var(--gris-clair);
+        margin-bottom: 1.6rem;
+      }
+      .sim-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        background-color: var(--or);
+        color: var(--noir-profond);
+        font-family: var(--font-corps);
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 8px;
+        padding: 0.95rem 2rem;
+        transition: var(--transition-rapide);
+      }
+      .sim-btn:hover {
+        background-color: var(--or-clair);
+        transform: translateY(-2px);
+      }
+      .sim-secondaire {
+        display: block;
+        margin-top: 1.2rem;
+        font-size: 0.88rem;
+        color: var(--gris-texte);
+      }
+      .sim-secondaire:hover { color: var(--blanc-pur); }
+
+      @media (prefers-reduced-motion: reduce) {
+        .sim-btn:hover { transform: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <header class="header">
+      <div class="nav">
+        <a href="index.html" class="nav-logo">MERCIA<span>.</span></a>
+        <a href="contact.html" class="nav-cta">Me contacter</a>
+        <div class="nav-burger" aria-label="Menu" role="button" tabindex="0">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+      <nav class="nav-sub" aria-label="Navigation principale">
+        <ul class="nav-liens">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="realisations.html">Réalisations</a></li>
+          <li><a href="apropos.html">À propos</a></li>
+          <li><a href="cv.html">CV</a></li>
+          <li><a href="simulateur.html" class="actif" aria-current="page">Simulateur réseaux</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="contenu">
+      <section class="sim-intro">
+        <p class="suptitre">Outil</p>
+        <h1>SocialSim, simulateur de réseaux sociaux</h1>
+        <p>
+          Un outil que j'ai développé et que je mets à disposition. On écrit sa
+          publication une seule fois, on ajoute son visuel, et on voit
+          immédiatement le rendu final sur chaque réseau, avant de publier quoi
+          que ce soit.
+        </p>
+      </section>
+
+      <div class="sim-zone">
+        <div class="sim-corps">
+          <div class="sim-apercu">
+            <div class="sim-apercu-barre">
+              <span class="sim-dot r"></span><span class="sim-dot y"></span><span class="sim-dot g"></span>
+              <span class="sim-url">simul-reseaux-sociaux.ikala-ni.fr</span>
+            </div>
+            <img src="assets/images/projets/socialsim-cap.webp" alt="Interface de SocialSim : menu latéral, onglets Facebook, Instagram post et reel, LinkedIn et TikTok, et zone de rédaction de la publication" width="1200" height="430" />
+            <noscript><div class="sim-apercu-vide">SocialSim</div></noscript>
+          </div>
+
+          <section class="sim-bloc">
+            <h2>À quoi ça sert</h2>
+            <p>
+              Une publication ne s'affiche pas de la même façon selon le réseau.
+              Un texte passe entier sur LinkedIn mais se retrouve coupé sur
+              Instagram. Une image bien cadrée en carré est rognée en format
+              vertical. On s'en aperçoit en général une fois la publication
+              partie, quand il est trop tard pour la corriger proprement.
+            </p>
+            <p>
+              SocialSim sert à voir le résultat avant. On compose, on regarde,
+              on ajuste, et on ne publie que lorsque le rendu est bon sur tous
+              les formats visés.
+            </p>
+            <div class="sim-formats">
+              <span>Facebook</span><span>Instagram post</span><span>Instagram reel</span><span>LinkedIn</span><span>TikTok</span>
+            </div>
+          </section>
+
+          <section class="sim-bloc">
+            <h2>Ce que l'outil propose</h2>
+            <ul class="sim-liste">
+              <li><strong>Cinq formats côte à côte</strong> - le même contenu rendu en Facebook, Instagram en post et en reel, LinkedIn et TikTok.</li>
+              <li><strong>Un profil personnalisable</strong> - nom affiché, photo de profil, couleur d'avatar, pour que l'aperçu ressemble au vrai compte.</li>
+              <li><strong>Le texte et l'image réels</strong> - on colle sa publication et son visuel, pas un contenu d'exemple.</li>
+              <li><strong>Le travail conservé</strong> - on peut fermer l'onglet et revenir plus tard, tout est encore là.</li>
+              <li><strong>Rien n'est envoyé nulle part</strong> - tout se passe dans le navigateur, aucune donnée ne part sur un serveur, aucun compte à créer.</li>
+            </ul>
+          </section>
+
+          <section class="sim-bloc">
+            <h2>Pourquoi je l'ai construit</h2>
+            <p>
+              En accompagnant mes clients sur leur communication, je repassais
+              trop souvent derrière des publications mal cadrées ou tronquées.
+              Plutôt que d'expliquer les contraintes de chaque réseau à chaque
+              fois, j'ai préféré construire l'outil qui les montre.
+            </p>
+            <p>
+              Il est développé en HTML, CSS et JavaScript natifs, sans
+              framework, et la sauvegarde locale passe par IndexedDB.
+            </p>
+          </section>
+
+          <div class="sim-action">
+            <p>L'outil est libre d'accès, sans inscription.</p>
+            <a href="https://simul-reseaux-sociaux.ikala-ni.fr" target="_blank" rel="noopener" class="sim-btn">
+              Ouvrir le simulateur<span class="visually-hidden"> (nouvelle fenêtre)</span>
+            </a>
+            <a href="contact.html" class="sim-secondaire">Une question sur l'outil ? Écrivez-moi</a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-contenu">
+        <p class="footer-logo">MERCIA<span>.</span></p>
+        <div class="footer-liens">
+          <a href="index.html">Accueil</a>
+          <a href="apropos.html">À propos</a>
+          <a href="cv.html">CV</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <p class="footer-copyright">© 2026 Mercia RANDRIANOME - Conceptrice Designer UI</p>
+      </div>
+    </footer>
+
+    <a class="wa-float" href="https://wa.me/33667955602" target="_blank" rel="noopener" aria-label="Me contacter sur WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.5 14.4c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.8 1.2 3 .1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.4z M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2zm0 18.3c-1.5 0-3-.4-4.3-1.2l-.3-.2-2.9.8.8-2.8-.2-.3A8.3 8.3 0 1 1 12 20.3z"/>
+      </svg>
+      <span class="wa-label">WhatsApp</span>
+    </a>
+
+    <script src="js/main.js?v=2"></script>
+  </body>
+</html>
