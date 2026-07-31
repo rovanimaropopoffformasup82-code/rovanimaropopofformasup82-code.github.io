@@ -86,7 +86,23 @@ Pour convertir des images en WebP : glisser une image ou un dossier sur `tools/c
 
 ### o2switch (production actuelle)
 
-Déploiement automatique via `.cpanel.yml` et le Git Version Control de cPanel. Un `git push` déclenche la mise en ligne sur `portfolio-mercia.ikala-ni.fr`.
+Une seule commande met tout à jour :
+
+```
+git push
+```
+
+Elle envoie les commits sur GitHub **et** sur le dépôt hébergé chez o2switch. Ce second envoi déclenche automatiquement le déploiement décrit dans `.cpanel.yml` : un `rsync` copie les fichiers du site dans `/home/wami9481/Portfolio-Mercia.ikala-ni.fr/`, en imposant les permissions Unix (dossiers 755, fichiers 644) et en excluant tout ce qui ne doit pas être public.
+
+Adresse en ligne : `portfolio-mercia.ikala-ni.fr`
+
+**Prérequis côté serveur, déjà en place :**
+
+- l'adresse IP de la connexion est autorisée dans cPanel > Autorisation SSH (port 22)
+- la clé publique `id_ed25519_o2switch` est importée et autorisée dans cPanel > Accès SSH
+- le dépôt `/home/wami9481/repositories/portfolio-mercia` est créé dans Git Version Control, branche `main`
+
+**Si un jour `git push` répond « connection timed out » :** c'est presque toujours l'adresse IP de la box qui a changé. Il suffit de la remettre à jour dans cPanel > Autorisation SSH.
 
 ### GitHub Pages (alternative)
 
