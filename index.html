@@ -3,46 +3,114 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mercia RANDRIANOME | Conceptrice Designer UI</title>
     <meta
       name="description"
-      content="Mercia RANDRIANOME — Designer UI & Intégratrice Web. Sites WordPress, maquettes Figma, identité visuelle."
+      content="Mercia RANDRIANOME, Conceptrice Designer UI à Moissac (82). Sites WordPress, WooCommerce, MODX, identité visuelle. Freelance et poste."
     />
-    <title>Mercia RANDRIANOME — Designer UI & Intégratrice Web</title>
+    <link rel="canonical" href="https://mercia.ikala-ni.fr/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Mercia RANDRIANOME | Conceptrice Designer UI" />
+    <meta
+      property="og:description"
+      content="Sites WordPress, WooCommerce, MODX et identité visuelle. Freelance et poste, basée à Moissac (82)."
+    />
+    <meta property="og:url" content="https://mercia.ikala-ni.fr/" />
+    <meta property="og:image" content="https://mercia.ikala-ni.fr/assets/images/og/og-mercia.jpg" />
+    <meta property="og:locale" content="fr_FR" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mercia RANDRIANOME | Conceptrice Designer UI" />
+    <meta name="twitter:description" content="Mercia RANDRIANOME, Conceptrice Designer UI à Moissac (82). Sites WordPress, WooCommerce, MODX, identité visuelle. Freelance et poste." />
+    <meta name="twitter:image" content="https://mercia.ikala-ni.fr/assets/images/og/og-mercia.jpg" />
+    <!-- JSON-LD Person -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Rovanimaro El-Mercia RANDRIANOME",
+        "alternateName": "Mercia RANDRIANOME",
+        "jobTitle": "Conceptrice Designer UI",
+        "url": "https://mercia.ikala-ni.fr/",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Moissac",
+          "postalCode": "82200",
+          "addressCountry": "FR"
+        },
+        "knowsAbout": [
+          "WordPress",
+          "WooCommerce",
+          "MODX Revolution",
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "Figma",
+          "Illustrator",
+          "Accessibilité web",
+          "SEO"
+        ]
+      }
+    </script>
+
     <link rel="stylesheet" href="css/style.css" />
     <style>
+      /* ══════════ ACCUEIL — styles spécifiques ══════════ */
+
+      main {
+        display: block;
+      }
+
       /* ── HERO ── */
       .hero {
-        min-height: 100vh;
+        min-height: 88vh;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         justify-content: center;
         align-items: center;
-        text-align: center;
-        padding: 8rem var(--padding-page) 6rem;
-        background-color: #0d0d0d;
+        gap: clamp(2rem, 5vw, 5rem);
+        text-align: left;
+        padding: 9rem var(--padding-page) 4rem;
+        background-color: var(--noir-profond);
         position: relative;
         overflow: clip;
+      }
+
+      .hero > *:not(.orbit-systeme) {
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-content {
+        flex: 1;
+        min-width: 0;
+        max-width: 560px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
       }
 
       .hero-tag {
         display: inline-block;
         font-family: var(--font-corps);
-        font-size: 0.75rem;
-        font-weight: 500;
+        font-size: 0.72rem;
+        font-weight: 600;
         letter-spacing: 0.2em;
         text-transform: uppercase;
         color: var(--or);
         border: 1px solid rgba(201, 168, 76, 0.3);
         padding: 0.4rem 1rem;
         border-radius: 2px;
-        margin-bottom: 3rem;
+        margin-bottom: 2.4rem;
       }
 
       .hero h1 {
-        font-size: clamp(2.8rem, 7vw, 5.5rem);
+        font-size: clamp(2.6rem, 6vw, 4.6rem);
         font-weight: 800;
-        color: #ffffff;
-        line-height: 1.05;
+        color: var(--blanc-pur);
+        line-height: 1.06;
         margin-bottom: 0;
       }
 
@@ -52,900 +120,797 @@
 
       .hero h1 .titre {
         display: block;
-        font-size: 0.42em;
+        font-family: var(--font-corps);
+        font-size: 0.3em;
         color: var(--or);
         font-weight: 600;
-        letter-spacing: 0.05em;
-        margin-top: 1rem;
+        letter-spacing: 0.04em;
+        margin-top: 1.2rem;
+        line-height: 1.5;
       }
 
       .hero-accroche {
-        font-size: clamp(1rem, 2vw, 1.2rem);
-        color: #999;
-        max-width: 520px;
-        margin: 2.8rem auto 3.6rem;
-        line-height: 1.9;
+        font-size: clamp(1rem, 2vw, 1.15rem);
+        color: var(--gris-clair);
+        max-width: 480px;
+        margin: 2.2rem 0 2.8rem;
+        line-height: 1.85;
       }
 
       .hero-boutons {
         display: flex;
-        gap: 1.2rem;
-        justify-content: center;
+        gap: 1rem;
         flex-wrap: wrap;
       }
 
       .btn-hero {
-        font-family: var(--font-titre);
+        font-family: var(--font-corps);
         font-size: 0.9rem;
         font-weight: 600;
-        padding: 0.85rem 2rem;
+        padding: 0.85rem 1.8rem;
         border-radius: 3px;
         transition: var(--transition-rapide);
-        letter-spacing: 0.03em;
+        letter-spacing: 0.02em;
       }
 
       .btn-hero-or {
         background-color: var(--or);
-        color: #0d0d0d;
+        color: var(--noir-profond);
       }
-
       .btn-hero-or:hover {
         background-color: var(--or-clair);
         transform: translateY(-2px);
       }
-
       .btn-hero-contour {
         border: 1px solid var(--or);
         color: var(--or);
         background: transparent;
       }
-
       .btn-hero-contour:hover {
         background-color: rgba(201, 168, 76, 0.1);
         transform: translateY(-2px);
       }
 
-      /* ── PARCOURS ── */
-      .parcours {
-        background-color: #0d0d0d;
-        padding: clamp(3.75rem, 8vw, 6.25rem) var(--padding-page);
-        border-top: 1px solid #1e1e1e;
+      /* Portrait */
+      .hero-portrait {
+        flex-shrink: 0;
+        width: clamp(180px, 22vw, 300px);
+        aspect-ratio: 3 / 4;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid rgba(201, 168, 76, 0.25);
+        box-shadow: 0 0 50px rgba(201, 168, 76, 0.08);
+      }
+      .hero-portrait img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
 
-      .parcours-titre {
-        text-align: center;
-        font-size: 0.75rem;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: var(--or);
-        margin-bottom: 3rem;
-      }
-
-      .parcours-liste {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 1.5rem;
-        max-width: 960px;
-        margin: 0 auto;
-      }
-
-      .parcours-item {
-        background-color: #141414;
-        border: 1px solid #222;
-        border-left: 3px solid var(--or);
-        padding: 1.4rem 1.6rem;
-        border-radius: 2px;
-      }
-
-      .parcours-item .periode {
-        font-size: 0.72rem;
-        color: var(--or);
-        font-weight: 600;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        margin-bottom: 0.5rem;
-      }
-
-      .parcours-item .poste {
-        font-family: var(--font-titre);
-        font-size: 1rem;
-        font-weight: 700;
-        color: #fff;
-        margin-bottom: 0.3rem;
-      }
-
-      .parcours-item .lieu {
-        font-size: 0.82rem;
-        color: #777;
-      }
-
-      /* ── SYSTÈME ORBITAL ── */
+      /* Système orbital décoratif */
       .orbit-systeme {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: min(700px, 90vmin);
-        height: min(700px, 90vmin);
+        width: min(680px, 88vmin);
+        height: min(680px, 88vmin);
         pointer-events: none;
         z-index: 0;
       }
-
-      /* Anneau principal */
       .orbit-anneau {
         position: absolute;
         inset: 0;
         border-radius: 50%;
-        border: 1px solid rgba(201, 168, 76, 0.18);
+        border: 1px solid rgba(201, 168, 76, 0.15);
       }
-
-      /* Anneau secondaire intérieur (pointillé) */
       .orbit-anneau::before {
         content: "";
         position: absolute;
-        inset: 48px;
+        inset: 46px;
         border-radius: 50%;
-        border: 1px dashed rgba(201, 168, 76, 0.07);
+        border: 1px dashed rgba(201, 168, 76, 0.06);
       }
-
-      /* Bras invisible qui tourne (porte la planète) */
       .orbit-bras {
         position: absolute;
         inset: 0;
-        animation: tourner 9s linear infinite;
+        animation: tourner 12s linear infinite;
       }
-
       @keyframes tourner {
         to {
           transform: rotate(360deg);
         }
       }
-
-      /* La planète */
       .planet {
         position: absolute;
-        top: -13px;
+        top: -11px;
         left: 50%;
         transform: translateX(-50%);
-        width: 26px;
-        height: 26px;
-        border-radius: 50%;
-        background: radial-gradient(
-          circle at 35% 30%,
-          #f0d87a,
-          #c9a84c 55%,
-          #7a5e1a
-        );
-        box-shadow:
-          0 0 16px rgba(201, 168, 76, 0.9),
-          0 0 40px rgba(201, 168, 76, 0.35),
-          inset -4px -3px 8px rgba(0, 0, 0, 0.5);
-        animation: no-spin 9s linear infinite;
-      }
-
-      /* Contre-rotation pour que la planète reste "droite" visuellement */
-      @keyframes no-spin {
-        to {
-          transform: translateX(-50%) rotate(-360deg);
-        }
-      }
-
-      /* Le contenu du hero passe au-dessus du système orbital */
-      .hero > *:not(.orbit-systeme) {
-        position: relative;
-        z-index: 1;
-      }
-
-      /* ── SCROLL HINT ── */
-      .scroll-hint {
-        position: absolute;
-        /* suit le rayon de l'orbite : min(350px, 45vmin) + 40px de gap */
-        top: calc(50% + min(350px, 45vmin) + 40px);
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.6rem;
-        z-index: 1;
-        animation: hint-apparition 1s ease 1.2s both;
-      }
-
-      @keyframes hint-apparition {
-        from {
-          opacity: 0;
-          transform: translateX(-50%) translateY(10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(-50%) translateY(0);
-        }
-      }
-
-      /* scroll-hint suit maintenant l'orbite via min(350px,45vmin) — pas besoin de MQ */
-
-      .scroll-hint-label {
-        font-size: 0.6rem;
-        letter-spacing: 0.25em;
-        text-transform: uppercase;
-        color: rgba(201, 168, 76, 0.5);
-        font-weight: 600;
-      }
-
-      /* Souris */
-      .scroll-mouse {
         width: 22px;
-        height: 34px;
-        border: 1.5px solid rgba(201, 168, 76, 0.4);
-        border-radius: 11px;
-        display: flex;
-        justify-content: center;
-        padding-top: 5px;
+        height: 22px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 35% 30%, #f0d87a, #c9a84c 55%, #7a5e1a);
+        box-shadow: 0 0 16px rgba(201, 168, 76, 0.8), 0 0 40px rgba(201, 168, 76, 0.3);
       }
 
-      /* Molette qui descend */
-      .scroll-wheel {
-        width: 3px;
-        height: 7px;
-        background: var(--or);
-        border-radius: 2px;
-        animation: molette 1.8s ease-in-out infinite;
-      }
-
-      @keyframes molette {
-        0% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-        60% {
-          opacity: 0;
-          transform: translateY(10px);
-        }
-        61% {
-          opacity: 0;
-          transform: translateY(0);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      /* orbit-systeme utilise min(700px,90vmin) — responsive sans MQ */
-      @media (max-width: 600px) {
-        .hero-boutons {
-          flex-direction: column;
-          align-items: center;
-        }
-        .btn-hero {
-          width: 100%;
-          max-width: 300px;
-          text-align: center;
-        }
-      }
-
-      /* ── HERO SPLIT : texte gauche + vidéo droite ── */
-      .hero {
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        gap: clamp(2rem, 4vw, 5rem);
-        text-align: left;
-        overflow-x: clip; /* bloque le débordement horizontal des coins de l'orbit-bras en rotation */
-      }
-
-      .hero-content {
-        flex: 1;
-        min-width: 0;
-        max-width: 540px;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .hero-boutons {
-        justify-content: flex-start;
-      }
-
-      /* Vidéo profil */
-      .hero-video-wrap {
-        flex-shrink: 0;
-        width: clamp(160px, 18vw, 280px);
-        aspect-ratio: 9/16;
-        border-radius: 16px;
-        overflow: hidden;
-        border: 1px solid rgba(201, 168, 76, 0.2);
-        box-shadow: 0 0 40px rgba(201, 168, 76, 0.07);
-      }
-
-      .hero-video-wrap video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-      }
-
-      /* Mobile : colonne, vidéo au-dessus */
       @media (max-width: 820px) {
         .hero {
           flex-direction: column;
           text-align: center;
-          gap: 2rem;
+          gap: 2.4rem;
+          padding-top: 8rem;
         }
         .hero-content {
           align-items: center;
           max-width: 100%;
         }
+        .hero-accroche {
+          margin-left: auto;
+          margin-right: auto;
+        }
         .hero-boutons {
           justify-content: center;
         }
-        .hero-video-wrap {
-          width: clamp(120px, 38vw, 180px);
+        .hero-portrait {
           order: -1;
+          width: clamp(150px, 44vw, 220px);
         }
       }
 
-      /* ── SCÈNE PARCOURS ── */
-      .parcours-scene {
-        position: relative;
-        height: 80px;
-        max-width: 960px;
-        margin: 0 auto 1.8rem;
+      /* ── À LA UNE (projet phare + vignettes) ── */
+      .alaune {
+        background-color: var(--noir-profond);
+        border-top: 1px solid var(--gris-bordure);
+        padding: clamp(3.5rem, 8vw, 6rem) var(--padding-page);
+      }
+      .alaune-entete {
+        max-width: 1150px;
+        margin: 0 auto 2.4rem;
+      }
+      .alaune-suptitre {
+        font-size: 0.72rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--or);
+        font-weight: 600;
+        margin-bottom: 0.8rem;
+      }
+      .alaune-entete h2 {
+        font-size: clamp(1.9rem, 4vw, 2.8rem);
+      }
+      .alaune-entete p {
+        max-width: 560px;
+        margin-top: 0.8rem;
       }
 
-      .parcours-rail {
+      /* Cadre navigateur réutilisable */
+      .frame {
+        background-color: #181818;
+        border: 1px solid var(--gris-bordure);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .frame-barre {
+        height: 32px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 0 12px;
+        border-bottom: 1px solid #1e1e1e;
+      }
+      .frame-dot { width: 9px; height: 9px; border-radius: 50%; }
+      .frame-dot.r { background: #ff5f57; }
+      .frame-dot.y { background: #ffbd2e; }
+      .frame-dot.g { background: #28c940; }
+      .frame-url {
+        margin-left: 10px;
+        font-family: monospace;
+        font-size: 0.68rem;
+        color: #555;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .frame-ecran {
+        aspect-ratio: 16 / 10;
+        overflow: hidden;
+        background: #0d0d0d;
+      }
+      .frame-ecran img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+      }
+
+      /* Projet phare */
+      .feature {
+        max-width: 1150px;
+        margin: 0 auto 2.6rem;
+        display: grid;
+        grid-template-columns: 1.25fr 1fr;
+        gap: 2.4rem;
+        align-items: center;
+      }
+      .feature-corps .badge {
+        display: inline-block;
+        font-size: 0.64rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: var(--or);
+        border: 1px solid rgba(201, 168, 76, 0.4);
+        border-radius: 3px;
+        padding: 0.24rem 0.6rem;
+        margin-bottom: 1rem;
+      }
+      .feature-corps h3 {
+        font-size: clamp(1.6rem, 3vw, 2.1rem);
+        margin-bottom: 0.7rem;
+      }
+      .feature-corps p {
+        font-size: 0.98rem;
+        line-height: 1.75;
+        margin-bottom: 1.4rem;
+      }
+      .feature-stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.8rem;
+        margin-bottom: 1.6rem;
+      }
+      .feature-stats div {
+        display: flex;
+        flex-direction: column;
+      }
+      .feature-stats .val {
+        font-family: var(--font-titre);
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--blanc-pur);
+        line-height: 1;
+      }
+      .feature-stats .lab {
+        font-size: 0.74rem;
+        color: var(--gris-texte);
+        margin-top: 0.35rem;
+      }
+      .feature-actions {
+        display: flex;
+        gap: 1.3rem;
+        align-items: center;
+      }
+      .lien-or {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--or);
+      }
+      .lien-or:hover { color: var(--or-clair); }
+      .lien-gris { font-size: 0.9rem; color: var(--gris-texte); }
+      .lien-gris:hover { color: var(--blanc-pur); }
+
+      /* Vignettes des autres sites */
+      .vignettes {
+        max-width: 1150px;
+        margin: 0 auto 2.4rem;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.1rem;
+      }
+      .vignette {
+        display: block;
+        background-color: var(--gris-fonce);
+        border: 1px solid var(--gris-bordure);
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.25s ease, border-color 0.25s ease;
+      }
+      .vignette:hover {
+        transform: translateY(-3px);
+        border-color: rgba(201, 168, 76, 0.5);
+      }
+      .vignette-img {
+        aspect-ratio: 16 / 10;
+        overflow: hidden;
+        background: #0d0d0d;
+      }
+      .vignette-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+      }
+      .vignette-nom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.75rem 0.9rem;
+      }
+      .vignette-nom strong {
+        font-family: var(--font-titre);
+        font-size: 0.92rem;
+        font-weight: 700;
+        color: var(--blanc-pur);
+      }
+      .vignette-nom span {
+        font-size: 0.66rem;
+        color: var(--gris-texte);
+      }
+
+      .alaune-cta {
+        max-width: 1150px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .btn-tout {
+        display: inline-block;
+        font-family: var(--font-corps);
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: var(--or);
+        border: 1px solid var(--or);
+        border-radius: 3px;
+        padding: 0.8rem 2rem;
+        transition: var(--transition-rapide);
+      }
+      .btn-tout:hover {
+        background-color: rgba(201, 168, 76, 0.1);
+        transform: translateY(-2px);
+      }
+
+      @media (max-width: 860px) {
+        .feature { grid-template-columns: 1fr; gap: 1.6rem; }
+        .vignettes { grid-template-columns: repeat(2, 1fr); }
+      }
+
+      /* ── PARCOURS + enfant qui grandit ── */
+      .parcours {
+        background-color: var(--noir-secondaire);
+        padding: clamp(3.5rem, 8vw, 6rem) var(--padding-page);
+        border-top: 1px solid var(--gris-bordure);
+      }
+      .parcours-suptitre {
+        text-align: center;
+        font-size: 0.72rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--or);
+        font-weight: 600;
+        margin-bottom: 2.6rem;
+      }
+      .parcours-wrapper {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      /* Scène de l'enfant qui grandit (décoratif) */
+      .grow-scene {
+        position: relative;
+        height: 90px;
+        margin-bottom: 1.6rem;
+      }
+      .grow-rail {
         position: absolute;
-        top: 62%;
-        left: 3%;
-        right: 3%;
+        bottom: 18px;
+        left: 4%;
+        right: 4%;
         height: 1px;
         background: repeating-linear-gradient(
           to right,
-          rgba(201, 168, 76, 0.22) 0px,
-          rgba(201, 168, 76, 0.22) 5px,
-          transparent 5px,
-          transparent 13px
+          rgba(201, 168, 76, 0.25) 0 6px,
+          transparent 6px 14px
         );
       }
-
-      .parcours-stop {
+      .grow-stop {
         position: absolute;
-        top: 62%;
+        bottom: 18px;
         width: 7px;
         height: 7px;
-        border: 1.5px solid rgba(201, 168, 76, 0.35);
+        border: 1.5px solid rgba(201, 168, 76, 0.4);
         border-radius: 50%;
-        transform: translate(-50%, -50%);
-        transition:
-          background 0.3s,
-          border-color 0.3s;
+        transform: translate(-50%, 50%);
+        transition: background 0.3s, border-color 0.3s;
       }
-
-      .parcours-stop.actif {
+      .grow-stop.actif {
         background: var(--or);
         border-color: var(--or);
         box-shadow: 0 0 8px rgba(201, 168, 76, 0.6);
       }
 
-      /* Personnage */
-      .scene-perso {
+      /* Le personnage : grandit selon --taille */
+      .grow-perso {
         position: absolute;
-        top: 62%;
-        left: 12.5%;
-        transform: translate(-50%, -100%);
-        transition: left 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+        bottom: 18px;
+        left: 10%;
+        transform: translateX(-50%);
+        transform-origin: bottom center;
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding-bottom: 4px;
+        transition: left 0.9s cubic-bezier(0.4, 0, 0.2, 1);
       }
-
-      .perso-bulle {
-        font-size: 15px;
-        line-height: 1;
-        margin-bottom: 3px;
-        opacity: 0;
-        transform: translateY(5px);
-        transition:
-          opacity 0.3s ease,
-          transform 0.3s ease;
+      .grow-figure {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transform: scale(var(--taille, 0.5));
+        transform-origin: bottom center;
+        transition: transform 0.9s cubic-bezier(0.34, 1.3, 0.5, 1);
       }
-
-      .perso-bulle.show {
-        opacity: 1;
-        transform: translateY(0);
-        animation: bulle-bob 2s ease-in-out infinite;
-      }
-
-      @keyframes bulle-bob {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-3px);
-        }
-      }
-
-      .perso-tete {
-        width: 11px;
-        height: 11px;
+      .grow-tete {
+        width: 12px;
+        height: 12px;
         border-radius: 50%;
-        background: #0d0d0d;
-        border: 1.5px solid var(--or);
+        background: var(--noir-secondaire);
+        border: 1.6px solid var(--or);
       }
-
-      .perso-corps {
+      .grow-corps {
         width: 2px;
-        height: 13px;
-        background: rgba(201, 168, 76, 0.65);
-        margin: 1px auto;
+        height: 16px;
+        background: rgba(201, 168, 76, 0.7);
+        margin-top: 2px;
+        border-radius: 1px;
         position: relative;
-        border-radius: 1px;
       }
-
-      /* Bras gauche */
-      .perso-corps::before {
+      .grow-corps::before,
+      .grow-corps::after {
         content: "";
         position: absolute;
         width: 8px;
-        height: 1.5px;
-        background: rgba(201, 168, 76, 0.65);
+        height: 1.6px;
+        background: rgba(201, 168, 76, 0.7);
+        top: 4px;
         border-radius: 1px;
+      }
+      .grow-corps::before {
         right: calc(100% - 1px);
-        top: 3px;
         transform-origin: right center;
-        transform: rotate(-40deg);
-        transition: transform 0.4s ease;
+        transform: rotate(-35deg);
       }
-
-      /* Bras droit */
-      .perso-corps::after {
-        content: "";
-        position: absolute;
-        width: 8px;
-        height: 1.5px;
-        background: rgba(201, 168, 76, 0.65);
-        border-radius: 1px;
+      .grow-corps::after {
         left: calc(100% - 1px);
-        top: 3px;
         transform-origin: left center;
-        transform: rotate(40deg);
-        transition: transform 0.4s ease;
+        transform: rotate(35deg);
       }
-
-      /* Marche — tête qui rebondit */
-      .perso-walk .perso-tete {
-        animation: walk-bob 0.22s ease-in-out infinite alternate;
+      .grow-annee {
+        position: absolute;
+        bottom: calc(100% + 6px);
+        font-family: var(--font-corps);
+        font-size: 0.66rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        color: var(--or);
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity 0.3s ease;
       }
-      @keyframes walk-bob {
+      .grow-annee.show {
+        opacity: 1;
+      }
+      .grow-walk .grow-tete {
+        animation: grow-bob 0.24s ease-in-out infinite alternate;
+      }
+      @keyframes grow-bob {
         to {
           transform: translateY(-2px);
         }
       }
 
-      /* Design : bras droit levé, crayon */
-      .action-design .perso-corps::before {
-        transform: rotate(-70deg);
+      /* Timeline (liste) */
+      .timeline {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+        gap: 1.2rem;
       }
-      .action-design .perso-corps::after {
-        transform: rotate(10deg);
-        animation: dessin 0.6s ease-in-out infinite alternate;
+      .timeline-item {
+        background-color: var(--gris-fonce);
+        border: 1px solid var(--gris-bordure);
+        border-left: 3px solid var(--or);
+        padding: 1.3rem 1.4rem;
+        border-radius: 2px;
       }
-      @keyframes dessin {
-        to {
-          transform: rotate(30deg);
-        }
+      .timeline-item .periode {
+        font-size: 0.7rem;
+        color: var(--or);
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 0.45rem;
       }
-
-      /* E-commerce : tap répété bras droit */
-      .action-shop .perso-corps::before {
-        transform: rotate(-20deg);
+      .timeline-item .poste {
+        font-family: var(--font-titre);
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--blanc-pur);
+        margin-bottom: 0.3rem;
+        line-height: 1.25;
       }
-      .action-shop .perso-corps::after {
-        animation: tap 0.4s ease-in-out infinite;
-      }
-      @keyframes tap {
-        0%,
-        100% {
-          transform: rotate(20deg);
-        }
-        50% {
-          transform: rotate(50deg);
-        }
-      }
-
-      /* Code : frappe alternée */
-      .action-code .perso-corps::before {
-        animation: frappe-g 0.2s ease-in-out infinite alternate;
-      }
-      .action-code .perso-corps::after {
-        animation: frappe-d 0.2s ease-in-out infinite alternate 0.1s;
-      }
-      @keyframes frappe-g {
-        from {
-          transform: rotate(-25deg);
-        }
-        to {
-          transform: rotate(-55deg);
-        }
-      }
-      @keyframes frappe-d {
-        from {
-          transform: rotate(25deg);
-        }
-        to {
-          transform: rotate(55deg);
-        }
-      }
-
-      /* Formation : bras ouverts, livre */
-      .action-learn .perso-corps::before {
-        transform: rotate(-65deg);
-      }
-      .action-learn .perso-corps::after {
-        transform: rotate(65deg);
-      }
-
-      /* ── MOBILE < 480px : réduit les marges du hero ── */
-      @media (max-width: 480px) {
-        .hero-tag {
-          margin-bottom: 1.8rem;
-        }
-        .hero-accroche {
-          margin: 1.8rem auto 2.4rem;
-          font-size: 0.95rem;
-        }
-      }
-
-      /* ── TRÈS PETITS MOBILES < 380px ── */
-      @media (max-width: 380px) {
-        .hero {
-          padding-top: 6rem;
-          padding-bottom: 4rem;
-        }
-        .hero-accroche {
-          font-size: 0.88rem;
-          margin: 1.4rem auto 2rem;
-        }
-        .hero-video-wrap {
-          width: 100px;
-        }
-        .parcours-item {
-          padding: 1rem 1.2rem;
-        }
-      }
-
-      /* ── TABLETTE : 1 colonne comme mobile ── */
-      @media (min-width: 769px) and (max-width: 1024px) {
-        .parcours-liste {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      /* ── MOBILE : scène verticale à gauche des cartes ── */
-      @media (max-width: 768px) {
-        .parcours-wrapper {
-          display: flex;
-          flex-direction: row;
-          gap: 0.8rem;
-          align-items: stretch;
-          max-width: 960px;
-          margin: 0 auto;
-        }
-
-        .parcours-scene {
-          display: block;
-          width: 36px;
-          flex-shrink: 0;
-          height: auto;
-          margin: 0;
-        }
-
-        /* Rail vertical */
-        .parcours-rail {
-          top: 2%;
-          bottom: 2%;
-          left: 50%;
-          right: auto;
-          height: auto;
-          width: 1px;
-          transform: none;
-          background: repeating-linear-gradient(
-            to bottom,
-            rgba(201, 168, 76, 0.22) 0px,
-            rgba(201, 168, 76, 0.22) 5px,
-            transparent 5px,
-            transparent 13px
-          );
-        }
-
-        /* Stops repositionnés en vertical */
-        .parcours-stop {
-          left: 50% !important;
-          transform: translate(-50%, -50%);
-        }
-        .parcours-stop:nth-child(2) {
-          top: 12.5%;
-        }
-        .parcours-stop:nth-child(3) {
-          top: 37.5%;
-        }
-        .parcours-stop:nth-child(4) {
-          top: 62.5%;
-        }
-        .parcours-stop:nth-child(5) {
-          top: 87.5%;
-        }
-
-        /* Personnage vertical */
-        .scene-perso {
-          left: 50% !important;
-          transform: translate(-50%, -50%) !important;
-          transition: top 0.9s cubic-bezier(0.4, 0, 0.2, 1) !important;
-        }
-
-        /* Bulle à droite du perso sur mobile */
-        .perso-bulle {
-          position: absolute;
-          left: calc(100% + 6px);
-          top: 50%;
-          transform: translateY(-50%);
-          margin-bottom: 0;
-          font-size: 13px;
-          animation: none !important;
-        }
-        .perso-bulle.show {
-          animation: none !important;
-        }
-
-        /* Liste prend le reste de l'espace */
-        .parcours-liste {
-          flex: 1;
-          max-width: none;
-          margin: 0;
-        }
+      .timeline-item .lieu {
+        font-size: 0.82rem;
+        color: var(--gris-texte);
       }
     </style>
-    <link rel="stylesheet" href="css/chatbot.css" />
   </head>
   <body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
     <header class="header">
       <div class="nav">
         <a href="index.html" class="nav-logo">MERCIA<span>.</span></a>
         <a href="contact.html" class="nav-cta">Me contacter</a>
-        <div class="nav-burger"><span></span><span></span><span></span></div>
+        <div class="nav-burger" aria-label="Menu" role="button" tabindex="0">
+          <span></span><span></span><span></span>
+        </div>
       </div>
-      <nav class="nav-sub">
+      <nav class="nav-sub" aria-label="Navigation principale">
         <ul class="nav-liens">
-          <li><a href="index.html" class="actif">Accueil</a></li>
-          <li><a href="projets.html">Projets</a></li>
-          <li><a href="mesoutils.html">Mes outils</a></li>
+          <li><a href="index.html" class="actif" aria-current="page">Accueil</a></li>
+          <li><a href="realisations.html">Réalisations</a></li>
+          <li><a href="apropos.html">À propos</a></li>
+          <li><a href="cv.html">CV</a></li>
+          <li><a href="https://simul-reseaux-sociaux.ikala-ni.fr" target="_blank" rel="noopener">Simulateur RS<span class="visually-hidden"> (nouvelle fenêtre)</span></a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
     </header>
 
-    <section class="hero">
-      <!-- Système orbital décoratif -->
-      <div class="orbit-systeme" aria-hidden="true">
-        <div class="orbit-anneau"></div>
-        <div class="orbit-bras">
-          <div class="planet"></div>
+    <main id="contenu">
+      <!-- ══════════ HERO ══════════ -->
+      <section class="hero">
+        <div class="orbit-systeme" aria-hidden="true">
+          <div class="orbit-anneau"></div>
+          <div class="orbit-bras"><div class="planet"></div></div>
         </div>
-      </div>
 
-      <div class="hero-content">
-        <span class="hero-tag">Designer UI &amp; Intégratrice Web</span>
-        <h1>
-          <span class="nom">Mercia RANDRIANOME</span>
-          <span class="titre"
-            >Développement Site Web · Conception Visuelle</span
-          >
-        </h1>
-        <p class="hero-accroche">
-          Site web ou identité visuelle&nbsp;?<br />
-          Je m'adapte à votre projet, votre budget et vos délais.<br />
-          <br />
-          Des créations modernes, soignées et cohérentes,<br />
-          qui inspirent confiance et assurance - à votre image.
-        </p>
-        <div class="hero-boutons">
-          <a href="projets.html?filter=dev" class="btn-hero btn-hero-or"
-            >Développement Site Web</a
-          >
-          <a href="projets.html?filter=visuel" class="btn-hero btn-hero-contour"
-            >Conception Visuelle</a
-          >
-        </div>
-      </div>
-
-      <!-- Vidéo profil — déposer le fichier dans assets/video/ -->
-      <div class="hero-video-wrap">
-        <video
-          src="assets/video/Avatar.mp4"
-          autoplay
-          loop
-          muted
-          playsinline
-        ></video>
-      </div>
-
-      <div class="scroll-hint" aria-hidden="true">
-        <div class="scroll-mouse">
-          <div class="scroll-wheel"></div>
-        </div>
-        <span class="scroll-hint-label">Scroll</span>
-      </div>
-    </section>
-
-    <section class="parcours">
-      <p class="parcours-titre">Parcours professionnel</p>
-
-      <div class="parcours-wrapper">
-        <!-- Scène animée -->
-        <div class="parcours-scene" aria-hidden="true">
-          <div class="parcours-rail"></div>
-          <div class="parcours-stop" style="left: 12.5%"></div>
-          <div class="parcours-stop" style="left: 37.5%"></div>
-          <div class="parcours-stop" style="left: 62.5%"></div>
-          <div class="parcours-stop" style="left: 87.5%"></div>
-          <div class="scene-perso" id="scenePerso">
-            <div class="perso-bulle" id="persoBulle"></div>
-            <div class="perso-tete"></div>
-            <div class="perso-corps"></div>
+        <div class="hero-content">
+          <span class="hero-tag">Conceptrice Designer UI</span>
+          <h1>
+            <span class="nom">Mercia RANDRIANOME</span>
+            <span class="titre">Développement Site Web | Conception Visuelle</span>
+          </h1>
+          <p class="hero-accroche">
+            Je conçois des sites web et des identités qui vous ressemblent.
+          </p>
+          <div class="hero-boutons">
+            <a href="realisations.html" class="btn-hero btn-hero-or">Voir mes réalisations</a>
+            <a href="contact.html" class="btn-hero btn-hero-contour">Me contacter</a>
           </div>
         </div>
 
-        <div class="parcours-liste">
-          <div class="parcours-item">
-            <div class="periode">Oct 2025 – Juin 2026</div>
-            <div class="poste">Formation Designer UI</div>
-            <div class="lieu">Formasup82 — Montauban</div>
+        <div class="hero-portrait">
+          <img
+            src="assets/images/profil/profil.webp"
+            alt="Portrait de Mercia RANDRIANOME"
+            width="300"
+            height="400"
+          />
+        </div>
+      </section>
+
+      <!-- ══════════ À LA UNE ══════════ -->
+      <section class="alaune" aria-labelledby="alaune-titre">
+        <div class="alaune-entete">
+          <p class="alaune-suptitre">À la une</p>
+          <h2 id="alaune-titre">Mes derniers <span style="color: var(--or)">projets</span></h2>
+          <p>
+            Une refonte, une identité de marque, une boutique en ligne.
+          </p>
+        </div>
+
+        <!-- Projet phare : HandiPro31 -->
+        <article class="feature">
+          <div class="frame">
+            <div class="frame-barre">
+              <span class="frame-dot r"></span><span class="frame-dot y"></span><span class="frame-dot g"></span>
+              <span class="frame-url">handipro31.fr</span>
+            </div>
+            <div class="frame-ecran">
+              <img
+                src="assets/images/projets/handipro-cap.webp"
+                alt="Aperçu du site HandiPro31"
+                width="1200"
+                height="750"
+                loading="lazy"
+              />
+            </div>
           </div>
-          <div class="parcours-item">
-            <div class="periode">2021 – 2022</div>
-            <div class="poste">Responsable E-commerce &amp; CM</div>
-            <div class="lieu">Espace et Vie / Au fil de S.O.I.E</div>
+          <div class="feature-corps">
+            <span class="badge">MODX Revolution</span>
+            <h3>HandiPro31</h3>
+            <p>
+              Refonte V2 complète du site de Cap emploi Haute-Garonne : nouvelle
+              identité visuelle, arborescence restructurée, accessibilité
+              renforcée, SEO technique et pages RGPD.
+            </p>
+            <div class="feature-stats">
+              <div><span class="val">5,3</span><span class="lab">position Google moyenne</span></div>
+              <div><span class="val">125</span><span class="lab">sessions / semaine</span></div>
+              <div><span class="val">1,3K</span><span class="lab">pages vues</span></div>
+            </div>
+            <div class="feature-actions">
+              <a href="projets/handipro31.html" class="lien-or">Fiche projet</a>
+              <a href="https://www.handipro31.fr/" target="_blank" rel="noopener" class="lien-gris">Voir le site</a>
+            </div>
           </div>
-          <div class="parcours-item">
-            <div class="periode">Août – Déc 2020</div>
-            <div class="poste">Développeur Web</div>
-            <div class="lieu">Office de Tourisme de Moissac</div>
+        </article>
+
+        <!-- Autres sites en vignettes -->
+        <div class="vignettes">
+          <a class="vignette" href="projets/mam-tiazaza.html">
+            <div class="vignette-img"><img src="assets/images/projets/mam-cap.webp" alt="Aperçu MAM Tiazaza" width="1200" height="750" loading="lazy" /></div>
+            <div class="vignette-nom"><strong>MAM Tiazaza</strong><span>WordPress</span></div>
+          </a>
+          <a class="vignette" href="projets/jaozafy-saveur.html">
+            <div class="vignette-img"><img src="assets/images/projets/jaozafy-cap.webp" alt="Aperçu Jaozafy Saveur" width="1200" height="750" loading="lazy" /></div>
+            <div class="vignette-nom"><strong>Jaozafy Saveur</strong><span>Headless</span></div>
+          </a>
+          <a class="vignette" href="projets/salon-de-the-champetre.html">
+            <div class="vignette-img"><img src="assets/images/projets/salon-cap.webp" alt="Aperçu Salon de Thé Champêtre" width="1200" height="750" loading="lazy" /></div>
+            <div class="vignette-nom"><strong>Salon de Thé</strong><span>WordPress</span></div>
+          </a>
+          <a class="vignette" href="projets/co-co.html">
+            <div class="vignette-img"><img src="assets/images/projets/coco-cap.webp" alt="Aperçu Co&amp;Co" width="1200" height="750" loading="lazy" /></div>
+            <div class="vignette-nom"><strong>Co&amp;Co</strong><span>Entraînement</span></div>
+          </a>
+        </div>
+
+        <div class="alaune-cta">
+          <a href="realisations.html" class="btn-tout">Voir toutes les réalisations</a>
+        </div>
+      </section>
+
+      <!-- ══════════ PARCOURS (enfant qui grandit) ══════════ -->
+      <section class="parcours" aria-labelledby="parcours-titre">
+        <p class="parcours-suptitre" id="parcours-titre">Parcours professionnel</p>
+
+        <div class="parcours-wrapper">
+          <!-- Scène décorative : le personnage grandit d'étape en étape -->
+          <div class="grow-scene" aria-hidden="true">
+            <div class="grow-rail"></div>
+            <div class="grow-stop" style="left: 10%"></div>
+            <div class="grow-stop" style="left: 32.5%"></div>
+            <div class="grow-stop" style="left: 55%"></div>
+            <div class="grow-stop" style="left: 77.5%"></div>
+            <div class="grow-stop" style="left: 95%"></div>
+            <div class="grow-perso" id="growPerso">
+              <span class="grow-annee" id="growAnnee"></span>
+              <div class="grow-figure" id="growFigure">
+                <div class="grow-tete"></div>
+                <div class="grow-corps"></div>
+              </div>
+            </div>
           </div>
-          <div class="parcours-item">
-            <div class="periode">2019 – 2020</div>
-            <div class="poste">Formation Développeur Web &amp; Mobile</div>
-            <div class="lieu">BGE Sud-Ouest</div>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="periode">2019 - 2020</div>
+              <div class="poste">Formation développement web</div>
+              <div class="lieu">BGE Sud-Ouest</div>
+            </div>
+            <div class="timeline-item">
+              <div class="periode">2020</div>
+              <div class="poste">Développement Java JEE (stage)</div>
+              <div class="lieu">Office de Tourisme de Moissac</div>
+            </div>
+            <div class="timeline-item">
+              <div class="periode">2021 - 2022</div>
+              <div class="poste">E-commerce et community management</div>
+              <div class="lieu">Espace et Vie</div>
+            </div>
+            <div class="timeline-item">
+              <div class="periode">2026</div>
+              <div class="poste">Communication et projets web (stage)</div>
+              <div class="lieu">HandiPro31, Cap emploi 31 - Toulouse</div>
+            </div>
+            <div class="timeline-item">
+              <div class="periode">2026</div>
+              <div class="poste">Conceptrice Designer UI, freelance</div>
+              <div class="lieu">Clients en production - Moissac (82)</div>
+            </div>
           </div>
         </div>
-        <!-- /.parcours-liste -->
-      </div>
-      <!-- /.parcours-wrapper -->
-    </section>
-
+      </section>
+    </main>
 
     <footer class="footer">
       <div class="footer-contenu">
         <p class="footer-logo">MERCIA<span>.</span></p>
         <div class="footer-liens">
-          <a href="projets.html">Projets</a>
+          <a href="realisations.html">Réalisations</a>
+          <a href="apropos.html">À propos</a>
+          <a href="cv.html">CV</a>
           <a href="contact.html">Contact</a>
         </div>
         <p class="footer-copyright">
-          © 2026 Mercia RANDRIANOME — Designer UI &amp; Intégratrice Web
+          © 2026 Mercia RANDRIANOME - Conceptrice Designer UI
         </p>
       </div>
     </footer>
-    <script src="js/main.js"></script>
+
+    <!-- Contact WhatsApp direct -->
+    <a
+      class="wa-float"
+      href="https://wa.me/33667955602"
+      target="_blank"
+      rel="noopener"
+      aria-label="Me contacter sur WhatsApp"
+    >
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.5 14.4c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.8 1.2 3 .1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.4z M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2zm0 18.3c-1.5 0-3-.4-4.3-1.2l-.3-.2-2.9.8.8-2.8-.2-.3A8.3 8.3 0 1 1 12 20.3z"/>
+      </svg>
+      <span class="wa-label">WhatsApp</span>
+    </a>
+
+    <script src="js/main.js?v=2"></script>
     <script>
-      // ── Animation personnage parcours ──
+      // ── Personnage qui grandit le long du parcours ──
       (function () {
-        const perso = document.getElementById("scenePerso");
-        const bulle = document.getElementById("persoBulle");
-        const stops = document.querySelectorAll(".parcours-stop");
+        var perso = document.getElementById("growPerso");
+        var figure = document.getElementById("growFigure");
+        var annee = document.getElementById("growAnnee");
+        var stops = document.querySelectorAll(".grow-stop");
         if (!perso) return;
 
-        const steps = [
-          { pos: 12.5, icon: "🎨 💻", action: "design", stopIdx: 0 },
-          { pos: 37.5, icon: "🛒 💻", action: "shop", stopIdx: 1 },
-          {
-            pos: 62.5,
-            icon: '💻 <span style="font-family:monospace;font-size:10px;color:#c9a84c;vertical-align:middle">&lt;/&gt;</span>',
-            action: "code",
-            stopIdx: 2,
-          },
-          {
-            pos: 87.5,
-            icon: '🖥️ <span style="font-family:monospace;font-size:10px;color:#c9a84c;vertical-align:middle">&lt;/&gt;</span>',
-            action: "learn",
-            stopIdx: 3,
-          },
+        // Respecte prefers-reduced-motion : on fige l'adulte sur la dernière étape.
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        var etapes = [
+          { pos: 10, taille: 0.5, annee: "2019" },
+          { pos: 32.5, taille: 0.68, annee: "2020" },
+          { pos: 55, taille: 0.85, annee: "2021" },
+          { pos: 77.5, taille: 1.05, annee: "2026" },
+          { pos: 95, taille: 1.3, annee: "2026" }
         ];
-        const actions = steps.map((s) => "action-" + s.action);
-        let current = 0;
+        var i = 0;
 
-        const isMobile = () => window.innerWidth <= 768;
-
-        function clearActions() {
-          perso.classList.remove("perso-walk", ...actions);
-          stops.forEach((s) => s.classList.remove("actif"));
+        function place(e) {
+          perso.style.left = e.pos + "%";
+          figure.style.setProperty("--taille", e.taille);
+          annee.textContent = e.annee;
+          annee.classList.add("show");
+          stops.forEach(function (s) { s.classList.remove("actif"); });
         }
 
-        function arrive(i) {
-          clearActions();
-          perso.classList.add("action-" + steps[i].action);
-          stops[steps[i].stopIdx].classList.add("actif");
-          bulle.innerHTML = steps[i].icon;
-          bulle.classList.add("show");
+        if (reduce) {
+          var last = etapes[etapes.length - 1];
+          place(last);
+          stops[stops.length - 1].classList.add("actif");
+          return;
         }
 
-        function walk(nextPos) {
-          perso.classList.remove(...actions);
-          perso.classList.add("perso-walk");
-          bulle.classList.remove("show");
-          stops.forEach((s) => s.classList.remove("actif"));
-          if (!isMobile()) {
-            const cur = parseFloat(perso.style.left);
-            perso.style.transform =
-              nextPos < cur
-                ? "translate(-50%, -100%) scaleX(-1)"
-                : "translate(-50%, -100%) scaleX(1)";
-          }
-        }
-
-        function moveTo(pos) {
-          if (isMobile()) {
-            perso.style.top = pos + "%";
-          } else {
-            perso.style.left = pos + "%";
-          }
+        function arrive(idx) {
+          perso.classList.remove("grow-walk");
+          place(etapes[idx]);
+          stops[idx].classList.add("actif");
+          setTimeout(next, 2400);
         }
 
         function next() {
-          const nextIdx = (current - 1 + steps.length) % steps.length;
-          walk(steps[nextIdx].pos);
-          moveTo(steps[nextIdx].pos);
-
-          const dist = Math.abs(steps[nextIdx].pos - steps[current].pos);
-          const walkDuration = dist <= 25 ? 900 : 1600;
-
-          setTimeout(() => {
-            current = nextIdx;
-            arrive(current);
-            setTimeout(next, 2800);
-          }, walkDuration);
-        }
-
-        function init() {
-          const mob = isMobile();
-          perso.style.transition = "none";
-          if (mob) {
-            perso.style.left = "50%";
-            perso.style.top = steps[0].pos + "%";
-          } else {
-            perso.style.left = steps[0].pos + "%";
+          var nextIdx = (i + 1) % etapes.length;
+          annee.classList.remove("show");
+          perso.classList.add("grow-walk");
+          // Repart tout petit quand on reboucle au début
+          if (nextIdx === 0) {
+            figure.style.setProperty("--taille", etapes[0].taille);
           }
-          requestAnimationFrame(() =>
-            requestAnimationFrame(() => {
-              const prop = mob ? "top" : "left";
-              perso.style.transition = `${prop} 0.9s cubic-bezier(0.4, 0, 0.2, 1)`;
-              setTimeout(() => {
-                arrive(0);
-                setTimeout(next, 2800);
-              }, 800);
-            }),
-          );
+          perso.style.left = etapes[nextIdx].pos + "%";
+          setTimeout(function () {
+            i = nextIdx;
+            arrive(i);
+          }, 900);
         }
 
-        init();
-        window.addEventListener("resize", () => {
-          // Réinitialise si on bascule desktop/mobile
-          current = 0;
-          init();
+        // Démarrage
+        perso.style.transition = "none";
+        place(etapes[0]);
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            perso.style.transition = "left 0.9s cubic-bezier(0.4,0,0.2,1)";
+            stops[0].classList.add("actif");
+            setTimeout(next, 2000);
+          });
         });
       })();
     </script>
-    <script src="js/chatbot.js"></script>
   </body>
 </html>

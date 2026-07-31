@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>À propos et parcours | Mercia RANDRIANOME</title>
+    <meta
+      name="description"
+      content="Mercia RANDRIANOME, conceptrice designer UI à Moissac. Parcours, compétences en développement de sites web, conception visuelle, SEO et accessibilité."
+    />
+    <link rel="canonical" href="https://mercia.ikala-ni.fr/apropos.html" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content="À propos et parcours | Mercia RANDRIANOME" />
+    <meta property="og:description" content="Parcours et compétences : développement site web, conception visuelle, SEO, accessibilité." />
+    <meta property="og:image" content="https://mercia.ikala-ni.fr/assets/images/og/og-mercia.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Mercia RANDRIANOME, conceptrice designer UI - sites web, conception visuelle, SEO et accessibilité" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="À propos et parcours | Mercia RANDRIANOME" />
+    <meta name="twitter:description" content="Mercia RANDRIANOME, conceptrice designer UI à Moissac. Parcours, compétences en développement de sites web, conception visuelle, SEO et accessibilité." />
+    <meta name="twitter:image" content="https://mercia.ikala-ni.fr/assets/images/og/og-mercia.jpg" />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      /* ── INTRO ── */
+      .ap-intro {
+        display: flex;
+        gap: clamp(2rem, 5vw, 4.5rem);
+        align-items: center;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 11rem var(--padding-page) 3rem;
+      }
+      .ap-photo {
+        flex-shrink: 0;
+        width: clamp(160px, 24vw, 280px);
+        aspect-ratio: 3 / 4;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid rgba(201, 168, 76, 0.25);
+      }
+      .ap-photo img { width: 100%; height: 100%; object-fit: cover; }
+      .ap-intro-txt { flex: 1; min-width: 0; }
+      .ap-suptitre {
+        font-size: 0.72rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--or);
+        font-weight: 600;
+        margin-bottom: 0.9rem;
+      }
+      .ap-intro-txt h1 {
+        font-size: clamp(2.2rem, 5vw, 3.4rem);
+        margin-bottom: 1.2rem;
+      }
+      .ap-intro-txt p {
+        font-size: 1.02rem;
+        line-height: 1.85;
+        margin-bottom: 1rem;
+        max-width: 620px;
+      }
+      @media (max-width: 760px) {
+        .ap-intro { flex-direction: column; text-align: center; padding-top: 8rem; }
+        .ap-photo { order: -1; }
+        .ap-intro-txt p { margin-left: auto; margin-right: auto; }
+      }
+
+      /* ── COMPÉTENCES ── */
+      .ap-comp {
+        background-color: var(--noir-secondaire);
+        border-top: 1px solid var(--gris-bordure);
+        padding: clamp(3.5rem, 8vw, 5.5rem) var(--padding-page);
+      }
+      .ap-comp-inner { max-width: 1100px; margin: 0 auto; }
+      .ap-comp h2 {
+        font-size: clamp(1.7rem, 4vw, 2.4rem);
+        margin-bottom: 0.6rem;
+      }
+      .ap-comp > .ap-comp-inner > p {
+        color: var(--gris-texte);
+        margin-bottom: 2.6rem;
+        max-width: 560px;
+      }
+      .ap-comp-grille {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.6rem;
+      }
+      .ap-comp-carte {
+        background-color: var(--gris-fonce);
+        border: 1px solid var(--gris-bordure);
+        border-top: 3px solid var(--or);
+        border-radius: 8px;
+        padding: 1.6rem 1.6rem 1.8rem;
+      }
+      .ap-comp-carte h3 {
+        font-size: 1.1rem;
+        color: var(--blanc-pur);
+        margin-bottom: 1rem;
+      }
+      .ap-comp-carte ul { list-style: none; }
+      .ap-comp-carte li {
+        font-size: 0.9rem;
+        color: var(--gris-clair);
+        line-height: 1.6;
+        padding-left: 1.1rem;
+        position: relative;
+        margin-bottom: 0.5rem;
+      }
+      .ap-comp-carte li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.6em;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background-color: var(--or);
+      }
+
+      /* ── PARCOURS (timeline) ── */
+      .ap-parcours {
+        padding: clamp(3.5rem, 8vw, 5.5rem) var(--padding-page);
+      }
+      .ap-parcours-inner { max-width: 780px; margin: 0 auto; }
+      .ap-parcours h2 {
+        font-size: clamp(1.7rem, 4vw, 2.4rem);
+        margin-bottom: 2.6rem;
+      }
+      .tl { position: relative; padding-left: 2rem; }
+      .tl::before {
+        content: "";
+        position: absolute;
+        left: 5px;
+        top: 4px;
+        bottom: 4px;
+        width: 1px;
+        background: linear-gradient(
+          to bottom,
+          var(--or),
+          rgba(201, 168, 76, 0.15)
+        );
+      }
+      .tl-item {
+        position: relative;
+        padding-bottom: 2.2rem;
+      }
+      .tl-item:last-child { padding-bottom: 0; }
+      .tl-item::before {
+        content: "";
+        position: absolute;
+        left: -2rem;
+        top: 4px;
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        background: var(--noir-profond);
+        border: 2px solid var(--or);
+        transform: translateX(0);
+      }
+      .tl-periode {
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--or);
+        font-weight: 600;
+        margin-bottom: 0.3rem;
+      }
+      .tl-poste {
+        font-family: var(--font-titre);
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--blanc-pur);
+        margin-bottom: 0.2rem;
+      }
+      .tl-lieu { font-size: 0.9rem; color: var(--gris-texte); }
+
+      /* Révélation au défilement — seulement si JS actif */
+      .js-anim .reveal {
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+      }
+      .js-anim .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ── CTA ── */
+      .ap-cta {
+        text-align: center;
+        padding: 0 var(--padding-page) 5rem;
+      }
+      .ap-cta a {
+        display: inline-block;
+        font-family: var(--font-corps);
+        font-size: 0.95rem;
+        font-weight: 600;
+        background-color: var(--or);
+        color: var(--noir-profond);
+        border-radius: 3px;
+        padding: 0.9rem 2.2rem;
+        transition: var(--transition-rapide);
+      }
+      .ap-cta a:hover { background-color: var(--or-clair); transform: translateY(-2px); }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <header class="header">
+      <div class="nav">
+        <a href="index.html" class="nav-logo">MERCIA<span>.</span></a>
+        <a href="contact.html" class="nav-cta">Me contacter</a>
+        <div class="nav-burger" aria-label="Menu" role="button" tabindex="0">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+      <nav class="nav-sub" aria-label="Navigation principale">
+        <ul class="nav-liens">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="realisations.html">Réalisations</a></li>
+          <li><a href="apropos.html" class="actif" aria-current="page">À propos</a></li>
+          <li><a href="cv.html">CV</a></li>
+          <li><a href="https://simul-reseaux-sociaux.ikala-ni.fr" target="_blank" rel="noopener">Simulateur RS<span class="visually-hidden"> (nouvelle fenêtre)</span></a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="contenu">
+      <!-- Intro -->
+      <section class="ap-intro">
+        <div class="ap-photo">
+          <img src="assets/images/profil/profil.webp" alt="Portrait de Mercia RANDRIANOME" width="280" height="373" />
+        </div>
+        <div class="ap-intro-txt">
+          <p class="ap-suptitre">À propos</p>
+          <h1>Mercia RANDRIANOME</h1>
+          <p>
+            Je suis conceptrice designer UI, diplômée en 2026. Je conçois des
+            sites web et des identités visuelles, du premier échange jusqu'à la
+            mise en ligne.
+          </p>
+          <p>
+            Je travaille en présentiel comme à distance. Logos, chartes
+            graphiques, sites vitrines, boutiques en ligne, refontes : tout ce
+            qui touche au web et à l'image. Je débute, mais avec des projets
+            concrets déjà livrés derrière moi.
+          </p>
+        </div>
+      </section>
+
+      <!-- Compétences -->
+      <section class="ap-comp" aria-labelledby="comp-titre">
+        <div class="ap-comp-inner">
+          <h2 id="comp-titre">Compétences</h2>
+          <p>Ce que je sais faire, réparti par domaine.</p>
+          <div class="ap-comp-grille">
+            <div class="ap-comp-carte">
+              <h3>Développement Site Web</h3>
+              <ul>
+                <li>WordPress : thème enfant Astra, Elementor, LiteSpeed, AIOSEO, Ultimate Member, Contact Form 7, WP Staging</li>
+                <li>WooCommerce : catalogue, paiements PayPal et WooPayments, zones de livraison</li>
+                <li>MODX Revolution : templates, chunks</li>
+                <li>HTML, CSS, JavaScript, React</li>
+                <li>Hébergement : o2switch, OVH, cPanel, FTP, Git</li>
+              </ul>
+            </div>
+            <div class="ap-comp-carte">
+              <h3>Conception Visuelle</h3>
+              <ul>
+                <li>Figma, Illustrator, InDesign, Canva</li>
+                <li>Identité de marque et charte graphique</li>
+                <li>Maquettes et gabarits de documents</li>
+                <li>Supports print et réseaux sociaux</li>
+              </ul>
+            </div>
+            <div class="ap-comp-carte">
+              <h3>Webmarketing, SEO et accessibilité</h3>
+              <ul>
+                <li>GA4, Search Console, Schema.org JSON-LD</li>
+                <li>Migration WebP, audit SEO, GEO, veille</li>
+                <li>Pages légales RGPD</li>
+                <li>Widget d'accessibilité et bonnes pratiques</li>
+              </ul>
+            </div>
+            <div class="ap-comp-carte">
+              <h3>Outils IA</h3>
+              <ul>
+                <li>Claude Code, Gemini</li>
+                <li>Git, FileZilla</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Parcours -->
+      <section class="ap-parcours" aria-labelledby="parc-titre">
+        <div class="ap-parcours-inner">
+          <h2 id="parc-titre">Parcours</h2>
+          <div class="tl">
+            <div class="tl-item reveal">
+              <div class="tl-periode">2026</div>
+              <div class="tl-poste">Conceptrice Designer UI, freelance</div>
+              <div class="tl-lieu">Clients en production - Moissac (82)</div>
+            </div>
+            <div class="tl-item reveal">
+              <div class="tl-periode">Juillet 2026</div>
+              <div class="tl-poste">Titre professionnel Concepteur Designer UI (RNCP niveau 6)</div>
+              <div class="tl-lieu">Formasup'82 - Montauban</div>
+            </div>
+            <div class="tl-item reveal">
+              <div class="tl-periode">2026</div>
+              <div class="tl-poste">Communication et projets web (stage)</div>
+              <div class="tl-lieu">HandiPro31, Cap emploi 31 - Toulouse</div>
+            </div>
+            <div class="tl-item reveal">
+              <div class="tl-periode">2021 - 2022</div>
+              <div class="tl-poste">E-commerce et community management</div>
+              <div class="tl-lieu">Espace et Vie</div>
+            </div>
+            <div class="tl-item reveal">
+              <div class="tl-periode">2020</div>
+              <div class="tl-poste">Développement Java JEE (stage)</div>
+              <div class="tl-lieu">Office de Tourisme de Moissac</div>
+            </div>
+            <div class="tl-item reveal">
+              <div class="tl-periode">2019 - 2020</div>
+              <div class="tl-poste">Formation développement web</div>
+              <div class="tl-lieu">BGE Sud-Ouest</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="ap-cta">
+        <a href="contact.html">Travailler ensemble</a>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-contenu">
+        <p class="footer-logo">MERCIA<span>.</span></p>
+        <div class="footer-liens">
+          <a href="index.html">Accueil</a>
+          <a href="realisations.html">Réalisations</a>
+          <a href="cv.html">CV</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <p class="footer-copyright">© 2026 Mercia RANDRIANOME - Conceptrice Designer UI</p>
+      </div>
+    </footer>
+
+    <a class="wa-float" href="https://wa.me/33667955602" target="_blank" rel="noopener" aria-label="Me contacter sur WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.5 14.4c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.8 1.2 3 .1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.4z M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2zm0 18.3c-1.5 0-3-.4-4.3-1.2l-.3-.2-2.9.8.8-2.8-.2-.3A8.3 8.3 0 1 1 12 20.3z"/>
+      </svg>
+      <span class="wa-label">WhatsApp</span>
+    </a>
+
+    <script src="js/main.js?v=2"></script>
+    <script>
+      // Révélation progressive des entrées (dégrade proprement sans JS)
+      (function () {
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var cibles = document.querySelectorAll(".reveal");
+        if (reduce || !("IntersectionObserver" in window)) {
+          cibles.forEach(function (el) { el.classList.add("visible"); });
+          return;
+        }
+        document.body.classList.add("js-anim");
+        var obs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              e.target.classList.add("visible");
+              obs.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.2 });
+        cibles.forEach(function (el) { obs.observe(el); });
+      })();
+    </script>
+  </body>
+</html>

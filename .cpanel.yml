@@ -1,5 +1,15 @@
 ---
+# Déploiement automatique o2switch.
+# Attention : l'ancienne version utilisait "cp -R ." qui copiait AUSSI le dossier
+# .git, rendant tout l'historique du dépôt téléchargeable depuis le web.
+# rsync copie uniquement les fichiers du site, en protégeant les fichiers du
+# serveur (.well-known pour le certificat SSL, .htaccess, cgi-bin).
+#
+# Le "--delete" (qui supprime en ligne ce qui a été supprimé dans le dépôt) est
+# volontairement absent : tant que DEPLOYPATH n'est pas vérifié dans
+# cPanel > Domaines > Racine du document, un chemin erroné effacerait le contenu
+# du dossier visé. À rajouter une fois le premier déploiement confirmé.
 deployment:
   tasks:
     - export DEPLOYPATH=/home/wami9481/mercia.ikala-ni.fr/
-    - /bin/cp -R . $DEPLOYPATH
+    - /usr/bin/rsync -a --exclude='.git' --exclude='.gitignore' --exclude='.cpanel.yml' --exclude='_archives' --exclude='tools' --exclude='.vs' --exclude='CLAUDE.md' --exclude='MERCIA_BRIEF.md' --exclude='README.md' --exclude='projets/template-projet.html' --exclude='.well-known' --exclude='.htaccess' --exclude='cgi-bin' ./ $DEPLOYPATH

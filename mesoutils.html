@@ -3,10 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Mes outils de conception — Mercia RANDRIANOME, Designer UI & Intégratrice Web.">
-  <title>Mes outils | Mercia RANDRIANOME</title>
+  <meta name="description" content="Les outils de Mercia RANDRIANOME, conceptrice designer UI : conception visuelle, développement web, WordPress et e-commerce.">
+  <title>Outils | Mercia RANDRIANOME</title>
+  <link rel="canonical" href="https://mercia.ikala-ni.fr/mesoutils.html">
+  <!-- Page hors navigation et hors sitemap : on la sort aussi de l'index Google -->
+  <meta name="robots" content="noindex, follow">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/skillsbgc.css">
+  <link rel="stylesheet" href="css/skillsbgc.css?v=8">
   <style>
     body {
       background: #0d0d0d;
@@ -15,67 +18,63 @@
       display: flex;
       flex-direction: column;
     }
-    .header {
-      flex-shrink: 0;
-    }
-    section.outils {
-      flex: 1;
-      min-height: 0;
-    }
-    section.outils #scene {
-      height: 100%;
-      min-height: 480px;
+    .header { flex-shrink: 0; }
+    section.outils { flex: 1; min-height: 0; }
+    section.outils #scene { height: 100%; min-height: 460px; }
+
+    @media (max-width: 600px) {
+      body { overflow-y: auto; height: auto; min-height: 100dvh; }
+      section.outils { flex: 0 1 auto; min-height: 0; }
+      section.outils #scene { height: auto; min-height: 0; }
     }
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#scene">Aller au contenu</a>
 
   <header class="header">
     <div class="nav">
       <a href="index.html" class="nav-logo">MERCIA<span>.</span></a>
       <a href="contact.html" class="nav-cta">Me contacter</a>
-      <div class="nav-burger">
+      <div class="nav-burger" aria-label="Menu" role="button" tabindex="0">
         <span></span><span></span><span></span>
       </div>
     </div>
-    <nav class="nav-sub">
+    <nav class="nav-sub" aria-label="Navigation principale">
       <ul class="nav-liens">
         <li><a href="index.html">Accueil</a></li>
-        <li><a href="projets.html">Projets</a></li>
-        <li><a href="mesoutils.html" class="actif">Mes outils</a></li>
+        <li><a href="realisations.html">Réalisations</a></li>
+        <li><a href="apropos.html">À propos</a></li>
+        <li><a href="cv.html">CV</a></li>
+        <li><a href="https://simul-reseaux-sociaux.ikala-ni.fr" target="_blank" rel="noopener">Simulateur RS<span class="visually-hidden"> (nouvelle fenêtre)</span></a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <section class="outils">
-    <div id="scene">
-      <p class="outils-titre">Mes outils de conception</p>
+  <section class="outils" aria-label="Mes outils par domaine">
+    <div id="scene" tabindex="0" role="group" aria-label="Catégories d'outils, utilisez les flèches pour changer">
+      <div class="tools-ring-line" id="ringline" aria-hidden="true"></div>
+      <div id="orbit" aria-hidden="true"></div>
 
-      <!-- Anneau orbital décoratif (même style que le hero) -->
-      <div id="orbit-ring" aria-hidden="true">
-        <div class="orbit-anneau"></div>
-        <div class="orbit-bras"><div class="planet"></div></div>
+      <div class="tools-center">
+        <p class="tools-sub" id="cat-sub"></p>
+        <h1 class="tools-name" id="cat-name"></h1>
+        <div class="tools-dots" id="dots"></div>
       </div>
 
-      <!-- Titre central -->
-      <div id="overlay">
-        <p id="hint-text">👆</p>
-        <h1 id="cat-name">Mes outils</h1>
-        <p id="cat-sub">Tous les logiciels</p>
-        <div id="nav-dots"></div>
-      </div>
-    </div>
-
-    <!-- Lightbox -->
-    <div id="lightbox" aria-hidden="true">
-      <div id="lb-bg"></div>
-      <img id="lb-img" src="" alt="">
-      <button id="lb-close" aria-label="Fermer">&#x2715;</button>
+      <p class="tools-hint" aria-hidden="true">Cliquez pour changer</p>
     </div>
   </section>
 
-  <script src="js/main.js"></script>
-  <script src="js/skillsbgc.js"></script>
+  <a class="wa-float" href="https://wa.me/33667955602" target="_blank" rel="noopener" aria-label="Me contacter sur WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.5 14.4c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.8 1.2 3 .1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.4z M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2zm0 18.3c-1.5 0-3-.4-4.3-1.2l-.3-.2-2.9.8.8-2.8-.2-.3A8.3 8.3 0 1 1 12 20.3z"/>
+    </svg>
+    <span class="wa-label">WhatsApp</span>
+  </a>
+
+  <script src="js/main.js?v=2"></script>
+  <script src="js/skillsbgc.js?v=8"></script>
 </body>
 </html>

@@ -53,19 +53,6 @@ tousLesLiens.forEach(function(lien) {
    - Le fond devient plus opaque
 */
 
-const header = document.querySelector('.header');
-const navBar = document.querySelector('.nav');
-
-window.addEventListener('scroll', function() {
-    const pad = getComputedStyle(document.documentElement).getPropertyValue('--padding-page').trim();
-    if (window.scrollY > 100) {
-        navBar.style.padding = `0.75rem ${pad}`;
-        header.style.backgroundColor = 'rgba(10, 10, 10, 0.97)';
-    } else {
-        navBar.style.padding = `1.1rem ${pad}`;
-        header.style.backgroundColor = 'rgba(10, 10, 10, 0.9)';
-    }
-});
 
 
 /* ==============================================================================
@@ -107,6 +94,50 @@ elementsAAnimer.forEach(function(element) {
     // Commence à observer l'élément
     observer.observe(element);
 });
+
+/* ==============================================================================
+   4. COORDONNÉES PROTÉGÉES
+   ==============================================================================
+
+   L'email et le téléphone ne sont pas écrits en clair dans le HTML : ils sont
+   encodés en base64 dans des attributs data, et reconstruits ici au chargement.
+   Les robots à spam qui lisent le code source ne récupèrent donc rien.
+*/
+
+(function () {
+    // Décode une chaîne base64
+    function lire(valeur) {
+        try {
+            return atob(valeur);
+        } catch (e) {
+            return '';
+        }
+    }
+
+    // Email : href mailto + texte affiché
+    document.querySelectorAll('.js-mail').forEach(function (a) {
+        const mail = lire(a.getAttribute('data-m'));
+        if (!mail) return;
+        a.href = 'mailto:' + mail;
+        a.textContent = mail;
+    });
+
+    // Téléphone : href tel + numéro affiché au format lisible
+    document.querySelectorAll('.js-tel').forEach(function (a) {
+        const numero = lire(a.getAttribute('data-t'));
+        const affiche = lire(a.getAttribute('data-a'));
+        if (!numero) return;
+        a.href = 'tel:' + numero;
+        a.textContent = affiche || numero;
+    });
+
+    // Formulaire de contact : l'adresse de destination est reconstruite ici
+    document.querySelectorAll('form[data-envoi]').forEach(function (f) {
+        const cible = lire(f.getAttribute('data-envoi'));
+        if (cible) f.action = cible;
+    });
+})();
+
 
 // Ajoute les styles pour les éléments visibles
 const styleAnimation = document.createElement('style');

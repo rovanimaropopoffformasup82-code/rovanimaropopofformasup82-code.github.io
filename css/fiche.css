@@ -1,0 +1,225 @@
+/* ══════════════════════════════════════════════════════════════
+   FICHE.CSS - Mise en page commune aux fiches projet
+   Utilisée par projets/*.html (sous-dossier -> chemins en ../)
+══════════════════════════════════════════════════════════════ */
+
+/* Fil d'Ariane */
+.fil {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 10rem var(--padding-page) 0;
+    font-size: 0.82rem;
+    color: var(--gris-texte);
+}
+.fil ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    align-items: center;
+}
+.fil a { color: var(--gris-texte); }
+.fil a:hover { color: var(--or); }
+.fil li[aria-current] { color: var(--or); }
+.fil .sep { color: var(--gris-bordure); }
+
+/* En-tête de la fiche */
+.fiche-hero {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem var(--padding-page) 1.5rem;
+}
+.fiche-badge {
+    display: inline-block;
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--or);
+    border: 1px solid rgba(201, 168, 76, 0.4);
+    border-radius: 3px;
+    padding: 0.25rem 0.65rem;
+    margin-bottom: 1.2rem;
+}
+.fiche-hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    margin-bottom: 0.9rem;
+}
+.fiche-hero .accroche {
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    color: var(--gris-clair);
+    max-width: 640px;
+    line-height: 1.8;
+}
+.fiche-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.8rem;
+}
+.fiche-btn {
+    font-family: var(--font-corps);
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.8rem 1.7rem;
+    border-radius: 3px;
+    transition: var(--transition-rapide);
+}
+.fiche-btn-or { background-color: var(--or); color: var(--noir-profond); }
+.fiche-btn-or:hover { background-color: var(--or-clair); transform: translateY(-2px); }
+.fiche-btn-contour { border: 1px solid var(--gris-bordure); color: var(--blanc); }
+.fiche-btn-contour:hover { border-color: var(--or); color: var(--or); }
+
+/* Grande capture (cadre navigateur) */
+.fiche-capture {
+    max-width: 1000px;
+    margin: 2rem auto 0;
+    padding: 0 var(--padding-page);
+}
+.fiche-frame {
+    background-color: #181818;
+    border: 1px solid var(--gris-bordure);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+}
+.fiche-frame-barre {
+    height: 36px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 14px;
+    border-bottom: 1px solid #1e1e1e;
+}
+.fiche-frame-barre .dot { width: 10px; height: 10px; border-radius: 50%; }
+.fiche-frame-barre .r { background: #ff5f57; }
+.fiche-frame-barre .y { background: #ffbd2e; }
+.fiche-frame-barre .g { background: #28c940; }
+.fiche-frame-barre .url {
+    margin-left: 12px;
+    font-family: monospace;
+    font-size: 0.72rem;
+    color: #555;
+}
+.fiche-frame img { width: 100%; height: auto; display: block; }
+
+/* Corps de la fiche */
+.fiche-corps {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 3.5rem var(--padding-page) 2rem;
+}
+.fiche-section { margin-bottom: 3rem; }
+.fiche-section h2 {
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    margin-bottom: 1.1rem;
+    padding-bottom: 0.7rem;
+    border-bottom: 1px solid var(--gris-bordure);
+}
+.fiche-section p {
+    font-size: 1rem;
+    line-height: 1.85;
+    margin-bottom: 1rem;
+    max-width: 780px;
+}
+.fiche-section h3 {
+    font-size: 1.1rem;
+    color: var(--blanc-pur);
+    margin: 1.6rem 0 0.7rem;
+}
+
+/* Listes de livrables */
+.fiche-liste {
+    list-style: none;
+    max-width: 780px;
+}
+.fiche-liste li {
+    position: relative;
+    padding-left: 1.6rem;
+    margin-bottom: 0.7rem;
+    color: var(--gris-clair);
+    line-height: 1.7;
+}
+.fiche-liste li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 7px;
+    height: 7px;
+    background-color: var(--or);
+    border-radius: 50%;
+}
+
+/* Stack (puces techno) */
+.fiche-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+.fiche-stack span {
+    font-size: 0.82rem;
+    color: var(--gris-clair);
+    background-color: var(--gris-fonce);
+    border: 1px solid var(--gris-bordure);
+    border-radius: 4px;
+    padding: 0.4rem 0.85rem;
+}
+
+/* Résultats chiffrés */
+.fiche-resultats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.4rem;
+}
+.fiche-resultat {
+    background-color: var(--gris-fonce);
+    border: 1px solid var(--gris-bordure);
+    border-left: 3px solid var(--or);
+    border-radius: 6px;
+    padding: 1.3rem 1.4rem;
+}
+.fiche-resultat .val {
+    font-family: var(--font-titre);
+    font-size: 1.7rem;
+    font-weight: 800;
+    color: var(--blanc-pur);
+    line-height: 1;
+    display: block;
+    margin-bottom: 0.4rem;
+}
+.fiche-resultat .lab {
+    font-size: 0.84rem;
+    color: var(--gris-texte);
+    line-height: 1.5;
+}
+
+/* Deux colonnes (rôle / repères) */
+.fiche-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.4rem;
+    max-width: 780px;
+}
+.fiche-meta dt {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--or);
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+}
+.fiche-meta dd { color: var(--gris-clair); line-height: 1.6; }
+
+/* Navigation bas de fiche */
+.fiche-nav-bas {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1rem var(--padding-page) 4rem;
+}
+.fiche-retour {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--or);
+}
+.fiche-retour:hover { color: var(--or-clair); }

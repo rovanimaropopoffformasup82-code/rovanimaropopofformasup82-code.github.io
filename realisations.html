@@ -1,0 +1,830 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Réalisations | Mercia RANDRIANOME</title>
+    <meta
+      name="description"
+      content="Réalisations de Mercia RANDRIANOME : sites WordPress, WooCommerce et MODX en production, plus des travaux de conception visuelle et de développement."
+    />
+    <link rel="canonical" href="https://mercia.ikala-ni.fr/realisations.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Réalisations | Mercia RANDRIANOME" />
+    <meta property="og:description" content="Sites en production, conception visuelle et développement." />
+    <meta property="og:url" content="https://mercia.ikala-ni.fr/realisations.html" />
+    <meta property="og:locale" content="fr_FR" />
+
+    <meta property="og:image" content="https://mercia.ikala-ni.fr/assets/images/og/og-mercia.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Mercia RANDRIANOME, conceptrice designer UI - sites web, conception visuelle, SEO et accessibilité" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Réalisations | Mercia RANDRIANOME" />
+    <meta name="twitter:description" content="Réalisations de Mercia RANDRIANOME : sites WordPress, WooCommerce et MODX en production, plus des travaux de conception visuelle et de développement." />
+    <meta name="twitter:image" content="https://mercia.ikala-ni.fr/assets/images/og/og-mercia.jpg" />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      /* ══════════ PROJETS ══════════ */
+      .projets-intro {
+        padding: 11rem var(--padding-page) 2.5rem;
+        background-color: var(--noir-profond);
+        text-align: center;
+      }
+      .projets-intro .suptitre {
+        font-size: 0.72rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--or);
+        font-weight: 600;
+        margin-bottom: 0.9rem;
+      }
+      .projets-intro h1 {
+        font-size: clamp(2.4rem, 5vw, 3.6rem);
+      }
+      .projets-intro p {
+        max-width: 560px;
+        margin: 1rem auto 0;
+      }
+
+      /* ── Barre de filtres ── */
+      .filtres {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.7rem;
+        padding: 0 var(--padding-page) 1rem;
+        background-color: var(--noir-profond);
+        position: sticky;
+        top: 0;
+        z-index: 50;
+      }
+      .filtre-btn {
+        font-family: var(--font-corps);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--gris-clair);
+        background-color: var(--gris-fonce);
+        border: 1px solid var(--gris-bordure);
+        border-radius: 50px;
+        padding: 0.6rem 1.3rem;
+        cursor: pointer;
+        transition: all 0.25s ease;
+      }
+      .filtre-btn:hover {
+        border-color: var(--or);
+        color: var(--blanc-pur);
+      }
+      .filtre-btn[aria-pressed="true"] {
+        background-color: var(--or);
+        color: var(--noir-profond);
+        border-color: var(--or);
+      }
+
+      /* Zone de contenu */
+      .projets-zone {
+        padding: 2rem var(--padding-page) 5rem;
+        background-color: var(--noir-profond);
+      }
+      .projets-section {
+        max-width: 1200px;
+        margin: 0 auto 3.5rem;
+      }
+      .projets-section-titre {
+        font-size: 0.72rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--or);
+        font-weight: 600;
+        margin-bottom: 1.6rem;
+        padding-bottom: 0.8rem;
+        border-bottom: 1px solid var(--gris-bordure);
+      }
+
+      /* ── Grande carte site (cadre navigateur) ── */
+      .grille-sites {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
+        gap: 2rem;
+      }
+      .carte-site {
+        background-color: var(--gris-fonce);
+        border: 1px solid var(--gris-bordure);
+        border-radius: 12px;
+        overflow: hidden;
+        transition: transform 0.3s ease, border-color 0.3s ease;
+      }
+      .carte-site:hover {
+        transform: translateY(-4px);
+        border-color: rgba(201, 168, 76, 0.5);
+      }
+
+      /* Cadre navigateur */
+      .navframe {
+        background-color: #181818;
+        border-bottom: 1px solid var(--gris-bordure);
+      }
+      .navframe-barre {
+        height: 34px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 0 12px;
+        border-bottom: 1px solid #1e1e1e;
+      }
+      .navframe-dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+      }
+      .navframe-dot.r { background: #ff5f57; }
+      .navframe-dot.y { background: #ffbd2e; }
+      .navframe-dot.g { background: #28c940; }
+      .navframe-url {
+        margin-left: 10px;
+        font-family: monospace;
+        font-size: 0.7rem;
+        color: #555;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .navframe-ecran {
+        aspect-ratio: 16 / 10;
+        overflow: hidden;
+        background: #0d0d0d;
+      }
+      .navframe-ecran img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top center;
+      }
+
+      .carte-corps {
+        padding: 1.4rem 1.6rem 1.7rem;
+      }
+      .carte-badge {
+        display: inline-block;
+        font-size: 0.64rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: var(--gris-clair);
+        border: 1px solid var(--gris-bordure);
+        border-radius: 3px;
+        padding: 0.2rem 0.55rem;
+        margin-bottom: 0.9rem;
+      }
+      .carte-corps h3 {
+        font-size: 1.45rem;
+        margin-bottom: 0.5rem;
+      }
+      .carte-corps p {
+        font-size: 0.94rem;
+        line-height: 1.7;
+        margin-bottom: 1rem;
+      }
+      .carte-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-bottom: 1.4rem;
+      }
+      .carte-tags span {
+        font-size: 0.7rem;
+        color: var(--gris-clair);
+        background-color: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--gris-bordure);
+        border-radius: 3px;
+        padding: 0.22rem 0.5rem;
+      }
+      .carte-actions {
+        display: flex;
+        gap: 1.3rem;
+        align-items: center;
+      }
+      .lien-fiche {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--or);
+      }
+      .lien-fiche:hover { color: var(--or-clair); }
+      .lien-ext {
+        font-size: 0.9rem;
+        color: var(--gris-texte);
+      }
+      .lien-ext:hover { color: var(--blanc-pur); }
+
+      /* ── Grille projets secondaires ── */
+      .grille-autres {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.6rem;
+      }
+      .carte-mini {
+        display: flex;
+        flex-direction: column;
+        background-color: var(--gris-fonce);
+        border: 1px solid var(--gris-bordure);
+        border-radius: 10px;
+        overflow: hidden;
+        transition: transform 0.3s ease, border-color 0.3s ease;
+      }
+      .carte-mini:hover {
+        transform: translateY(-4px);
+        border-color: rgba(201, 168, 76, 0.5);
+      }
+      .mini-visuel {
+        aspect-ratio: 16 / 10;
+        overflow: hidden;
+        background: linear-gradient(135deg, #151515, #1c1a15);
+      }
+      .mini-visuel img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top center;
+      }
+      /* Carte identité/logo : fond clair, logo contenu (pas rogné) */
+      .mini-visuel--logo {
+        background: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.4rem;
+      }
+      .mini-visuel--logo img {
+        width: auto;
+        height: 100%;
+        object-fit: contain;
+      }
+      .mini-visuel-vide {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        color: rgba(201, 168, 76, 0.4);
+        font-family: var(--font-titre);
+        font-size: 1.2rem;
+        text-align: center;
+        padding: 1rem;
+      }
+      .mini-corps {
+        padding: 1.2rem 1.3rem 1.4rem;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+      .mini-corps h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.45rem;
+      }
+      .mini-corps p {
+        font-size: 0.88rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+      }
+      .mini-corps .carte-tags { margin-bottom: 1.1rem; }
+      .mini-corps .carte-actions { margin-top: auto; }
+
+      /* Masquage par filtre */
+      [hidden] { display: none !important; }
+
+      /* Message si section vide */
+      .section-vide {
+        color: var(--gris-texte);
+        font-size: 0.95rem;
+        text-align: center;
+        padding: 2rem 0;
+      }
+
+      /* ── Bandeau logos défilant (pleine largeur) ── */
+      .logos-bandeau {
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+        margin-bottom: 1.2rem;
+        padding: 3.2rem 0;
+        border-top: 1px solid rgba(201, 168, 76, 0.35);
+        border-bottom: 1px solid rgba(201, 168, 76, 0.35);
+        background:
+          radial-gradient(120% 140% at 50% 0%, rgba(201, 168, 76, 0.12), rgba(0, 0, 0, 0) 60%),
+          var(--gris-fonce);
+        overflow: hidden;
+        position: relative;
+      }
+      /* Fondu sur les bords */
+      .logos-bandeau::before,
+      .logos-bandeau::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 8vw;
+        max-width: 90px;
+        z-index: 2;
+        pointer-events: none;
+      }
+      .logos-bandeau::before {
+        left: 0;
+        background: linear-gradient(to right, var(--gris-fonce), rgba(0, 0, 0, 0));
+      }
+      .logos-bandeau::after {
+        right: 0;
+        background: linear-gradient(to left, var(--gris-fonce), rgba(0, 0, 0, 0));
+      }
+      .logos-piste {
+        display: flex;
+        align-items: center;
+        width: max-content;
+        animation: logos-defile 45s linear infinite;
+      }
+      /* Pause : au survol, au focus clavier et via le bouton */
+      .logos-bandeau:hover .logos-piste,
+      .logos-bandeau:focus-within .logos-piste,
+      .logos-bandeau.en-pause .logos-piste {
+        animation-play-state: paused;
+      }
+      @keyframes logos-defile {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+      }
+      /* Bouton pause / lecture (WCAG 2.2.2) */
+      .logos-controle {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2.5rem;
+      }
+      .logos-btn {
+        font-family: var(--font-corps);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--gris-clair);
+        background-color: var(--gris-fonce);
+        border: 1px solid var(--gris-bordure);
+        border-radius: 999px;
+        padding: 0.5rem 1.2rem;
+        cursor: pointer;
+      }
+      .logos-btn:hover,
+      .logos-btn:focus-visible {
+        color: var(--or);
+        border-color: var(--or);
+      }
+      .logo-item {
+        flex: 0 0 auto;
+        width: 190px;
+        height: 118px;
+        margin: 0 1.1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #ffffff;
+        border: 1px solid var(--gris-bordure);
+        border-radius: 8px;
+        padding: 1rem;
+        position: relative;
+      }
+      /* Taille imposée par le cadre : sans ça l'image se calcule à 0 et
+         le chargement différé ne se déclenche jamais. */
+      .logo-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+      /* Placeholder affiché si l'image ne se charge pas */
+      .logo-item .logo-vide {
+        display: none;
+        font-family: var(--font-titre);
+        font-size: 0.95rem;
+        line-height: 1.3;
+        text-align: center;
+        color: #3a3a3a;
+      }
+      .logo-item.vide img { display: none; }
+      .logo-item.vide .logo-vide { display: block; }
+
+      @media (prefers-reduced-motion: reduce) {
+        .logos-piste {
+          animation: none;
+        }
+        /* Plus d'animation : le bandeau se parcourt à la main */
+        .logos-bandeau {
+          overflow-x: auto;
+        }
+        .logos-controle {
+          display: none;
+        }
+      }
+      @media (max-width: 520px) {
+        .logo-item {
+          width: 145px;
+          height: 90px;
+          margin: 0 0.7rem;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .grille-sites {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <header class="header">
+      <div class="nav">
+        <a href="index.html" class="nav-logo">MERCIA<span>.</span></a>
+        <a href="contact.html" class="nav-cta">Me contacter</a>
+        <div class="nav-burger" aria-label="Menu" role="button" tabindex="0">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+      <nav class="nav-sub" aria-label="Navigation principale">
+        <ul class="nav-liens">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="realisations.html" class="actif" aria-current="page">Réalisations</a></li>
+          <li><a href="apropos.html">À propos</a></li>
+          <li><a href="cv.html">CV</a></li>
+          <li><a href="https://simul-reseaux-sociaux.ikala-ni.fr" target="_blank" rel="noopener">Simulateur RS<span class="visually-hidden"> (nouvelle fenêtre)</span></a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="contenu">
+      <section class="projets-intro">
+        <p class="suptitre">Portfolio</p>
+        <h1>Réalisations</h1>
+        <p>
+          Ce que j'ai conçu, codé et mis en ligne. Et le suivi qui continue
+          après la livraison.
+        </p>
+      </section>
+
+      <!-- Filtres -->
+      <div
+        class="filtres"
+        role="group"
+        aria-label="Filtrer les projets par catégorie"
+      >
+        <button class="filtre-btn" data-filtre="tous" aria-pressed="true">
+          Tous les projets
+        </button>
+        <button class="filtre-btn" data-filtre="dev" aria-pressed="false">
+          Développement Site Web
+        </button>
+        <button class="filtre-btn" data-filtre="visuel" aria-pressed="false">
+          Conception Visuelle
+        </button>
+      </div>
+      <p class="visually-hidden" role="status" aria-live="polite" id="filtre-annonce"></p>
+
+      <div class="projets-zone">
+        <!-- ══ Sites en production ══ -->
+        <section class="projets-section" id="sec-sites" aria-labelledby="t-sites" data-cat="dev">
+          <h2 class="projets-section-titre" id="t-sites">Sites en production</h2>
+          <div class="grille-sites">
+            <!-- MAM -->
+            <article class="carte-site projet" data-cat="dev">
+              <div class="navframe">
+                <div class="navframe-barre">
+                  <span class="navframe-dot r"></span><span class="navframe-dot y"></span><span class="navframe-dot g"></span>
+                  <span class="navframe-url">mamtiazaza.fr</span>
+                </div>
+                <div class="navframe-ecran">
+                  <img src="assets/images/projets/mam-cap.webp" alt="Aperçu du site MAM Tiazaza" width="1200" height="750" loading="lazy" />
+                </div>
+              </div>
+              <div class="carte-corps">
+                <span class="carte-badge">WordPress</span>
+                <h3>MAM Tiazaza</h3>
+                <p>
+                  Site vitrine avec Espace Parents et environnement de staging.
+                  Identité de marque, SEO technique, pages RGPD et visuels
+                  réseaux sociaux.
+                </p>
+                <div class="carte-tags">
+                  <span>WordPress</span><span>Astra</span><span>Ultimate Member</span><span>SEO</span><span>RGPD</span>
+                </div>
+                <div class="carte-actions">
+                  <a href="projets/mam-tiazaza.html" class="lien-fiche">Fiche projet</a>
+                  <a href="https://mamtiazaza.fr" target="_blank" rel="noopener" class="lien-ext">Voir le site</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- HandiPro31 -->
+            <article class="carte-site projet" data-cat="dev">
+              <div class="navframe">
+                <div class="navframe-barre">
+                  <span class="navframe-dot r"></span><span class="navframe-dot y"></span><span class="navframe-dot g"></span>
+                  <span class="navframe-url">handipro31.fr</span>
+                </div>
+                <div class="navframe-ecran">
+                  <img src="assets/images/projets/handipro-cap.webp" alt="Aperçu du site HandiPro31" width="1200" height="750" loading="lazy" />
+                </div>
+              </div>
+              <div class="carte-corps">
+                <span class="carte-badge">MODX</span>
+                <h3>HandiPro31</h3>
+                <p>
+                  Refonte V2 complète sous MODX Revolution. Charte de marque,
+                  accessibilité, SEO technique et pages RGPD.
+                </p>
+                <div class="carte-tags">
+                  <span>MODX Revolution</span><span>Accessibilité</span><span>SEO</span><span>RGPD</span>
+                </div>
+                <div class="carte-actions">
+                  <a href="projets/handipro31.html" class="lien-fiche">Fiche projet</a>
+                  <a href="https://www.handipro31.fr/" target="_blank" rel="noopener" class="lien-ext">Voir le site</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Jaozafy -->
+            <article class="carte-site projet" data-cat="dev">
+              <div class="navframe">
+                <div class="navframe-barre">
+                  <span class="navframe-dot r"></span><span class="navframe-dot y"></span><span class="navframe-dot g"></span>
+                  <span class="navframe-url">jaozafysaveur.fr</span>
+                </div>
+                <div class="navframe-ecran">
+                  <img src="assets/images/projets/jaozafy-cap.webp" alt="Aperçu du site Jaozafy Saveur" width="1200" height="750" loading="lazy" />
+                </div>
+              </div>
+              <div class="carte-corps">
+                <span class="carte-badge">Headless</span>
+                <h3>Jaozafy Saveur</h3>
+                <p>
+                  Boutique d'épices de Madagascar en headless : front Next.js,
+                  WooCommerce en back-office. Logo et identité, paiements PayPal
+                  et WooPayments, livraison FR, BE, LU, CH.
+                </p>
+                <div class="carte-tags">
+                  <span>Next.js</span><span>WooCommerce</span><span>WooGraphQL</span><span>Identité</span>
+                </div>
+                <div class="carte-actions">
+                  <a href="projets/jaozafy-saveur.html" class="lien-fiche">Fiche projet</a>
+                  <a href="https://jaozafysaveur.fr" target="_blank" rel="noopener" class="lien-ext">Voir le site</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Salon de Thé -->
+            <article class="carte-site projet" data-cat="dev">
+              <div class="navframe">
+                <div class="navframe-barre">
+                  <span class="navframe-dot r"></span><span class="navframe-dot y"></span><span class="navframe-dot g"></span>
+                  <span class="navframe-url">the-champetre.fr</span>
+                </div>
+                <div class="navframe-ecran">
+                  <img src="assets/images/projets/salon-cap.webp" alt="Aperçu du site Salon de Thé Champêtre" width="1200" height="750" loading="lazy" />
+                </div>
+              </div>
+              <div class="carte-corps">
+                <span class="carte-badge">WordPress</span>
+                <h3>Salon de Thé Champêtre</h3>
+                <p>
+                  Site WordPress réalisé en projet de groupe. Travail
+                  collaboratif, intégration et mise en page.
+                </p>
+                <div class="carte-tags">
+                  <span>WordPress</span><span>Projet de groupe</span>
+                </div>
+                <div class="carte-actions">
+                  <a href="projets/salon-de-the-champetre.html" class="lien-fiche">Fiche projet</a>
+                  <a href="https://the-champetre.fr/" target="_blank" rel="noopener" class="lien-ext">Voir le site</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Co&Co -->
+            <article class="carte-site projet" data-cat="dev">
+              <div class="navframe">
+                <div class="navframe-barre">
+                  <span class="navframe-dot r"></span><span class="navframe-dot y"></span><span class="navframe-dot g"></span>
+                  <span class="navframe-url">co-co-shop.netlify.app</span>
+                </div>
+                <div class="navframe-ecran">
+                  <img src="assets/images/projets/coco-cap.webp" alt="Aperçu du site Co&amp;Co" width="1200" height="750" loading="lazy" />
+                </div>
+              </div>
+              <div class="carte-corps">
+                <span class="carte-badge">Entraînement</span>
+                <h3>Co&amp;Co</h3>
+                <p>
+                  Site conçu en HTML, CSS et JavaScript, mis en ligne sur
+                  Netlify. Un terrain d'entraînement pour l'intégration.
+                </p>
+                <div class="carte-tags">
+                  <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Netlify</span>
+                </div>
+                <div class="carte-actions">
+                  <a href="projets/co-co.html" class="lien-fiche">Fiche projet</a>
+                  <a href="https://co-co-shop.netlify.app/" target="_blank" rel="noopener" class="lien-ext">Voir le site</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- ══ Conception visuelle ══ -->
+        <section class="projets-section" id="sec-visuel" aria-labelledby="t-visuel" data-cat="visuel">
+          <h2 class="projets-section-titre" id="t-visuel">Conception visuelle</h2>
+
+          <!-- Bandeau de logos défilant -->
+          <div class="logos-bandeau projet" id="bandeau-logos" data-cat="visuel" role="img" aria-label="Logos réalisés : MAM Tiazaza, Jaozafy Saveur, La Perruche, Faites le Mur, Flora">
+            <div class="logos-piste">
+              <!-- Série 1 -->
+              <div class="logo-item">
+                <img src="assets/images/projets/tiazaza.webp" alt="" width="607" height="512" onerror="this.parentNode.classList.add('vide')" />
+                <span class="logo-vide">MAM Tiazaza</span>
+              </div>
+              <div class="logo-item">
+                <img src="assets/images/projets/jaozafy-logo.webp" alt="" width="650" height="675" onerror="this.parentNode.classList.add('vide')" />
+                <span class="logo-vide">Jaozafy Saveur</span>
+              </div>
+              <div class="logo-item">
+                <img src="assets/images/projets/la-perruche.webp" alt="" width="698" height="538" onerror="this.parentNode.classList.add('vide')" />
+                <span class="logo-vide">La Perruche</span>
+              </div>
+              <div class="logo-item">
+                <img src="assets/images/projets/faites-le-mur.webp" alt="" width="412" height="646" onerror="this.parentNode.classList.add('vide')" />
+                <span class="logo-vide">Faites le Mur</span>
+              </div>
+              <div class="logo-item">
+                <img src="assets/images/projets/logo-flora.webp" alt="" width="128" height="108" onerror="this.parentNode.classList.add('vide')" />
+                <span class="logo-vide">Flora</span>
+              </div>
+              <!-- Série 2 : copie à l'identique pour la boucle sans coupure -->
+              <div class="logo-item" aria-hidden="true">
+                <img src="assets/images/projets/tiazaza.webp" alt="" width="607" height="512" onerror="this.parentNode.classList.add('vide')" />
+                <span class="logo-vide">MAM Tiazaza</span>
+              </div>
+              <div class="logo-item" aria-hidden="true">
+                <img src="assets/images/projets/jaozafy-logo.webp" alt="" width="650" height="675" onerror="this.parentNode.classList.add('vide')" />
+                <span class="logo-vide">Jaozafy Saveur</span>
+              </div>
+              <div class="logo-item" aria-hidden="true">
+                <img src="assets/images/projets/la-perruche.webp" alt="" width="698" height="538" onerror="this.parentNode.classList.add('vide')" />
+                <span class="logo-vide">La Perruche</span>
+              </div>
+              <div class="logo-item" aria-hidden="true">
+                <img src="assets/images/projets/faites-le-mur.webp" alt="" width="412" height="646" onerror="this.parentNode.classList.add('vide')" />
+                <span class="logo-vide">Faites le Mur</span>
+              </div>
+              <div class="logo-item" aria-hidden="true">
+                <img src="assets/images/projets/logo-flora.webp" alt="" width="128" height="108" onerror="this.parentNode.classList.add('vide')" />
+                <span class="logo-vide">Flora</span>
+              </div>
+            </div>
+          </div>
+
+          <p class="logos-controle">
+            <button type="button" class="logos-btn" id="logos-toggle" aria-pressed="false" aria-controls="bandeau-logos">
+              Mettre en pause le défilement
+            </button>
+          </p>
+
+        </section>
+
+        <!-- ══ Développement ══ -->
+        <section class="projets-section" id="sec-dev" aria-labelledby="t-dev" data-cat="dev">
+          <h2 class="projets-section-titre" id="t-dev">Développement</h2>
+          <div class="grille-autres">
+            <article class="carte-mini projet" data-cat="dev">
+              <div class="mini-visuel"><div class="mini-visuel-vide">Quiz React</div></div>
+              <div class="mini-corps">
+                <h3>Quiz React 227 questions</h3>
+                <p>
+                  Application de quiz développée en React, avec une banque de
+                  227 questions et un affichage dynamique des résultats.
+                </p>
+                <div class="carte-tags">
+                  <span>React</span><span>TypeScript</span><span>JavaScript</span>
+                </div>
+                <div class="carte-actions">
+                  <a href="contact.html" class="lien-fiche">Me contacter</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="carte-mini projet" data-cat="dev">
+              <div class="mini-visuel"><div class="mini-visuel-vide">BrainQuest</div></div>
+              <div class="mini-corps">
+                <h3>BrainQuest</h3>
+                <p>
+                  Application de quiz en PWA, installable et utilisable hors
+                  ligne, pensée pour un usage sur mobile.
+                </p>
+                <div class="carte-tags">
+                  <span>PWA</span><span>JavaScript</span><span>HTML</span><span>CSS</span>
+                </div>
+                <div class="carte-actions">
+                  <a href="contact.html" class="lien-fiche">Me contacter</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="carte-mini projet" data-cat="dev">
+              <div class="mini-visuel"><div class="mini-visuel-vide">Simulateur réseaux sociaux</div></div>
+              <div class="mini-corps">
+                <h3>Simulateur de réseaux sociaux</h3>
+                <p>
+                  Outil en HTML, CSS et JavaScript pour composer et prévisualiser
+                  des publications réseaux sociaux avant leur mise en ligne.
+                </p>
+                <div class="carte-tags">
+                  <span>HTML</span><span>CSS</span><span>JavaScript</span>
+                </div>
+                <div class="carte-actions">
+                  <a href="contact.html" class="lien-fiche">Me contacter</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-contenu">
+        <p class="footer-logo">MERCIA<span>.</span></p>
+        <div class="footer-liens">
+          <a href="index.html">Accueil</a>
+          <a href="apropos.html">À propos</a>
+          <a href="cv.html">CV</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <p class="footer-copyright">© 2026 Mercia RANDRIANOME - Conceptrice Designer UI</p>
+      </div>
+    </footer>
+
+    <a class="wa-float" href="https://wa.me/33667955602" target="_blank" rel="noopener" aria-label="Me contacter sur WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.5 14.4c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.8 1.2 3 .1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.4z M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2zm0 18.3c-1.5 0-3-.4-4.3-1.2l-.3-.2-2.9.8.8-2.8-.2-.3A8.3 8.3 0 1 1 12 20.3z"/>
+      </svg>
+      <span class="wa-label">WhatsApp</span>
+    </a>
+
+    <script src="js/main.js?v=2"></script>
+    <script>
+      // ── Filtre projets (accessible) ──
+      (function () {
+        var boutons = document.querySelectorAll(".filtre-btn");
+        var projets = document.querySelectorAll(".projet");
+        var sections = document.querySelectorAll(".projets-section");
+        var annonce = document.getElementById("filtre-annonce");
+
+        function libelle(f) {
+          if (f === "dev") return "Développement Site Web";
+          if (f === "visuel") return "Conception Visuelle";
+          return "Tous les projets";
+        }
+
+        function filtrer(f) {
+          var visibles = 0;
+          projets.forEach(function (p) {
+            var ok = f === "tous" || p.getAttribute("data-cat") === f;
+            p.hidden = !ok;
+            if (ok) visibles++;
+          });
+          // Masque une section entière si aucun de ses projets n'est visible
+          sections.forEach(function (s) {
+            var ok = f === "tous" || s.getAttribute("data-cat") === f;
+            s.hidden = !ok;
+          });
+          annonce.textContent =
+            visibles + " projet" + (visibles > 1 ? "s" : "") + " affiché" +
+            (visibles > 1 ? "s" : "") + " - " + libelle(f) + ".";
+        }
+
+        boutons.forEach(function (b) {
+          b.addEventListener("click", function () {
+            boutons.forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
+            b.setAttribute("aria-pressed", "true");
+            filtrer(b.getAttribute("data-filtre"));
+          });
+        });
+      })();
+
+      // ── Bandeau de logos : pause / lecture ──
+      (function () {
+        var bandeau = document.getElementById("bandeau-logos");
+        var btn = document.getElementById("logos-toggle");
+        if (!bandeau || !btn) return;
+
+        btn.addEventListener("click", function () {
+          var enPause = bandeau.classList.toggle("en-pause");
+          btn.setAttribute("aria-pressed", enPause ? "true" : "false");
+          btn.textContent = enPause
+            ? "Relancer le défilement"
+            : "Mettre en pause le défilement";
+        });
+      })();
+    </script>
+  </body>
+</html>
